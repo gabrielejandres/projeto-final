@@ -1,52 +1,56 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title> Cadastro </ion-title>
-  </ion-toolbar>
 </ion-header>
 
-<ion-content>
-	<form>
-		<ion-label> Nome completo </ion-label>
-		<ion-input type="text" placeholder="Maria das Graças"> </ion-input>
-		<ion-label> E-mail </ion-label>
-		<ion-input type="text" placeholder="mariadasgracas@gmail.com"> </ion-input>
-		<ion-label> Senha </ion-label>
-		<ion-input type="password" placeholder="Crie sua senha"> </ion-input>
-		<ion-label> Confirmação de senha </ion-label>
-		<ion-input type="password" placeholder="Confirme sua senha"> </ion-input>
+<ion-content fullscreen>
+	<ion-fab vertical="top" horizontal="end" slot="fixed">
+		<ion-fab-button>
+		  <ion-icon name="arrow-round-back" color="primary"></ion-icon>
+		</ion-fab-button>  
+	</ion-fab>
 
-		<ion-radio-group>
-			<ion-item>
-				<ion-label> Procuro república </ion-label>
-				<ion-radio slot="start" value="procura"></ion-radio>
-			</ion-item>
-			<ion-item>
-				<ion-label> Ofereço república </ion-label>
-				<ion-radio slot="start" value="oferece"></ion-radio>
-			</ion-item>
-		</ion-radio-group>
-
-		<ion-button shape="round"> Enviar </ion-button>
-	</form>
+	<div class="container">
+		<div id="logo">
+			<img src="../../assets/logo.png">
+		</div>
+		<div>
+			<form>
+				<ion-list lines="none">
+					<ion-item>
+						<ion-label position="floating"> Nome completo </ion-label>
+						<ion-input type="text" name="name"></ion-input>
+					</ion-item>
+					<ion-item>
+						<ion-label position="floating"> E-mail </ion-label>
+						<ion-input type="text" name="email"></ion-input>
+					</ion-item>
+					<ion-item>
+						<ion-label position="floating"> Senha </ion-label>
+						<ion-input type="password" name="password"></ion-input>
+					</ion-item>
+					<ion-item>
+						<ion-label position="floating"> Confirmação de senha </ion-label>
+						<ion-input type="password" name="check_password"></ion-input>
+					</ion-item>
+					<ion-item>
+						<ion-radio-group class="checkbox">
+							<ion-label> Você é: </ion-label>
+							<div class="options">
+								<ion-item>
+									<ion-label> Inquilino </ion-label>
+									<ion-radio slot="start" value="tenant"></ion-radio>
+								</ion-item>
+								<ion-item>
+									<ion-label> Locador </ion-label>
+									<ion-radio slot="start" value="locator"></ion-radio>
+								</ion-item>
+							</div>
+						</ion-radio-group>
+					</ion-item>
+				</ion-list>
+				<div class="button">
+					<ion-button shape="round"> Cadastrar </ion-button>
+				</div>
+			</form>
+		</div>
+	</div>
 </ion-content>
-<!-- 
-	<form>
-		<ion-label> Nome </ion-label>	
-		<ion-input type="text" name="nome" placeholder="Digite seu nome completo"></ion-input>
-		<ion-input type="text" name="email" placeholder="Digite seu e-mail"></ion-input>
-		<ion-input type="password" name="senha" placeholder="Crie sua senha"></ion-input>
-		<ion-input type="password" name="confirmacao_senha" placeholder="Por favor, confirme sua senha"></ion-input>
-
-		<ion-radio-group>
-			<ion-item>
-				<ion-label> Procuro república </ion-label>
-				<ion-radio slot="start" value="procura"></ion-radio>
-			</ion-item>
-			<ion-item>
-				<ion-label> Ofereço república </ion-label>
-				<ion-radio slot="start" value="oferece"></ion-radio>
-			</ion-item>
-		</ion-radio-group>
-
-		<ion-button shape="round"> Enviar </ion-button>
-	</form>-->
