@@ -1,0 +1,38 @@
+<ion-header>
+</ion-header>
+
+<ion-content fullscreen>
+	<ion-fab vertical="top" horizontal="end" slot="fixed">
+		<ion-fab-button>
+		  <ion-icon name="arrow-round-back" color="primary"></ion-icon>
+		</ion-fab-button>  
+	</ion-fab>
+
+	<div class="container">
+		<div id="logo">
+			<img src="../../assets/logo.png">
+		</div>
+		<div>
+			<form>
+				<ion-list lines="none">
+          <ion-item>
+						<ion-label position="floating"> E-mail </ion-label>
+						<ion-input type="text" name="email"></ion-input>
+					</ion-item>
+					<ion-item>
+						<ion-label position="floating"> Senha </ion-label>
+						<ion-input type="password" name="password"></ion-input>
+					</ion-item>
+				</ion-list>
+				<div class="button">
+					<ion-button shape="round"> Entrar </ion-button>
+				</div>
+			</form>
+    </div>
+    
+    <div class="invitation">
+      <h4> Ainda não possui uma conta? </h4>
+      <h4> <a href="../cadastro/cadastro.page.html"> Cadastre-se </a></h4>
+    </div>
+	</div>
+</ion-content>
