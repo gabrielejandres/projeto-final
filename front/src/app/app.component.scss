@@ -1,7 +1,6 @@
 ion-content{
     --background: #7D0D23;
-    --background: #000000;
-    --background: linear-gradient(197deg, rgba(125, 13, 35, 1) 0%, rgba(125, 13, 35, 1) 13.5%, rgba(29,29,29,1) 33.33%, rgba(0,0,0,1) 100%) 
+    --background: linear-gradient(197deg, rgba(125, 13, 35, 1) 0%, rgba(125, 13, 35, 1) 13.5%,rgba(125, 13, 35, 1) 33.33%, rgba(0,0,0,1) 100%) 
 }
 
 ion-header ion-toolbar{
@@ -12,4 +11,8 @@ ion-header ion-toolbar{
 ion-item{
     --background: #7D0D23;
     color: #E3D9CF;
+}
+
+ion-list{
+    --background: #7D0D23;
 }

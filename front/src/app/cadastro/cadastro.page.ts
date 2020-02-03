@@ -9,23 +9,21 @@ export class CadastroPage implements OnInit {
 
   public password: string = ''
   public check_password: string = ''
-  public message: string = ''
-  public have_message: boolean = false
+  public message: string = 'As senhas não correspondem'
+  public name: string = ''
+  public email: string = ''
+  public erro: string = ''
 
   constructor() { }
 
   ngOnInit() {
   }
 
-  validatePassword( event: any ): void{  
-    if (this.password != this.check_password){
-      this.message = 'As senhas não correspondem'
-      this.have_message = true
-    }
-    else{
-      this.have_message = !this.have_message
-    }
-      
+  public validateRegister( event: any ): void{  
+    if ( this.name == '' || this.email == '' || this.password == '' || this.check_password == '')
+      this.erro = 'Todos os campos são obrigatórios'
+    else
+      this.erro = ''
   }
 
 }

@@ -17,6 +17,11 @@ export class AppComponent {
       icon: 'home'
     },
     {
+      title: 'Editar perfil',
+      url: '/edit_profile',
+      icon: 'create'
+    },
+    {
       title: 'Favoritas',
       url: '/favorites',
       icon: 'star'
