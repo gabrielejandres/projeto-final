@@ -25,12 +25,16 @@
 					</ion-item>
 					<ion-item>
 						<ion-label position="floating"> Senha </ion-label>
-						<ion-input type="password" name="password"></ion-input>
+						<ion-input [(ngModel)]="password" type="password" name="password"></ion-input>
 					</ion-item>
 					<ion-item>
 						<ion-label position="floating"> Confirmação de senha </ion-label>
-						<ion-input type="password" name="check_password"></ion-input>
+						<ion-input [(ngModel)]="check_password" type="password" name="check_password"></ion-input>
 					</ion-item>
+					<div *ngIf="have_message" class="msg">
+						<ion-icon name="warning"></ion-icon>
+						 {{ message }}
+					</div>
 					<ion-item>
 						<ion-radio-group class="checkbox">
 							<ion-label> Você é: </ion-label>
@@ -48,7 +52,7 @@
 					</ion-item>
 				</ion-list>
 				<div class="button">
-					<ion-button shape="round"> Cadastrar </ion-button>
+					<ion-button shape="round" (click)="validatePassword($event)"> Cadastrar </ion-button>
 				</div>
 			</form>
 		</div>

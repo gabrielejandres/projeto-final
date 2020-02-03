@@ -1,7 +1,6 @@
 /* CONFIGURAÇÕES GERAIS */
 ion-content{
     --background: url(../../assets/background.png) 0 0/100% 100% no-repeat;
-
 }
 
 /* CONTAINER GERAL */
@@ -78,4 +77,9 @@ ion-fab-button{
     --background: rgba(0,0,0,0);
     width: 7.5vw;
     height: 4vh;
+}
+
+/* CONFIRMAÇÃO DE SENHA */
+.msg{
+    margin-left: 5%;
 }

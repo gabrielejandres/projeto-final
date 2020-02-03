@@ -1,0 +1,40 @@
+/* HEADER */
+ion-toolbar{
+    --background: #E3D9CF;
+  }
+  
+  .toolbar{
+    --background: #E3D9CF;
+    display: grid;
+    grid-template-columns: 10% 70% 20%;
+    align-items: center;
+    justify-items: center;
+  }
+  
+  /* ITENS DO HEADER */
+  #searchbar{
+    width: 100%;
+    align-self: center;
+    justify-self: center;
+  }
+  
+  ion-searchbar{
+    padding: 0 2%;
+  }
+  
+  #logo img{
+    width: 90%;
+  }
+  
+  .slogan{
+    align-self: center;
+    justify-self: center;
+    text-align: center;
+    margin-top: 0;
+  }
+  
+  .slogan span{
+    color:  #7D0D23;
+    font-weight: bold;
+  }
+  
