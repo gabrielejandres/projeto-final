@@ -34,6 +34,13 @@ ion-item{
     --background: rgba(0, 0, 0, 0);
 }
 
+ion-item p{
+    color: #717171;
+    font-size: 0.9em;
+    margin-left: 2%;
+    margin-top: 1%;
+}
+
 ion-list{
     background-color: rgba(0, 0, 0, 0);
 }
@@ -41,6 +48,7 @@ ion-list{
 ion-input{
     background-color: #71717140;
     border-radius: 15px;
+    --padding-start: 5% !important;
 }
 
 ion-label{
@@ -81,4 +89,14 @@ ion-fab-button{
 
 .invitation h4:last-child{
     margin-top: 0;
+    color:  #7D0D23;
+}
+
+/* CLASSE INVÁLIDO */
+.invalid{
+    --color:  #7D0D23;
+}
+
+.invalid ion-input{
+    border: 1px solid #7D0D23;
 }

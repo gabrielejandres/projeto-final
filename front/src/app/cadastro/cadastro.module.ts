@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms'; //importar o formulário
 
 import { IonicModule } from '@ionic/angular';
 
@@ -11,7 +11,7 @@ import { CadastroPage } from './cadastro.page';
 @NgModule({
   imports: [
     CommonModule,
-    ReactiveFormsModule,
+    ReactiveFormsModule, 
     FormsModule,
     IonicModule,
     CadastroPageRoutingModule

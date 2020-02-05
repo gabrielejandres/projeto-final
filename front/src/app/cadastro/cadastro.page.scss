@@ -43,6 +43,13 @@ ion-item{
     --background: rgba(0, 0, 0, 0);
 }
 
+ion-item p{
+    color: #717171;
+    font-size: 0.9em;
+    margin-left: 2%;
+    margin-top: 1%;
+}
+
 ion-list{
     background-color: rgba(0, 0, 0, 0);
 }
@@ -50,6 +57,7 @@ ion-list{
 ion-input{
     background-color: #71717140;
     border-radius: 15px;
+    --padding-start: 5% !important;
 }
 
 ion-label{
@@ -74,13 +82,31 @@ ion-fab-button{
     --border-color: #7D0D23;
     --border-width: 2px;
     --border-style: solid;
-    --background: rgba(0,0,0,0);
+    --background: #00000000;
     width: 7.5vw;
     height: 4vh;
 }
 
+/* CLASSE INVÁLIDO */
+.invalid{
+    --color:  #7D0D23;
+}
+
+.invalid ion-input{
+    border: 1px solid #7D0D23;
+}
+
 /* CONFIRMAÇÃO DE SENHA */
 .msg{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
     margin-left: 5%;
     color: #3D1321;
+    margin-bottom: 0;
 }
+
+.msg p{
+    padding-left: 2%;
+}
+

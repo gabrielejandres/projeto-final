@@ -1,47 +1,51 @@
-<ion-header>
-</ion-header>
-
 <ion-content fullscreen>
 	<ion-fab vertical="top" horizontal="end" slot="fixed">
-		<ion-fab-button>
+		<ion-fab-button [routerLink]="['../login']">
 		  <ion-icon name="arrow-round-back" color="primary"></ion-icon>
 		</ion-fab-button>  
 	</ion-fab>
 
 	<div class="container">
+
 		<div id="logo">
 			<img src="../../assets/logo.png">
 		</div>
+
 		<div>
-			<form>
+			<form [formGroup]="registerForm" (ngSubmit)="submitForm(registerForm)">
 				<ion-list lines="none">
-					<ion-item>
-						<ion-label position="floating"> Nome completo </ion-label>
-						<ion-input [(ngModel)]="name" type="text" name="name"></ion-input>
+					<ion-item [class.invalid]="registerForm.controls.name.invalid && registerForm.controls.name.touched">
+						<ion-label position="floating"> Nome completo * </ion-label>
+						<ion-input type="text" name="name" formControlName="name"></ion-input>
+						<p *ngIf="registerForm.controls.name.invalid && registerForm.controls.name.touched"> Mínimo de 3 caracteres </p>
 					</ion-item>
-					<ion-item>
-						<ion-label position="floating"> E-mail </ion-label>
-						<ion-input [(ngModel)]="email" type="text" name="email"></ion-input>
+
+					<ion-item [class.invalid]="registerForm.controls.email.invalid && registerForm.controls.email.touched">
+						<ion-label position="floating"> E-mail * </ion-label>
+						<ion-input type="text" name="email" formControlName="email"></ion-input>
+						<p *ngIf="registerForm.controls.email.invalid && registerForm.controls.email.touched"> Formato inválido </p>
 					</ion-item>
-					<ion-item>
-						<ion-label position="floating"> Senha </ion-label>
-						<ion-input [(ngModel)]="password" type="password" name="password"></ion-input>
+
+					<ion-item [class.invalid]="registerForm.controls.password.invalid && registerForm.controls.password.touched">
+						<ion-label position="floating"> Senha * </ion-label>
+						<ion-input type="password" name="password" formControlName="password"></ion-input>
+						<p *ngIf="registerForm.controls.password.invalid && registerForm.controls.password.touched"> Mínimo de 6 caracteres </p>
 					</ion-item>
-					<ion-item>
-						<ion-label position="floating"> Confirmação de senha </ion-label>
-						<ion-input [(ngModel)]="check_password" type="password" name="check_password"></ion-input>
+
+					<ion-item [class.invalid]="registerForm.controls.check_password.invalid && registerForm.controls.check_password.touched">
+						<ion-label position="floating"> Confirmação de senha * </ion-label>
+						<ion-input type="password" name="check_password" formControlName="check_password"
+						(keyup)="checkPassword(registerForm)"></ion-input>
 					</ion-item>
-					<div *ngIf="check_password.length == password.length && check_password != password || check_password.length > password.length" class="msg">
+
+					<div *ngIf="passwordError" class="msg">
 						<ion-icon name="warning"></ion-icon>
-						 {{ message }}
+						<p> As senhas não correspondem!!! </p>
 					</div>
-					<div *ngIf="erro.length" class="msg">
-						<ion-icon name="warning"></ion-icon>
-						{{ erro }}
-					</div>
+
 					<ion-item>
-						<ion-radio-group class="checkbox">
-							<ion-label> Você é: </ion-label>
+						<ion-radio-group class="checkbox" formControlName="type_user">
+							<ion-label [class.invalid]="registerForm.controls.type_user.invalid && registerForm.controls.type_user.touched"> Você é: * </ion-label>
 							<div class="options">
 								<ion-item>
 									<ion-label> Inquilino </ion-label>
@@ -55,8 +59,9 @@
 						</ion-radio-group>
 					</ion-item>
 				</ion-list>
+
 				<div class="button">
-					<ion-button shape="round" (click)="validateRegister($event)"> Cadastrar </ion-button>
+					<ion-button type="submit" shape="round" [disabled]="registerForm.invalid"> Cadastrar </ion-button>
 				</div>
 			</form>
 		</div>

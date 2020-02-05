@@ -3,13 +3,13 @@
   <ion-toolbar>
     <div class="toolbar">
       <div id="logo">
-        <img src="../../assets/icon/icon.png">
+        <img [routerLink]="['../home']" src="../../assets/icon/icon.png">
       </div>
       <div id="searchbar">
         <ion-searchbar animated></ion-searchbar>
       </div>
       <div id="login">
-        <a href="../../login/login.page.html"><img src="../../assets/Login.png"></a>
+        <img [routerLink]="['../login']" src="../../assets/Login.png">
       </div>
     </div>
     <div class="slogan">
