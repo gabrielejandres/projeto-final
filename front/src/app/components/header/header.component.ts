@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -7,8 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor() { }
+  public auth: boolean = false; //variável que indica se o usuário está ou não logado
+  currentUrl = this.router.url;
 
-  ngOnInit() {}
+  constructor(private router: Router) { }
+
+  ngOnInit() {
+    // console.log(this.currentUrl);
+  }
 
 }

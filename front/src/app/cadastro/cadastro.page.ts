@@ -10,6 +10,7 @@ export class CadastroPage implements OnInit {
 
   registerForm: FormGroup; //FormGroup é o nome do formulário
   public passwordError: boolean;
+  public inputPhone: boolean = false;
 
   //Construtor do formulário
   constructor(public formbuilder: FormBuilder) { 
@@ -18,7 +19,8 @@ export class CadastroPage implements OnInit {
         email: [null, [Validators.required, Validators.email]],
         password: [null, [Validators.required, Validators.minLength(6)]],
         check_password: [null, [Validators.required, Validators.minLength(6)]],
-        type_user: [null, [Validators.required]]
+        type_user: [null, [Validators.required]],
+        phone: [null]
       });
   }
 
@@ -31,6 +33,8 @@ export class CadastroPage implements OnInit {
     console.log(form.value); //mostra os valores dos campos do form
   }
 
+  
+  //Verificação de senha
   checkPassword(form){
     if(form.value.password != form.value.check_password){
         this.passwordError = true;
@@ -39,5 +43,16 @@ export class CadastroPage implements OnInit {
         this.passwordError = false;
     }
   }
+
+  //Input do telefone
+  setInputPhone(){
+    this.inputPhone = true;
+  }
+
+  unsetInputPhone(){
+    this.inputPhone = false;
+  }
+
+
 
 }
