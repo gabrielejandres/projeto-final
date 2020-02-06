@@ -18,7 +18,15 @@ const routes: Routes = [
   {
     path: 'login',
     loadChildren: () => import('./login/login.module').then( m => m.LoginPageModule)
+  },  {
+    path: 'catalog',
+    loadChildren: () => import('./catalog/catalog.module').then( m => m.CatalogPageModule)
+  },
+  {
+    path: 'republic',
+    loadChildren: () => import('./republic/republic.module').then( m => m.RepublicPageModule)
   }
+
 ];
 
 @NgModule({
