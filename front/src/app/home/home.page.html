@@ -3,7 +3,7 @@
 <ion-content>
   <div *ngFor="let highlight of highlightsArray">
     <h4> {{ highlight.title }} </h4>
-    <ion-card>
+    <ion-card class="card">
       <ion-card-content>
           <app-card-home *ngFor="let republic of excelentsArray" [republic] = "republic"></app-card-home>
       </ion-card-content>

@@ -11,7 +11,8 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 })
 export class AppComponent {
 
-  public type_user: string = 'tenant'; //variável que indica o tipo de usuário logado no sistema
+  public type_user: string; //variável que indica o tipo de usuário logado no sistema
+  public is_locator: boolean = true;
 
   public appPages = [
     {
@@ -21,12 +22,12 @@ export class AppComponent {
     },
     {
       title: 'Editar perfil',
-      url: '/edit_profile',
+      url: '/edit-profile',
       icon: 'create'
     },
     {
       title: 'Cadastrar república',
-      url: '/register_republic',
+      url: '/register-republic',
       icon: 'add-circle'
     },
     {
