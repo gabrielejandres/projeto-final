@@ -17,7 +17,7 @@ export class RegisterRepublicPage implements OnInit {
     //Construtor do formulário
     constructor(public formbuilder: FormBuilder, private router: Router) { 
       this.republicForm = this.formbuilder.group({
-        name: [null, [Validators.minLength(3)]],
+        name: [null, [Validators.required, Validators.minLength(3)]],
         hasIndividual: [null],
         hasDouble: [null],
         hasTriple: [null],

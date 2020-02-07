@@ -25,6 +25,10 @@ const routes: Routes = [
   {
     path: 'register-republic',
     loadChildren: () => import('./register-republic/register-republic.module').then( m => m.RegisterRepublicPageModule)
+  },
+  {
+    path: 'register-address',
+    loadChildren: () => import('./register-address/register-address.module').then( m => m.RegisterAddressPageModule)
   }
 
 ];
