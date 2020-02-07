@@ -21,6 +21,10 @@ const routes: Routes = [
   },  {
     path: 'edit-profile',
     loadChildren: () => import('./edit-profile/edit-profile.module').then( m => m.EditProfilePageModule)
+  },
+  {
+    path: 'register-republic',
+    loadChildren: () => import('./register-republic/register-republic.module').then( m => m.RegisterRepublicPageModule)
   }
 
 ];

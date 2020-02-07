@@ -9,7 +9,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 export class EditProfilePage implements OnInit {
 
   editForm: FormGroup;
-  is_locator: boolean = false;
+  is_locator: boolean = true;
 
     //Construtor do formulário
     constructor(public formbuilder: FormBuilder) { 
@@ -24,7 +24,7 @@ export class EditProfilePage implements OnInit {
   ngOnInit() {
   }
 
-  //Função que é chamada ao submeter o formulário e enviar dados para cadastro no back
+  //Função que é chamada ao submeter o formulário e enviar dados para edição no back
   submitForm(form){
     console.log(form);
     console.log(form.value); //mostra os valores dos campos do form
