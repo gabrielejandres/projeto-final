@@ -5,5 +5,37 @@
 </ion-header>
 
 <ion-content>
+  <!-- Função que gera os cards do catálogo a partir dos users do database, deixei as variaveis em comment -->
+  <ion-card class="card" > <!-- *ngFor="let user of users" <--Deve ficar dentro do ion card, quando tiver o bd integrado -->
+    <ion-grid>
+      <ion-row>
+        <ion-col size='5' class='col_img'> 
+          <img src="../assets/quarto1.jpg" class="img">
+        </ion-col>
+        <ion-col>
+            <ion-row class="head">
+              <!-- <h6>NOME</h6> -->
+              <div><ion-icon name="star" class="star" *ngFor="let numero of numeros" ></ion-icon></div> 
+            </ion-row>
+          <!-- <p>ENDEREÇO</p> -->
+          <!-- <p>DESCRIÇÃO QUARTOS</p> -->
+          <div class="buttons">
+            <ion-row>
+              <!-- Função provisória pro favoritar -->
+              <ion-icon name="heart" (click)="favor()"color="{{favor_state ? 'danger':'#717171' }}"></ion-icon> 
 
+              <!-- Função de rota provisória -->
+              <ion-icon name="text" (click)="route_republic()"></ion-icon>
+            </ion-row>
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-card>
 </ion-content>
+
+
+
+
+
+

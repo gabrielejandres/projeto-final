@@ -1,0 +1,35 @@
+.img{
+    width: 100px;
+    height: 110px;
+}
+
+.card{
+    --background-color: #FFFFFF;
+    border-radius: 15px;
+    margin-bottom: 15px;
+}
+
+.col_img{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.buttons{
+    display: flex;
+    justify-content: flex-end;
+    color: #3D1321; // COR DE VINHO DO FIGMA
+}
+
+.head{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+}
+
+.star{
+    width: 10px;
+}
+
