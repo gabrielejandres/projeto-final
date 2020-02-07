@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router} from '@angular/router';
+// import { Router} from '@angular/router'; FUNÇÃO ROTA COMENTADA
 
 @Component({
   selector: 'app-catalog',
@@ -8,7 +8,8 @@ import { Router} from '@angular/router';
 })
 export class CatalogPage implements OnInit {
 
-  constructor(private router:Router) { }
+  // private router:Router FUNÇÃO ROTA PARA O CONSTRUCTOR
+  constructor() { }
 
   favor_state:number = null;
 
@@ -23,9 +24,9 @@ export class CatalogPage implements OnInit {
     }
   }
 
-  route_republic(){
-  	this.router.navigate(['/republic']); // Direcionamento provisório para a página republic
-  }
+  // route_republic(){
+  // 	this.router.navigate(['/republic']); Direcionamento provisório para a página republic
+  // }
 
 
   ngOnInit() {

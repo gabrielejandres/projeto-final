@@ -9,40 +9,82 @@
 </ion-header>
 
 <ion-content>
-  <ion-card>
-		<ion-col>
-			<ion-row class="head">
-				<h3>Nome</h3>
-				<p>Nota</p>
-				<p>icone</p>
-			</ion-row>
-			<ion-row>
-				<p>endereço</p>
-				<p>Bairro</p>
-				<p>Estado</p>
-			</ion-row>
-				<p>info</p>
-				<p>vagas</p>
-				<div>
-				<ion-row>
-					<p>Tipo1</p>
-					<p>Preço1</p>
-				</ion-row>
-				<ion-row>
-					<p>Tipo2</p>
-					<p>Preço2</p>
-				</ion-row>
-				<ion-row>
-					<p>Tipo3</p>
-					<p>Preço3</p>
-				</ion-row>
+
+	<ion-card>
+		  <ion-col>
+	  <div class="column">
+			  <ion-row class="head">
+		  <ion-row class="republic_name_note">
+			<h3>República das Flores</h3>
+			<div class="republic_stars">
+			  <ion-icon name="star" class="star" *ngFor="let numero of numeros" ></ion-icon>
+			</div>
+		  </ion-row>
+			<div class="republic_buttons">
+			  <ion-icon name="heart" (click)="favor()" color="{{favor_state ? 'danger':'#717171' }}"></ion-icon>
+			  <ion-icon name="text"></ion-icon>
+			</div>
+			  </ion-row>
+			  <ion-row>
+		<div class="full_address">
+		  <h6>endereço</h6>
+		  <h6>,</h6>
+		  <h6>Bairro</h6>
+		  <h6>-</h6>
+		  <h6>Estado</h6>
+		</div>
+			  </ion-row>
+				  <p>info</p>
+				  <p>vagas</p>
+				  <ion-row class="subtext">
+					  <div>Tipo1</div>
+					  <div>-</div>
+					  <div>Preço1</div>
+				  </ion-row>
+				  <ion-row class="subtext">
+					  <div>Tipo2</div>
+					  <div>-</div>
+					  <div>Preço2</div>
+				  </ion-row>
+				  <ion-row class="subtext">
+					  <div>Tipo3</div>
+					  <div>-</div>
+					  <div>Preço3</div>
+				  </ion-row>
+					  <div class="comodos">comodos</div>
+					  <div class="subtext">lista</div>
+					  <p>img</p>
+	  </div>
+		  </ion-col>
+	  </ion-card>
+	  <ion-row class="comment_bar">
+		  <div class="logo_comment">
+			  <h3>Comentários</h3>
+		  </div>
+		  <ion-button class="comment_button" color="danger">Comentar</ion-button>
+	  </ion-row>
+  
+	  <ion-list>
+		  <ion-card *ngFor="let reply of replys" class="comment">
+			  <div class="comment_head">
+				  <div class="comment_icon">
+					  <!-- Icone dos usuarios
+					   <ion-avatar slot="start">
+						  <img src="">
+					  </ion-avatar> -->
+					  <div class="comment_name">
+						  <h5>{{reply.reply_nome}}</h5>
+					  </div>
+				  </div>
+			  	<div>
+				  <ion-icon name="star" *ngFor="let numero of numeros" (click)="vote()" 
+				  color="{{vote_state ? 'warning':'#717171' }}"></ion-icon>
 				</div>
-					<p>comodos</p>
-					<p>lista</p>
-					<p>img</p>
-
-		</ion-col>
-	</ion-card>
-
-
+			  </div>
+			  <ion-label class="comment_text">
+				  <p>{{reply.reply_texto}}</p>
+			  </ion-label>
+		  </ion-card>
+	  </ion-list>
+	
 </ion-content>
