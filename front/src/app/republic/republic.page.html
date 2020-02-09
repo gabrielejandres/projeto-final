@@ -1,0 +1,117 @@
+<ion-header>
+  <ion-toolbar>
+    <div *ngIf="auth">
+      <ion-buttons slot="start">
+        <ion-menu-button></ion-menu-button>
+      </ion-buttons> 
+    </div>
+    <div id="back">
+      <ion-fab vertical="top" horizontal="end" slot="fixed">
+        <ion-fab-button [routerLink]="['/catalog']">
+          <ion-icon name="arrow-round-back" color="primary"></ion-icon>
+        </ion-fab-button>  
+      </ion-fab>
+    </div>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <!-- TORNAR O CARD DA REPUBLICA UM COMPONENTE -->
+	<ion-card>
+		<ion-col>
+        <div class="column">
+          <ion-row class="head">
+            <ion-row class="republic_name_note">
+              <h3> {{ republic.name }}</h3>
+              <div class="republic_stars">
+                <ion-chip>
+                  <ion-icon name="star" color="warning"></ion-icon>
+                  <ion-label> {{ republic.evaluation }} </ion-label>
+                </ion-chip>
+              </div>
+            </ion-row>
+            <div class="republic_buttons">
+              <ion-icon name="heart" (click)="favorite(republic)" color="{{republic.favorite_state ? 'danger':'#717171' }}"></ion-icon> 
+              <ion-icon name="send" (click)="share(republic)"></ion-icon>
+              <ion-icon name="text" (click)="contact(republic)"></ion-icon>
+            </div>
+            </ion-row>
+          <ion-row>
+              <div class="full_address">
+                <h6> {{ republic.street }}, n° {{ republic.number }}, {{ republic.neighborhood }} - Rio de Janeiro </h6>
+              </div>
+            </ion-row>
+            <ion-row>
+              <ion-col size="5" class="column-intern">
+                <img class="img-republic" src="../../assets/copa.jpg">
+              </ion-col>
+              <ion-col class="column-intern">
+                <p> {{ republic.add_info }} </p>
+              </ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col>
+                <h5> Vagas disponíveis: </h5>
+                <div *ngIf="republic.hasIndividual">
+                  <p> {{ republic.qt_individual }} vaga(s) em quarto individual - R${{ republic.price_individual }} </p>
+                </div>
+                <div *ngIf="republic.hasDouble">
+                  <p> {{ republic.qt_double }} vaga(s) em quarto duplo - R${{ republic.price_double }} </p>
+                </div>
+                <div *ngIf="republic.hasTriple">
+                  <p> {{ republic.qt_triple }} vaga(s) em quarto triplo - R${{ republic.price_triple }} </p>
+                </div>
+              </ion-col>
+            </ion-row>
+        </div>
+		  </ion-col>
+    </ion-card>
+
+	  <ion-row class="comment_bar">
+		  <div class="logo_comment">
+			  <h3>Comentários</h3>
+		  </div>
+		  <ion-button *ngIf="auth && !formComment" shape="round" size="small" class="comment_button" color="primary" (click)="comment()"> Comentar </ion-button>
+    </ion-row>
+    
+    <div class="form">
+			<form [formGroup]="commentForm" (ngSubmit)="submitForm(commentForm)" *ngIf="formComment">
+				<ion-list lines="none">
+          <ion-item>
+            <ion-label position="floating"> Dê sua opinião sobre {{ republic.name }} </ion-label>
+            <ion-textarea formControlName="comment"></ion-textarea>
+          </ion-item>
+          <ion-item>
+            <ion-label position="floating"> Avalie a república (0 a 5)</ion-label>
+            <ion-input type="number" formControlName="evaluation"></ion-input>
+          </ion-item>
+				</ion-list>
+
+				<div class="button">
+					<ion-button type="submit" shape="round" [disabled]="commentForm.invalid"> Enviar </ion-button>
+				</div>
+			</form>
+		</div>
+  
+        <!-- TORNAR O COMENTARIO UM COMPONENTE -->
+		  <ion-card *ngFor="let comment of comments" class="comment">
+			  <div class="comment_head">
+				  <div class="comment_icon">
+            <ion-icon name="person" color="primary" size="big"></ion-icon>
+          </div>
+          <div class="comment_name">
+            <h5>{{comment.user}}</h5>
+          </div>
+          <div class="comment_evaluation">
+            <ion-chip *ngIf="comment.evaluation">
+              <ion-icon name="star" color="warning"></ion-icon>
+              <ion-label> {{ comment.evaluation }} </ion-label>
+            </ion-chip>
+          </div>  
+        </div>
+			  <ion-label class="comment_text">
+				  <h6>{{comment.comment}}</h6>
+			  </ion-label>
+		  </ion-card>
+	
+</ion-content>

@@ -11,7 +11,7 @@ import { Router } from '@angular/router';
 export class CardCatalogComponent implements OnInit {
 
   //Objeto locator simulando dados vindos do BD
-  public locator: Object = {
+  public locator: any = {
       id: 1,
       name: 'Glória Maria',
       email: 'gloria@gmail.com',
@@ -40,7 +40,7 @@ export class CardCatalogComponent implements OnInit {
   async contact(republic: any) {
     const alert = await this.alertController.create({
       header: 'Contato do proprietário',
-      subHeader: this.locator.name, //descobrir porque tá vermelho!!!!!!!!
+      subHeader: this.locator.name,
       message: '☎ Telefone: ' + this.locator.phone + ' <br/> ✉ E-mail: ' + this.locator.email,
       cssClass: 'alert',
       animated: true,

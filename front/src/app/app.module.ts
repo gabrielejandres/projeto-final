@@ -12,11 +12,11 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 
-// /* COMPONENTES */
-// import { HeaderComponent } from './components/header/header.component';
+/* COMPONENTES */
+//import { HeaderComponent } from './components/header/header.component';
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, /*HeaderComponent*/],
   entryComponents: [],
   imports: [
     BrowserModule,
@@ -29,6 +29,9 @@ import { AppRoutingModule } from './app-routing.module';
     SplashScreen,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
+  // exports: [
+  //   HeaderComponent
+  // ],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

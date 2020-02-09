@@ -10,6 +10,7 @@ export class CatalogPage implements OnInit {
 
   constructor(private router:Router ) { }
   currentUrl = this.router.url;
+  public auth: boolean = true; //variável que indica se o usuário está ou não logado
 
   //Array alimentado com dados do BD
   public republicsArray: object[] = [

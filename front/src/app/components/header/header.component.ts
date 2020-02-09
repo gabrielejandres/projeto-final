@@ -9,12 +9,11 @@ import { Router } from '@angular/router';
 export class HeaderComponent implements OnInit {
 
   public auth: boolean = true; //variável que indica se o usuário está ou não logado
-  currentUrl = this.router.url;
 
   constructor(private router: Router) { }
 
   ngOnInit() {
-    // console.log(this.currentUrl);
+    
   }
 
 }

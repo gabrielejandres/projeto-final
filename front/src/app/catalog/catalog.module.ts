@@ -9,7 +9,6 @@ import { CatalogPageRoutingModule } from './catalog-routing.module';
 import { CatalogPage } from './catalog.page';
 
 /* COMPONENTES */
-import { HeaderComponent } from '../components/header/header.component';
 import { CardCatalogComponent } from '../components/card-catalog/card-catalog.component';
 
 @NgModule({
@@ -19,6 +18,6 @@ import { CardCatalogComponent } from '../components/card-catalog/card-catalog.co
     IonicModule,
     CatalogPageRoutingModule
   ],
-  declarations: [CatalogPage, HeaderComponent, CardCatalogComponent]
+  declarations: [CatalogPage, CardCatalogComponent]
 })
 export class CatalogPageModule {}

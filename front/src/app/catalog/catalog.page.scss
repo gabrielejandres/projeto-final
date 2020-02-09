@@ -7,3 +7,31 @@ ion-fab-button{
     width: 7vw;
     height: 4vh;
 }
+
+/* HEADER */
+ion-toolbar{
+    --background: #E3D9CF;
+    padding-bottom: 2%;
+}
+
+.toolbar{
+    --background: #E3D9CF;
+    display: grid;
+    grid-template-columns: 10% 80% 10%;
+    align-items: center;
+    justify-items: center;
+}
+
+/* ITENS DO HEADER */
+#searchbar{
+    width: 100%;
+    align-self: center;
+    justify-self: center;
+}
+
+ion-searchbar{
+    padding: 0 2%;
+}
+  
+  
+    

@@ -5,7 +5,7 @@
 }
 
 .card{
-    --background-color: #FFFFFF;
+    --background: #f2f2f2;
     border-radius: 2%;
     margin-bottom: 3%;
 }
@@ -40,6 +40,5 @@
 /* CHIP COM NOTA */
 ion-chip{
     --background: #7D0D2320;
-    color: #717171;
-    
+    color: #717171; 
 }

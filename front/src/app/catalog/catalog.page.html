@@ -1,4 +1,23 @@
-<app-header></app-header>
+<ion-header>
+  <ion-toolbar>
+    <div class="toolbar">
+      <div id="logo" *ngIf="!auth">
+        <img [routerLink]="['../home']" src="../../assets/icon/icon.png">
+      </div>
+      <div id="logo" *ngIf="auth">
+        <ion-buttons slot="start">
+          <ion-menu-button></ion-menu-button>
+        </ion-buttons> 
+      </div>
+      <div id="searchbar">
+        <ion-searchbar animated></ion-searchbar>
+      </div>
+      <div id="login" *ngIf="!auth">
+        <img [routerLink]="['../login']" src="../../assets/Login.png">
+      </div>
+    </div>
+  </ion-toolbar>
+</ion-header>
 <div id="back" *ngIf="currentUrl != '/home'">
   <ion-fab vertical="top" horizontal="end" slot="fixed">
     <ion-fab-button [routerLink]="['/home']">
