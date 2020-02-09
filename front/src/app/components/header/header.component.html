@@ -19,13 +19,6 @@
       <div id="logo" *ngIf="auth && currentUrl == '/home'">
         <img [routerLink]="['../home']" src="../../assets/icon/icon.png">
       </div>
-      <div id="back" *ngIf="currentUrl != '/home'">
-        <ion-fab vertical="top" horizontal="end" slot="fixed">
-          <ion-fab-button [routerLink]="['../login']">
-            <ion-icon name="arrow-round-back" color="primary"></ion-icon>
-          </ion-fab-button>  
-        </ion-fab>
-      </div>
     </div>
     <div class="slogan" *ngIf="!auth && currentUrl == '/home'">
       <h6> Encontre sua república dos sonhos com o <span> Hommy! </span></h6>

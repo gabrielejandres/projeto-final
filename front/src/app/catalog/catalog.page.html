@@ -1,0 +1,12 @@
+<app-header></app-header>
+<div id="back" *ngIf="currentUrl != '/home'">
+  <ion-fab vertical="top" horizontal="end" slot="fixed">
+    <ion-fab-button [routerLink]="['/home']">
+      <ion-icon name="arrow-round-back" color="primary"></ion-icon>
+    </ion-fab-button>  
+  </ion-fab>
+</div>
+
+<ion-content>
+  <app-card-catalog *ngFor="let republic of republicsArray" [republic] = "republic"></app-card-catalog>
+</ion-content>

@@ -12,7 +12,7 @@ export class CardHomeComponent implements OnInit {
       neighborhood: 'Carregando',
       city: 'Carregando',
       photo: 'Carregando',
-    }
+    };
 
   constructor() { }
 
