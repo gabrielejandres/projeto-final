@@ -5,6 +5,7 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use App\User;
 use App\Comment;
+use Illuminate\Support\Facades\Storage;
 
 class Republic extends Model
 {
@@ -23,7 +24,14 @@ class Republic extends Model
     $this->number = $request->number;
     $this->neighborhood = $request->neighborhood;
     $this->complement = $request->complement;
-    $this->photo = $request->photo;
+    $this->save();
+    If (!Storage::exists('localPhotos/'))
+  		Storage::makeDirectory('localPhotos/',0775,true);
+
+        $file=$request->file('photo');
+        $filename=$this->id.'.'.$file->getClientOriginalExtension();
+        $path=$file->storeAs('localPhotos',$filename);
+        $this->photo=$path;
     $this->save();
   }
 
