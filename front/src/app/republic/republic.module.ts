@@ -8,6 +8,10 @@ import { RepublicPageRoutingModule } from './republic-routing.module';
 
 import { RepublicPage } from './republic.page';
 
+/* COMPONENTES */
+import { CommentComponent } from '../components/comment/comment.component';
+import { CardRepublicComponent } from '../components/card-republic/card-republic.component';
+
 @NgModule({
   imports: [
     CommonModule,
@@ -16,6 +20,6 @@ import { RepublicPage } from './republic.page';
     IonicModule,
     RepublicPageRoutingModule
   ],
-  declarations: [RepublicPage]
+  declarations: [RepublicPage, CommentComponent, CardRepublicComponent]
 })
 export class RepublicPageModule {}

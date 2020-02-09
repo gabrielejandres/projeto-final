@@ -1,0 +1,66 @@
+.column{
+    margin-left: 10px;
+}
+
+.head{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.republic_name_note{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.republic_stars{
+    margin-top: 10px;
+    margin-left: 10px;
+}
+
+.republic_buttons{
+    display: flex;
+    justify-content: space-between;
+    margin-right: 15px;
+    color: #3D1321; 
+    margin-top: 2%;
+}
+
+.republic_buttons ion-icon{
+    margin: 0 2%;
+}
+
+.full_address{
+    display: flex;
+    justify-content: space-between;
+}
+
+.subtext{
+    margin-left: 10px;
+}
+
+/* CHIP COM NOTA */
+ion-chip{
+    --background: #7D0D2320;
+    color: #717171; 
+}
+
+/* IMAGEM DA REPÚBLICA */
+.img-republic{
+    width: 80%;
+    height: 80%;
+    border: 2px solid #717171;
+    border-radius: 2px;
+}
+
+/* COLUNA DA IMAGEM DA REPUBLICA */
+.column-intern{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+ion-card{
+    --background: #f2f2f2;
+}
