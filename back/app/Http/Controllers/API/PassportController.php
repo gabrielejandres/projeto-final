@@ -20,30 +20,18 @@ class PassportController extends Controller
           'name' => 'required',
           'email' => 'required|email|unique:Users,email',
           'password' => 'required',
-          'telephone' => 'required|string',
+          'telephone' => 'string',
         ]);
       if ($validator ->fails()){
-        return  response()->json(['erro'=>$validator->errors()], 401);
+        return  response()->json(['error' => $validator->errors(), 'status' => 401]);
       }
       $newuser=new User;
       $newuser->createUser($request);
-    //  $newuser->save();
 
-      // If (!Storage::exists('localPhotos/'))
-      //     Storage::makeDirectory('localPhotos/',0775,true);
-      //
-      //   $file=$request->file('photo');
-      //   $filename=$newuser->id.'.'.$file->getClientOriginalExtension();
-      //   $path=$file->storeAs('localPhotos',$filename);
-      //   $newuser->photo=$path;
-      //   $newuser->save();
-
-
-
-        return response()->json([$newuser]);
+        //return response()->json([$newuser]);
         $success['token']=$newuser->createToken('MyApp')->accessToken;
-        $success['name']=$newuser->name;
-        return response()->json(['success'=>$success], $this->successStatus);
+        //$success['name']=$newuser->name;
+        return response()->json(['success'=>$success, 'status' => 200]);
 
       }
 

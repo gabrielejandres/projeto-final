@@ -18,24 +18,25 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 //Rotas para usuario
-Route::post('criarUsuario', 'UserController@createUser');
+Route::post('createUser', 'UserController@createUser');
 // Route::put('atualizarUsuario/{id}', 'UserController@updateUser');
-Route::delete('deletarUsuario/{id}', 'UserController@deleteUser');
+Route::delete('deleteUser/{id}', 'UserController@deleteUser');
 
 //Rotas para comentario
-Route::post('criarComentario', 'CommentController@createComment');
+Route::post('createComment', 'CommentController@createComment');
 
 
 //Rotas para republica
-Route::post('criarRepublica', 'RepublicController@createRepublic');
-Route::put('atualizarRepublica/{id}','RepublicController@updateRepublic');
+Route::post('createRepublic', 'RepublicController@createRepublic');
+Route::put('updateRepublic/{id}','RepublicController@updateRepublic');
 
 //Rotas para Passport
 Route::post('registerUser', 'API\PassportController@registerUser');
-Route::post('registerRepublica', 'API\PassportController@registerRepublic');
+Route::post('registerRepublic', 'API\PassportController@registerRepublic');
+
 // Route::put('updateUsuario', 'API\PassportController@updateUser');
 Route::post('loginUser', 'API\PassportController@login');
 Route::group(['middleware'=>'auth:api'], function(){
   Route::post('logout', 'API\PassportController@logout');
   Route::post('getDetails', 'API\PassportController@getDetails');
-  });
+});

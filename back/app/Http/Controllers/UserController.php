@@ -14,7 +14,7 @@ class UserController extends Controller
     return response()->json([$user]);
   }
 
-  chama a funcao para atualizar um Usuario
+  //chama a funcao para atualizar um Usuario
   public function updateUser(Request $request, $id){
     $user = User::find($id);
     if ($user){

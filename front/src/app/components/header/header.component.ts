@@ -8,12 +8,17 @@ import { Router } from '@angular/router';
 })
 export class HeaderComponent implements OnInit {
 
-  public auth: boolean = true; //variável que indica se o usuário está ou não logado
+  public auth: boolean = false; //variável que indica se o usuário está ou não logado
+
+  token = localStorage.getItem('token');
 
   constructor(private router: Router) { }
 
   ngOnInit() {
-    
+    //console.log(this.token);
+    if(this.token != null){
+      this.auth = true;
+    }
   }
 
 }
