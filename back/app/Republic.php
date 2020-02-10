@@ -6,11 +6,12 @@ use Illuminate\Database\Eloquent\Model;
 use App\User;
 use App\Comment;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Http\Request;
 
 class Republic extends Model
 {
     //cria uma nova republica
-  public function createRepublic($request){
+  public function createRepublic(Request $request){
     $this->name = $request->name;
     $this->info = $request->info;
     $this->evaluation = $request->evaluation;
@@ -24,14 +25,7 @@ class Republic extends Model
     $this->number = $request->number;
     $this->neighborhood = $request->neighborhood;
     $this->complement = $request->complement;
-    $this->save();
-    If (!Storage::exists('localPhotos/'))
-  		Storage::makeDirectory('localPhotos/',0775,true);
 
-        $file=$request->file('photo');
-        $filename=$this->id.'.'.$file->getClientOriginalExtension();
-        $path=$file->storeAs('localPhotos',$filename);
-        $this->photo=$path;
     $this->save();
   }
 

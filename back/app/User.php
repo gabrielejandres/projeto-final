@@ -52,7 +52,7 @@ class User extends Authenticatable
     $this->is_locator=$request->is_locator;
     if($request->is_locator==1)
       $this->telephone = $request->telephone;
-    $this->save();
+      $this->save();
   }
 
     //Atualiza um usuario

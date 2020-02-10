@@ -10,7 +10,7 @@ class RepublicController extends Controller
 {
   //chama a funcao para criar uma nova republica
   public function createRepublic(Request $request){
-    $republic = new Republic;
+    $republic = new Republic();
     $republic->createRepublic($request);
     return response()->json([$republic]);
   }
@@ -25,6 +25,16 @@ class RepublicController extends Controller
     else{
       return response()->json(['Esta Republica não existe']);
     }
+  }
+
+  //Método que retorna lista com todos os comentarios
+  public function listRepublic(){
+    $user = User::all();
+    return response()->json($user);
+  }
+
+  public function searchRepublic(Request $request){
+
   }
 
   //estabelece relação entre Republica e locatario

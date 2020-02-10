@@ -21,6 +21,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::post('criarUsuario', 'UserController@createUser');
 // Route::put('atualizarUsuario/{id}', 'UserController@updateUser');
 Route::delete('deletarUsuario/{id}', 'UserController@deleteUser');
+Route::get('listUser', 'UserController@listUser');
 
 //Rotas para comentario
 Route::post('criarComentario', 'CommentController@createComment');
@@ -38,4 +39,5 @@ Route::post('loginUser', 'API\PassportController@login');
 Route::group(['middleware'=>'auth:api'], function(){
   Route::post('logout', 'API\PassportController@logout');
   Route::post('getDetails', 'API\PassportController@getDetails');
+Route::post('deleteRepulic/{id}', 'API\PassportController@deleteRepublic')->middleware('perguntar');
   });
