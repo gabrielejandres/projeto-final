@@ -55,22 +55,22 @@ class PassportController extends Controller
           'photo'=>'required|file|image|mimes:jpeg,png,gif,webp|max:2048'
         ]);
           if ($validator ->fails()){
-            return  response()->json(['erro'=>$validator->errors()], 401);
+            return  response()->json(['error' => $validator->errors(), 'status' => 401]);
           }
           $newrepublic=new Republic;
           $newrepublic->createRepublic($request);
           // $newrepublic->save();
-          return response()->json(['success'=>$newrepublic]);
+          return response()->json(['success'=>$newrepublic, 'status' => 200]);
       }
 
       public function login(){
         if (Auth::attempt(['email'=>request('email'), 'password'=>request('password')])){
           $user=Auth::user();
           $success['token']=$user->createToken('MyApp')->accessToken;
-          return response()->json(['success'=>$success], $this->successStatus);
+          return response()->json(['success'=>$success, 'status' => 200]);
         }
         else{
-          return response()->json(['error'=>'Unauthorized'], 401);
+          return response()->json(['error'=>'Unauthorized', 'status' => 401]);
         }
       }
 
@@ -79,7 +79,7 @@ class PassportController extends Controller
         return response()->json(['success'=>$user], $this->successStatus);
       }
 
-      public function Logout(){
+      public function logout(){
         $accessToken=Auth::user()->token();
         DB::table('oauth_refresh_tokens')->where('access_token_id', $accessToken->id)->update(['revoked'=>true]);
         $accessToken->revoke();

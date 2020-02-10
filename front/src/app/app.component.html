@@ -13,7 +13,8 @@
             <ion-item [routerDirection]="'root'" [routerLink]="[p.url]" *ngIf=" !(!is_locator && p.title == 'Cadastrar república' || is_locator && p.title == 'Favoritas')">
               <ion-icon slot="start" [name]="p.icon"></ion-icon>
               <ion-label>
-                {{p.title}}
+                <p *ngIf="p.title == 'Sair'" (click)='logoutUser()'> {{p.title}} </p>
+                <p *ngIf="p.title != 'Sair'"> {{p.title}} </p>
               </ion-label>
             </ion-item>
           </ion-menu-toggle>

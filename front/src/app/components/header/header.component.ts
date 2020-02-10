@@ -19,6 +19,9 @@ export class HeaderComponent implements OnInit {
     if(this.token != null){
       this.auth = true;
     }
+    else{
+      this.auth = false;
+    }
   }
 
 }

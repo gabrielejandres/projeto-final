@@ -3,6 +3,10 @@ import { Component } from '@angular/core';
 import { Platform } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
+import { Router } from '@angular/router';
+
+/* INTEGRAÇÃO */
+import { AuthService } from './services/auth.service';
 
 @Component({
   selector: 'app-root',
@@ -37,15 +41,17 @@ export class AppComponent {
     },
     {
       title: 'Sair',
-      url: '/logout',
+      url: '/home',
       icon: 'log-out'
     },
   ];
 
   constructor(
+    public authService: AuthService,
     private platform: Platform,
     private splashScreen: SplashScreen,
-    private statusBar: StatusBar
+    private statusBar: StatusBar,
+    public router: Router
   ) {
     this.initializeApp();
   }
@@ -55,5 +61,14 @@ export class AppComponent {
       this.statusBar.styleDefault();
       this.splashScreen.hide();
     });
+  }
+
+  logoutUser(){
+    this.authService.logout().subscribe(
+      (res) => {
+        localStorage.setItem( 'token', null);
+        this.router.navigate(['/home']);
+      }
+    );
   }
 }
