@@ -79,6 +79,14 @@ class Republic extends Model
       $this->save();
   }
 
+  // public function search(Request $request){
+  //   Republic::where(function($query){
+  //     $query->where('neighborhood', '=' , $request )
+  //     return response()->json($request)->get();
+  //   })
+  // }
+
+
   //Relationships
   public function Comment(){
   $this->hasMany('App\Comment');
