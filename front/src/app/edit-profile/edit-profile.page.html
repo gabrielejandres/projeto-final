@@ -1,0 +1,47 @@
+<ion-content fullscreen>
+	<ion-fab vertical="top" horizontal="end" slot="fixed">
+		<ion-fab-button [routerLink]="['../home']">
+		  <ion-icon name="arrow-round-back" color="primary"></ion-icon>
+		</ion-fab-button>  
+	</ion-fab>
+
+	<div class="container">
+
+		<div id="title">
+			<h3> Dados do usuário </h3>
+		</div>
+
+		<div>
+			<form [formGroup]="editForm" (ngSubmit)="submitForm(editForm)">
+				<ion-list lines="none">
+					<ion-item [class.invalid]="editForm.controls.name.invalid && editForm.controls.name.touched">
+						<ion-label position="floating"> Novo nome </ion-label>
+						<ion-input type="text" name="name" formControlName="name"></ion-input>
+						<p *ngIf="editForm.controls.name.invalid && editForm.controls.name.touched"> Mínimo de 3 caracteres </p>
+					</ion-item>
+
+					<ion-item [class.invalid]="editForm.controls.email.invalid && editForm.controls.email.touched">
+						<ion-label position="floating"> Novo e-mail </ion-label>
+						<ion-input type="text" name="email" formControlName="email"></ion-input>
+						<p *ngIf="editForm.controls.email.invalid && editForm.controls.email.touched"> Formato inválido </p>
+					</ion-item>
+
+					<ion-item [class.invalid]="editForm.controls.password.invalid && editForm.controls.password.touched">
+						<ion-label position="floating"> Nova senha </ion-label>
+						<ion-input type="password" name="password" formControlName="password"></ion-input>
+						<p *ngIf="editForm.controls.password.invalid && editForm.controls.password.touched"> Mínimo de 6 caracteres </p>
+					</ion-item>
+
+					<ion-item *ngIf="is_locator" [class.invalid]="editForm.controls.phone.invalid && editForm.controls.phone.touched">
+						<ion-label position="floating"> Novo telefone </ion-label>
+						<ion-input minlength="15" type="text" name="phone" formControlName="phone" [brmasker]="{phone: true}"></ion-input>
+					</ion-item>
+				</ion-list>
+
+				<div class="button">
+					<ion-button type="submit" shape="round" [disabled]="editForm.invalid"> Salvar </ion-button>
+				</div>
+			</form>
+		</div>
+	</div>
+</ion-content>

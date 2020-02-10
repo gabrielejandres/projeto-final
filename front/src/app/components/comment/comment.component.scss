@@ -1,0 +1,43 @@
+/* COMENTÁRIOS */
+.comment_evaluation{
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+}
+.comment{
+    padding: 20px;
+}
+
+.comment_head{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.comment_icon{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.comment_name{
+    margin-top: -2%;
+}
+
+.comment_text{
+    padding: 20px;
+}
+
+.comment{
+    --background: #f2f2f2;
+}
+
+ion-item{
+    --background: #E3D9CF;
+}
+
+ion-list{
+    --background: #E3D9CF;
+}

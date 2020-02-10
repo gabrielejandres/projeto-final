@@ -1,0 +1,44 @@
+.img{
+    width: 100%;
+    height: 80%;
+    border-radius: 5%;
+}
+
+.card{
+    --background: #f2f2f2;
+    border-radius: 2%;
+    margin-bottom: 3%;
+}
+
+.col_img{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.buttons{
+    display: flex;
+    justify-content: flex-end;
+    padding-right: 1.5%;
+    color: #3D1321; // COR DE VINHO DO FIGMA
+}
+
+.buttons ion-icon{
+    margin: 0 1%;
+}
+
+.head{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.star{
+    width: 10px;
+}
+
+/* CHIP COM NOTA */
+ion-chip{
+    --background: #7D0D2320;
+    color: #717171; 
+}

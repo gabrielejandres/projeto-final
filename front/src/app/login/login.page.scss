@@ -1,0 +1,101 @@
+/* CONFIGURAÇÕES GERAIS */
+ion-content{
+    --background: url(../../assets/background.png) 0 0/100% 100% no-repeat;
+}
+
+a{
+    text-decoration: none;
+}
+
+/* CONTAINER GERAL */
+.container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+/* IMAGEM LOGO */
+#logo{
+    margin-top: 20%;
+    width: 50%;
+    align-self: center;
+}
+
+/* FORMULÁRIO */
+form{
+    margin-top: 10%;
+    --background: rgba(0, 0, 0, 0);
+    color: #717171;
+    width: 80vw;
+}
+ion-item{
+    --background: rgba(0, 0, 0, 0);
+}
+
+ion-item p{
+    color: #717171;
+    font-size: 0.9em;
+    margin-left: 2%;
+    margin-top: 1%;
+}
+
+ion-list{
+    background-color: rgba(0, 0, 0, 0);
+}
+
+ion-input{
+    background-color: #71717140;
+    border-radius: 15px;
+    --padding-start: 5% !important;
+}
+
+ion-label{
+    margin-left: 5%;
+}
+
+.button{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 5%;
+}
+
+/* BOTÃO VOLTAR */
+ion-fab{
+    margin-top: 5%;
+    margin-right: 5%;
+}
+
+ion-fab-button{
+    --border-color: #7D0D23;
+    --border-width: 2px;
+    --border-style: solid;
+    --background: rgba(0,0,0,0);
+    width: 7.5vw;
+    height: 4vh;
+}
+
+/* CONVITE CADASTRO */
+.invitation{
+    margin-top: 10%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.invitation h4:last-child{
+    margin-top: 0;
+    color:  #7D0D23;
+}
+
+/* CLASSE INVÁLIDO */
+.invalid{
+    --color:  #7D0D23;
+}
+
+.invalid ion-input{
+    border-bottom: 1px solid #7D0D23;
+}

@@ -1,0 +1,40 @@
+<ion-content fullscreen>
+	<ion-fab vertical="top" horizontal="end" slot="fixed">
+		<ion-fab-button [routerLink]="['../home']">
+		  <ion-icon name="arrow-round-back" color="primary"></ion-icon>
+		</ion-fab-button>  
+	</ion-fab>
+
+	<div class="container">
+		<div id="logo">
+			<img src="../../assets/logo.png">
+		</div>
+
+		<div>
+			<form [formGroup]="loginForm" (ngSubmit)="submitForm(loginForm)">
+				<ion-list lines="none">
+          			<ion-item [class.invalid]="loginForm.controls.email.invalid && loginForm.controls.email.touched">
+						<ion-label position="floating"> E-mail </ion-label>
+						<ion-input type="text" name="email" formControlName="email"></ion-input>
+						<p *ngIf="loginForm.controls.email.invalid && loginForm.controls.email.touched"> Formato inválido </p>
+					</ion-item>
+
+					<ion-item [class.invalid]="loginForm.controls.password.invalid && loginForm.controls.password.touched">
+						<ion-label position="floating"> Senha </ion-label>
+						<ion-input type="password" name="password" formControlName="password"></ion-input>
+					</ion-item>
+				</ion-list>
+
+				<div class="button">
+					<ion-button type="submit" shape="round" [disabled]="loginForm.invalid"> Entrar </ion-button>
+				</div>
+			</form>
+		</div>
+		
+		<div class="invitation">
+			<h4> Ainda não possui uma conta? </h4>
+			<h4 [routerLink]="['../cadastro']"> Cadastre-se </h4> 
+		</div>
+		
+	</div>
+</ion-content>
