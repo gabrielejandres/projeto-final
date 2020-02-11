@@ -37,7 +37,7 @@ class Republic extends Model
 
   //Atualiza uma republica
   public function updateRepublic($request){
-      if($request->name){
+      if($request->name && $request->name!=NULL){
         $this->name = $request->name;
       }
       if($request->info){
@@ -78,13 +78,6 @@ class Republic extends Model
       }
       $this->save();
   }
-
-  // public function search(Request $request){
-  //   Republic::where(function($query){
-  //     $query->where('neighborhood', '=' , $request )
-  //     return response()->json($request)->get();
-  //   })
-  // }
 
 
   //Relationships

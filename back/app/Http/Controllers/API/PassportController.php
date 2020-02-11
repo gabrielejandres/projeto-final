@@ -30,7 +30,7 @@ class PassportController extends Controller
         //return response()->json([$newuser]);
         $success['token']=$newuser->createToken('MyApp')->accessToken;
         //$success['name']=$newuser->name;
-        return response()->json(['success'=>$success, 'status' => 200]);
+        return response()->json(['success'=>$success, 'status' => 200, 'user'=>$user]);
 
       }
 
@@ -54,14 +54,14 @@ class PassportController extends Controller
           $newrepublic=new Republic;
           $newrepublic->createRepublic($request);
           // $newrepublic->save();
-          return response()->json(['success'=>$newrepublic, 'status' => 200]);
+          return response()->json(['success'=>$newrepublic, 'status' => 200, 'republic'=>$newrepublic]);
       }
 
       public function login(){
         if (Auth::attempt(['email'=>request('email'), 'password'=>request('password')])){
           $user=Auth::user();
           $success['token']=$user->createToken('MyApp')->accessToken;
-          return response()->json(['success'=>$success, 'status' => 200]);
+          return response()->json(['success'=>$success, 'status' => 200, 'user'=>$user]);
         }
         else{
           return response()->json(['error'=>'Unauthorized', 'status' => 401]);

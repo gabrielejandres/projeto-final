@@ -17,7 +17,7 @@ class CommentController extends Controller
     }
 
     //estabelece uma relação entre comentario e Usuario
-    public function addUser(Request $request, $id){
+    public function addCommentintoUser(Request $request, $id){
       $comment = Comment::find($id);
         if($request->user_id){
           $comment->user_id = $request->user_id;
@@ -27,7 +27,7 @@ class CommentController extends Controller
     }
 
     //remove uma relação entre comentario e locatario
-    public function removeUser(Request $request, $id){
+    public function removeCommentfromUser(Request $request, $id){
       $comment = Comment::find($id);
 
       if($request->user_id){
@@ -38,7 +38,7 @@ class CommentController extends Controller
     }
 
     //estabelece uma relação entre comentario e republica
-    public function addRepublic(Request $request, $id){
+    public function addCommentintoRepublic(Request $request, $id){
       $comment = Comment::find($id);
       if($request->republic_id){
         $comment->republic_id = $request->republic_id;
@@ -48,7 +48,7 @@ class CommentController extends Controller
     }
 
     //remove uma relação entre comentario e republica
-    public function removeRepublic(Request $request, $id){
+    public function removeCommentfromRepublic(Request $request, $id){
       $comment = Comment::find($id);
 
       if($request->republic_id){
