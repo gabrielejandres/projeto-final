@@ -8,20 +8,27 @@ import { Router } from '@angular/router';
 })
 export class HeaderComponent implements OnInit {
 
-  public auth: boolean = false; //variável que indica se o usuário está ou não logado
-
-  token = localStorage.getItem('token');
+  public searchValue: string;
+  public auth: boolean = false; //variável que indica se o usuário está ou não logado 
 
   constructor(private router: Router) { }
 
   ngOnInit() {
     //console.log(this.token);
-    if(this.token != null){
+    let token = localStorage.getItem('token');
+    // console.log(token);
+    if(token != 'null'){
       this.auth = true;
     }
     else{
       this.auth = false;
     }
+    //console.log(this.auth);
+  }
+
+  //Pesquisar as repúblicas de acordo com o pesquisado
+  public searchRepublics(){
+    console.log(this.searchValue);
   }
 
 }

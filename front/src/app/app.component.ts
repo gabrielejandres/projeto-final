@@ -16,7 +16,7 @@ import { AuthService } from './services/auth.service';
 export class AppComponent {
 
   public type_user: string; //variável que indica o tipo de usuário logado no sistema
-  public is_locator: boolean = true;
+  public is_locator: boolean = true; //TEM QUE SELECIONAR DO BD
 
   public appPages = [
     {
@@ -64,11 +64,8 @@ export class AppComponent {
   }
 
   logoutUser(){
-    this.authService.logout().subscribe(
-      (res) => {
-        localStorage.setItem( 'token', null);
-        this.router.navigate(['/home']);
-      }
-    );
+    this.authService.logout();
+    localStorage.setItem( 'token', null);
+    this.router.navigate(['/home']);
   }
 }

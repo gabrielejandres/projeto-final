@@ -25,13 +25,13 @@ class Republic extends Model
     $this->neighborhood = $request->neighborhood;
     $this->complement = $request->complement;
     $this->save();
-    If (!Storage::exists('localPhotos/'))
-  		Storage::makeDirectory('localPhotos/',0775,true);
+    // If (!Storage::exists('localPhotos/'))
+  	// 	Storage::makeDirectory('localPhotos/',0775,true);
 
-        $file=$request->file('photo');
-        $filename=$this->id.'.'.$file->getClientOriginalExtension();
-        $path=$file->storeAs('localPhotos',$filename);
-        $this->photo=$path;
+    //     $file=$request->file('photo');
+    //     $filename=$this->id.'.'.$file->getClientOriginalExtension();
+    //     $path=$file->storeAs('localPhotos',$filename);
+    //     $this->photo=$path;
     $this->save();
   }
 

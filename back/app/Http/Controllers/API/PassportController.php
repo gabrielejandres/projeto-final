@@ -19,8 +19,7 @@ class PassportController extends Controller
       $validator=Validator::make($request->all(),[
           'name' => 'required',
           'email' => 'required|email|unique:Users,email',
-          'password' => 'required',
-          'telephone' => 'string',
+          'password' => 'required'
         ]);
       if ($validator ->fails()){
         return  response()->json(['error' => $validator->errors(), 'status' => 401]);
@@ -38,21 +37,16 @@ class PassportController extends Controller
       public function registerRepublic(Request $request){
         $validator=Validator::make($request->all(),[
           'name' => 'required|string',
-          'evaluation' => 'required|integer',
-          'single_rooms' => 'required|integer',
-          'evaluation' => 'required|string',
-          'single_rooms' => 'required|integer',
-          'double_rooms' => 'required|integer',
-          'triple_rooms' => 'required|integer',
-          'single_price' => 'required|string',
-          'double_price' => 'required|string',
-          'triple_price' => 'required|string',
-          'info'=>'required|string',
-          'street' => 'required|string',
-          'number' => 'required|integer',
-          'neighborhood' => 'required|alpha',
-          'complement' => 'required|alpha',
-          'photo'=>'required|file|image|mimes:jpeg,png,gif,webp|max:2048'
+          'evaluation' => 'integer',
+          'single_rooms' => 'integer',
+          'evaluation' => 'string',
+          'single_rooms' => 'integer',
+          'double_rooms' => 'integer',
+          'triple_rooms' => 'integer',
+          'single_price' => 'string',
+          'double_price' => 'string',
+          'triple_price' => 'string'
+          // 'photo'=>'file|image|mimes:jpeg,png,gif,webp|max:2048'
         ]);
           if ($validator ->fails()){
             return  response()->json(['error' => $validator->errors(), 'status' => 401]);

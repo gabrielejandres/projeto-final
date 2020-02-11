@@ -32,9 +32,10 @@ export class LoginPage implements OnInit {
       this.authService.loginUser(form.value).subscribe( 
         (res) => {
           if(res.status == 200){
-            //console.log(res);
+            //console.log(res.success.token);
             localStorage.setItem('token', res.success.token);
-            this.router.navigate(['/home']);
+            //console.log("pós setItem", localStorage.getItem('token'))
+            this.router.navigate(['/home', {'token': res.success.token}]);
           }
           else if(res.status == 401){
             alert('Dados inválidos');

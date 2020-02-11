@@ -51,4 +51,8 @@ export class HomePage {
 
   constructor() {}
 
+  ngOnInit(){
+
+  }
+
 }

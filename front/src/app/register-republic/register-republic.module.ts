@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms'; 
 import { BrMaskerModule } from 'br-mask';
 import { RouterModule } from '@angular/router';
+import { Camera } from '@ionic-native/camera/ngx'; //UPLOAD FILES
 
 import { IonicModule } from '@ionic/angular';
 
@@ -17,8 +18,10 @@ import { RegisterRepublicPage } from './register-republic.page';
     ReactiveFormsModule, 
     IonicModule,
     RegisterRepublicPageRoutingModule,
-    BrMaskerModule
+    BrMaskerModule,
+    RouterModule
   ],
-  declarations: [RegisterRepublicPage]
+  declarations: [RegisterRepublicPage],
+  providers: [Camera] //UPLOAD FILES
 })
 export class RegisterRepublicPageModule {}
