@@ -79,12 +79,10 @@ class Republic extends Model
       $this->save();
   }
 
-  // public function search(Request $request){
-  //   Republic::where(function($query){
-  //     $query->where('neighborhood', '=' , $request )
-  //     return response()->json($request)->get();
-  //   })
-  // }
+  //Busca por bairros
+  public function search(Request $request){
+    return Republic::where('neighborhood','LIKE','%'.$request->neighborhood.'%')->get();
+  }
 
 
   //Relationships

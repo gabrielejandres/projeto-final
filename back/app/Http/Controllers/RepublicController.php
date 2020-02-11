@@ -20,6 +20,7 @@ class RepublicController extends Controller
     $republic = Republic::find($id);
     if ($republic){
       $republic->updateRepublic($request);
+      $republic->save();
       return response()->json([$republic]);
     }
     else{
