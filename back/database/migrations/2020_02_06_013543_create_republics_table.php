@@ -20,9 +20,9 @@ class CreateRepublicsTable extends Migration
           $table->integer('single_rooms')->nullable()->default(0);
           $table->integer('double_rooms')->nullable()->default(0);
           $table->integer('triple_rooms')->nullable()->default(0);
-          $table->decimal('single_price')->nullable()->default(0);
-          $table->decimal('double_price')->nullable()->default(0);
-          $table->decimal('triple_price')->nullable()->default(0);
+          $table->string('single_price')->nullable()->default(0);
+          $table->string('double_price')->nullable()->default(0);
+          $table->string('triple_price')->nullable()->default(0);
           $table->decimal('evaluation')->nullable();
           $table->string('street')->nullable();
           $table->string('number')->nullable();

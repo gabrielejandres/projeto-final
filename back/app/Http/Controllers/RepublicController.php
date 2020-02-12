@@ -9,6 +9,11 @@ use App\Comment;
 
 class RepublicController extends Controller
 {
+
+  public function construct(){
+    $this->middleware('ROLES');
+  }
+
   //chama a funcao para criar uma nova republica
   public function createRepublic(Request $request){
     $republic = new Republic;
@@ -28,12 +33,27 @@ class RepublicController extends Controller
     }
   }
 
+  public function deleteRepublic($id){
+    Republic::destroy($id);
+    return response()->json(['Republica deletada']);
+  }
+
+  public function createFavorite($idR, $id){
+    $user=User::findOrFail($id);
+    $republic=Republic::findOrFail($idR);
+    $user->Favorites()->attach($republic);
+    $user->save();
+    return response()->json([$user]);
+  //  $user->Favorites()->attach($request->republic_id);
+  }
+
+
   //Retorna uma lista com todas as Republicas
   public function listallRepublic(){
     $republic = Republic::all();
-    return response()->json($republic);
+    return response()->json(['republics'=> $republic, 'status' => 200]);
   }
-  
+
   //Retorna uma Republica
   public function listRepublic($id){
     $republic = Republic::findOrFail($id);
@@ -51,11 +71,6 @@ class RepublicController extends Controller
     return Republic::orderBy('triple_price','asc')->take(12)->get();
 
   }
-
-   // //Busca por mais comentadas
-  // public function searchComments(){
-  //   Comment::all();
-  //   $comment= Comment::('content', $request)->count();
 
 
 }

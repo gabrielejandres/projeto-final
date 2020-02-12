@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Republic;
 use App\User;
 
 class UserController extends Controller
@@ -29,7 +30,7 @@ class UserController extends Controller
 
   public function listUser($id){
     $user = User::findOrFail($id);
-    return response()->json([$user]);  
+    return response()->json([$user]);
   }
 
     //deleta um Usuario
@@ -37,6 +38,8 @@ class UserController extends Controller
     User::destroy($id);
     return response()->json(['Usuario deletado']);
   }
+
+
 
   //estabelece uma relação entre Usuario e Republica
   public function addRepublicintoUser(UserRequest $request, $id){

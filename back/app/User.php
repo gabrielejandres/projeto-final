@@ -48,7 +48,6 @@ class User extends Authenticatable
     $this->name = $request->name;
     $this->email = $request->email;
     $this->password =bcrypt( $request->password);
-    $this->republic_id=$request->republic_id;
     $this->is_locator=$request->is_locator;
     if($request->is_locator==1)
       $this->telephone = $request->telephone;
@@ -74,11 +73,15 @@ class User extends Authenticatable
 
     //Relationships
     public function Comment(){
-      $this->hasMany('App\Comment');
+      return $this->hasMany('App\Comment');
     }
 
     public function Republic(){
-      $this->belongsTo('App\Republic');
+      return $this->belongsTo('App\Republic');
+    }
+
+    public function Favorites(){
+      return $this->belongsToMany('App\Republic');
     }
 
 }

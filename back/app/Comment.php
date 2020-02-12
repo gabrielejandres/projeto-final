@@ -15,6 +15,7 @@ class Comment extends Model
     $this->save();
   }
 
+
   //Relationships
   public function republic(){
   return $this->belongsTo('App\Republic');
