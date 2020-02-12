@@ -4,11 +4,75 @@
   <div *ngFor="let highlight of highlightsArray">
     <h4> {{ highlight.title }} </h4>
     <ion-card class="card">
-        <ion-slides>
+        <ion-slides pager="true" *ngIf="highlight.title == 'Repúblicas com avaliações excelentes' ">
           <ion-slide>
             <ion-card-content>
-                <app-card-home *ngFor="let republic of excelentsArray" [republic] = "republic"></app-card-home>
+                <app-card-home *ngFor="let republic of excelentsArray.slice(0,4)" [republic] = "republic"></app-card-home>
             </ion-card-content>
+          </ion-slide>
+          <ion-slide>
+            <ion-card-content>
+              <app-card-home *ngFor="let republic of excelentsArray.slice(4,8)" [republic] = "republic"></app-card-home>
+            </ion-card-content>
+          </ion-slide>
+          <ion-slide>
+            <ion-card-content>
+              <app-card-home *ngFor="let republic of excelentsArray.slice(8,12)" [republic] = "republic"></app-card-home>
+            </ion-card-content>
+          </ion-slide>
+        </ion-slides>
+
+        <ion-slides pager="true" *ngIf="highlight.title == 'Melhores opções de quartos individuais' ">
+          <ion-slide>
+            <ion-card-content>
+              <app-card-home *ngFor="let republic of lowerSingleArray.slice(0,4)" [republic] = "republic"></app-card-home>
+            </ion-card-content>
+          </ion-slide>
+          <ion-slide>
+            <ion-card-content>
+              <app-card-home *ngFor="let republic of lowerSingleArray.slice(4,8)" [republic] = "republic"></app-card-home>
+            </ion-card-content>
+          </ion-slide>
+          <ion-slide>
+            <ion-card-content>
+              <app-card-home *ngFor="let republic of lowerSingleArray.slice(8,12)" [republic] = "republic"></app-card-home>
+            </ion-card-content>
+          </ion-slide>
+        </ion-slides>
+
+        <ion-slides pager="true" *ngIf="highlight.title == 'Melhores opções de quartos duplos' ">
+          <ion-slide>
+            <ion-card-content>
+              <app-card-home *ngFor="let republic of lowerDoubleArray.slice(0,4)" [republic] = "republic"></app-card-home>
+            </ion-card-content>
+          </ion-slide>
+          <ion-slide>
+            <ion-card-content>
+              <app-card-home *ngFor="let republic of lowerDoubleArray.slice(4,8)" [republic] = "republic"></app-card-home>
+            </ion-card-content>
+          </ion-slide>
+          <ion-slide>
+            <ion-card-content>
+              <app-card-home *ngFor="let republic of lowerDoubleArray.slice(8,12)" [republic] = "republic"></app-card-home>
+            </ion-card-content>
+          </ion-slide>
+        </ion-slides>
+
+        <ion-slides pager="true" *ngIf="highlight.title == 'Melhores opções de quartos triplos' ">
+          <ion-slide>
+            <ion-card-content>
+              <app-card-home *ngFor="let republic of lowerTripleArray.slice(0,4)" [republic] = "republic"></app-card-home>
+            </ion-card-content> 
+          </ion-slide>
+          <ion-slide>
+            <ion-card-content>
+              <app-card-home *ngFor="let republic of lowerTripleArray.slice(4,8)" [republic] = "republic"></app-card-home>
+            </ion-card-content> 
+          </ion-slide>
+          <ion-slide>
+            <ion-card-content>
+              <app-card-home *ngFor="let republic of lowerTripleArray.slice(8,12)" [republic] = "republic"></app-card-home>
+            </ion-card-content> 
           </ion-slide>
         </ion-slides>
     </ion-card>

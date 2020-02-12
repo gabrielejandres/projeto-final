@@ -30,7 +30,7 @@ class PassportController extends Controller
         //return response()->json([$newuser]);
         $success['token']=$newuser->createToken('MyApp')->accessToken;
         //$success['name']=$newuser->name;
-        return response()->json(['success'=>$success, 'status' => 200, 'user'=>$user]);
+        return response()->json(['success'=>$success, 'status' => 200, 'user'=>$newuser]);
 
       }
 

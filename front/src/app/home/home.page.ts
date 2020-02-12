@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
 
+/* INTEGRAÇÃO */
+import { SearchService } from '../services/search.service';
+
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
@@ -22,38 +25,53 @@ export class HomePage {
     { title: 'Melhores opções de quartos triplos'}
   ]
 
+  
   //Array alimentado com dados do BD
-  public excelentsArray: object[] = [
-    { 
-      id: 1,
-      neighborhood: 'Copacabana',
-      city: 'RJ',
-      photo: './assets/copa.jpg',
-    },
-    { 
-      id: 2,
-      neighborhood: 'Ilha',
-      city: 'RJ',
-      photo: './assets/ilha.jpg',
-    },
-    { 
-      id: 3,
-      neighborhood: 'Urca',
-      city: 'RJ',
-      photo: './assets/urca.jpg',
-    },
-    { 
-      id: 4,
-      neighborhood: 'Botafogo',
-      city: 'RJ',
-      photo: './assets/bota.jpg',
-    },
-  ]
+  public excelentsArray = [];
+  public lowerTripleArray = [];
+  public lowerDoubleArray = [];
+  public lowerSingleArray = [];
 
-  constructor() {}
+  constructor( public searchService: SearchService) {}
 
   ngOnInit(){
     let tok = localStorage.getItem('token');
+
+    //Chamada das funções que carregam os dados do BD
+    this.bestEvaluation();
+    this.lowerPricesSingle();
+    this.lowerPricesDouble();
+    this.lowerPricesTriple();
+  }
+
+  /*LISTAS DA PÁGINA PRINCIPAL*/
+
+  //Menores preços - triplo
+  lowerPricesTriple(){
+    this.searchService.getRepublicsByPriceTriple().subscribe( (res) => {
+      this.lowerTripleArray = res;
+    });
+  }
+
+  //Menores preços - duplo
+  lowerPricesDouble(){
+    this.searchService.getRepublicsByPriceDouble().subscribe( (res) => {
+      this.lowerDoubleArray = res;
+    });
+  }
+
+  //Menores preços - individual
+  lowerPricesSingle(){
+    this.searchService.getRepublicsByPriceSingle().subscribe( (res) => {
+      this.lowerSingleArray = res;
+    });
+  }
+
+  //Melhores avaliações
+  bestEvaluation(){
+    this.searchService.getRepublicsByBestEvaluation().subscribe( (res) => {
+      this.excelentsArray = res;
+    });
   }
 
 }

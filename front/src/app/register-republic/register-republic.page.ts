@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-// import { Camera, CameraOptions } from '@ionic-native/camera/ngx'; 
 import { ToastController } from '@ionic/angular';
 
 /* INTEGRAÇÃO */
