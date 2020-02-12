@@ -30,8 +30,9 @@ Route::post('createComment', 'CommentController@createComment');
 //Rotas para republica
 Route::post('createRepublic', 'RepublicController@createRepublic');
 Route::put('updateRepublic/{id}','RepublicController@updateRepublic');
-Route::get('listRepublic/{id}' , 'RepublicController@listRepublic')
-Route::get('searchNeighborhood/{neighborhood}', 'RepublicController@searchBairro');
+Route::get('listRepublic/{id}' , 'RepublicController@listRepublic');
+Route::get('listallRepublic' , 'RepublicController@listallRepublic');
+Route::get('searchNeighborhood/{neighborhood}', 'RepublicController@searchNeighborhood');
 Route::get('searchPrice', 'RepublicController@searchPrice');
 Route::get('searchComment', 'RepublicController@searchComment');
 

@@ -28,6 +28,13 @@ class RepublicController extends Controller
     }
   }
 
+  //Retorna uma lista com todas as Republicas
+  public function listallRepublic(){
+    $republic = Republic::all();
+    return response()->json($republic);
+  }
+
+    //Retorna uma Republica
   public function listRepublic($id){
     $republic = Republic::findOrFail($id);
     return response()->json([$republic]);
@@ -44,10 +51,10 @@ class RepublicController extends Controller
 
   }
 
-  //Busca por mais comentadas
-  // public function searchComments(Request $request){
-  //   Republic::
-  //   $comment= Comment::where('content', $request)->count();
+  // //Busca por mais comentadas
+  // public function searchComments(){
+  //   Comment::all();
+  //   $comment= Comment::('content', $request)->count();
   //   return Republic::orderBy('triple_price','desc')->get();
   // }
 
