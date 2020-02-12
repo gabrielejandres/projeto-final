@@ -37,6 +37,10 @@ const routes: Routes = [
   {
     path: 'republic',
     loadChildren: () => import('./republic/republic.module').then( m => m.RepublicPageModule)
+  },
+  {
+    path: 'profile',
+    loadChildren: () => import('./profile/profile.module').then( m => m.ProfilePageModule)
   }
 
 ];

@@ -1,0 +1,32 @@
+
+
+
+<ion-content>
+  <ion-item>
+    <ion-row>
+      <ion-icon></ion-icon>
+      <ion-col>
+        <h1>{{user.name}}</h1>
+        <div *ngIf="isnt_locatar">
+          <h6>Locador</h6>
+        </div>
+        <div *ngIf="is_locatar">
+          <h6>Locatário</h6>
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-item>
+
+  <ion-item *ngIf="isnt_locatar">
+    <app-card-catalog *ngFor="let favorite of favoritesArray" [republic] = "republic"></app-card-catalog>
+  </ion-item>
+
+
+  <ion-item *ngIf="is_locatar">
+    <app-card-republic [republic]="republic"></app-card-republic>
+  </ion-item>
+  
+  
+
+</ion-content>
+
