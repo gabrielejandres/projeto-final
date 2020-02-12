@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { AlertController } from '@ionic/angular'; //contato do proprietário
 import { ToastController } from '@ionic/angular'; //aviso de adição aos favoritos
 import { Router} from '@angular/router'; 
+import { SearchService } from '../../services/search.service';
 
 @Component({
   selector: 'app-card-republic',
@@ -13,12 +14,7 @@ export class CardRepublicComponent implements OnInit {
   public auth: boolean;
 
   //Objeto locator simulando dados vindos do BD
-  public locator: any = {
-    id: 1,
-    name: 'Glória Maria',
-    email: 'gloria@gmail.com',
-    phone: '(21) 999858416'
-  }
+  public locator: any = {}
 
     //Array da república selecionada do BD
     @Input() public republic = { 
@@ -43,26 +39,33 @@ export class CardRepublicComponent implements OnInit {
       favorite_state: null
     };
   
-  constructor(public alertController: AlertController, public toastController: ToastController, private router: Router) { }
+  constructor(public alertController: AlertController, public searchService: SearchService, public toastController: ToastController, private router: Router) { }
 
   //Função que vai enviar id da república e receber dados do proprietário do BD
   async contact(republic: any) {
-    if(this.auth == true){
-      const alert = await this.alertController.create({
-        header: 'Contato do proprietário',
-        subHeader: this.locator.name,
-        message: '☎ Telefone: ' + this.locator.phone + ' <br/> ✉ E-mail: ' + this.locator.email,
-        cssClass: 'alert',
-        animated: true,
-        backdropDismiss: true,
-        keyboardClose: true,
-      });
-    
-      await alert.present();
-    }
-    else{
-      this.router.navigate(['/login']);
-    }
+      this.searchService.getUserByIdRepublic(republic.id).subscribe( async (res) => {
+        this.locator.id = res.user[0].id;
+        this.locator.name = res.user[0].name;
+        this.locator.email = res.user[0].email;
+        this.locator.phone = res.user[0].telephone;
+
+        const alert = await this.alertController.create({
+          header: 'Contato do proprietário',
+          subHeader: this.locator.name,
+          message: '☎ Telefone: ' + this.locator.phone + ' <br/> ✉ E-mail: ' + this.locator.email,
+          cssClass: 'alert',
+          animated: true,
+          backdropDismiss: true,
+          keyboardClose: true,
+        });
+
+        if(this.auth == true){
+          await alert.present(); 
+        }
+        else{
+          this.router.navigate(['/login']);
+        }
+      })
     }
 
   //Função de adicionar aos favoritos

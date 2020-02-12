@@ -29,7 +29,13 @@ class UserController extends Controller
 
   public function listUser($id){
     $user = User::findOrFail($id);
-    return response()->json([$user]);  
+    return response()->json(['user' => $user, 'status' => 200]);  
+  }
+
+  //Retorna um usuário que esteja relacionado com uma república
+  public function listUserByIdRepublic($republic_id){
+    $user = User::where('republic_id', $republic_id)->get();
+    return response()->json(['user' => $user, 'status' => 200]);
   }
 
     //deleta um Usuario

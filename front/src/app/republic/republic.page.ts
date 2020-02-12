@@ -2,7 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { AlertController } from '@ionic/angular'; //contato do proprietário
 import { ToastController } from '@ionic/angular'; //aviso de adição aos favoritos
-// import { Router } from '@angular/router'; FUNÇÃO ROTA COMENTADA
+
+/* INTEGRAÇÃO */
+import { SearchService } from '../services/search.service';
 
 @Component({
   selector: 'app-republic',
@@ -12,9 +14,9 @@ import { ToastController } from '@ionic/angular'; //aviso de adição aos favori
 export class RepublicPage implements OnInit {
 
   commentForm: FormGroup;
-  public auth: boolean = true; //variável que indica se o usuário está ou não logado
+  public auth: boolean; //variável que indica se o usuário está ou não logado
   formComment: boolean = false;
-  public userName = 'Fulano de Tal'; //variável que armazena o nome do usuário logado no sistema
+  public userName: string; //variável que armazena o nome do usuário logado no sistema
 
   //Array da república selecionada do BD
   public republic = { 
@@ -67,7 +69,7 @@ export class RepublicPage implements OnInit {
     }
   ]
 
-  constructor(public formbuilder: FormBuilder, public alertController: AlertController, public toastController: ToastController) { 
+  constructor(public formbuilder: FormBuilder, public searchService: SearchService, public alertController: AlertController, public toastController: ToastController) { 
     this.commentForm = this.formbuilder.group({
       comment: [null, [Validators.required]],
       evaluation: [null]
@@ -97,6 +99,13 @@ export class RepublicPage implements OnInit {
       keyboardClose: true,
     });
     toast.present();
+  }
+
+  public getUser(){
+    let user_id = parseInt(localStorage.getItem('id_user'));
+    this.searchService.getUser(user_id).subscribe( (res) => {
+      this.userName = res[0].name;
+    })
   }
 
   ngOnInit() {
@@ -144,6 +153,9 @@ export class RepublicPage implements OnInit {
       this.auth = false;
     }
     else this.auth = true;
+    
+    /* OBTER DADOS DO USUÁRIO */
+    this.getUser();
   }
 
 }

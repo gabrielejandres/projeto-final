@@ -7,6 +7,7 @@ import { Router } from '@angular/router';
 
 /* INTEGRAÇÃO */
 import { AuthService } from './services/auth.service';
+import { SearchService } from './services/search.service';
 
 @Component({
   selector: 'app-root',
@@ -15,8 +16,8 @@ import { AuthService } from './services/auth.service';
 })
 export class AppComponent {
 
-  public type_user: string; //variável que indica o tipo de usuário logado no sistema
-  public is_locator: boolean = true; //TEM QUE SELECIONAR DO BD
+  public is_locator: boolean = false; 
+  public first: boolean = true;
 
   public appPages = [
     {
@@ -51,7 +52,8 @@ export class AppComponent {
     private platform: Platform,
     private splashScreen: SplashScreen,
     private statusBar: StatusBar,
-    public router: Router
+    public router: Router,
+    public searchService: SearchService
   ) {
     this.initializeApp();
   }
@@ -67,7 +69,24 @@ export class AppComponent {
     this.authService.logout();
     localStorage.setItem( 'token', null);
     localStorage.setItem( 'id_user', null);
-    //let tok = localStorage.getItem('token');
-    this.router.navigate(['/home', {'id_user': localStorage.getItem('id_user')}]);
+    this.router.navigate(['/home', {'id_user': 'none'}]);
+  }
+
+  getStatus(){
+    let id_user = parseInt(localStorage.getItem('id_user'));
+    this.searchService.getUser(id_user).subscribe( (res) => {
+      if(res.status == 200){
+        if(res.user.is_locator){
+          this.is_locator = true;
+        }
+        else{
+          this.is_locator = false;
+        }
+      }
+    });
+  }
+
+  ngOnInit() {
+    this.getStatus();
   }
 }

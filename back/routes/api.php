@@ -22,6 +22,7 @@ Route::post('createUser', 'UserController@createUser');
 Route::put('updateUser/{id}', 'UserController@updateUser');
 Route::delete('deleteUser/{id}', 'UserController@deleteUser');
 Route::get('listUser/{id}' , 'UserController@listUser');
+Route::get('listUserByIdRepublic/{republic_id}' , 'UserController@listUserByIdRepublic');
 
 //Rotas para comentario
 Route::post('createComment', 'CommentController@createComment');

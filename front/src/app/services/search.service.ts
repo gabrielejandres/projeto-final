@@ -30,6 +30,15 @@ export class SearchService {
 	getRepublicsByPrice():Observable<any>{
 		return this.http.get(this.apiURL + 'searchPrice');
   }
-  
+
+  //Lista o usuário que tem um id
+  getUser(id:number):Observable<any>{
+		return this.http.get(this.apiURL + 'listUser/' + id);
+  }
+
+  //Lista o usuário que está relacionado com uma república
+  getUserByIdRepublic(republic_id:number):Observable<any>{
+		return this.http.get(this.apiURL + 'listUserByIdRepublic/' + republic_id);
+  }
 
 }

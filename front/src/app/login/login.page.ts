@@ -27,16 +27,12 @@ export class LoginPage implements OnInit {
 
   //ENVIAR DADOS PARA LOGIN NO BACK
   submitForm(form){
-    //this.storage.set('email', form.value.email);
     if(form.status == 'VALID'){
       this.authService.loginUser(form.value).subscribe( 
         (res) => {
           if(res.status == 200){
-            //console.log(res.success.token);
             localStorage.setItem('token', res.success.token);
             localStorage.setItem('id_user', res.user.id);
-            //console.log("pós setItem", localStorage.getItem('token'))
-            //console.log(res.user);
             this.router.navigate(['/home', {'id_user': res.user.id}]); 
           }
           else if(res.status == 401){
@@ -46,12 +42,4 @@ export class LoginPage implements OnInit {
       );
     }
   }
-
-  //Pegar informações armazenadas no storage
-  // getInfo(){
-  //     this.storage.get('email').then((val) => {
-  //     console.log('E-mail: ', val);
-  //     });
-  // }
-
 }

@@ -17,8 +17,9 @@ export class HomePage {
   //Array fixo com os títulos dos cards
   public highlightsArray: object[] = [
     { title: 'Repúblicas com avaliações excelentes' },
-    { title: 'Repúblicas com os menores preços' }, 
-    { title: 'Repúblicas mais comentadas'}
+    { title: 'Melhores opções de quartos individuais' }, 
+    { title: 'Melhores opções de quartos duplos'},
+    { title: 'Melhores opções de quartos triplos'}
   ]
 
   //Array alimentado com dados do BD

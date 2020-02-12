@@ -13,13 +13,10 @@ import { SearchService } from '../../services/search.service';
 })
 export class CardCatalogComponent implements OnInit {
 
+  public auth: boolean;
+
   //Objeto locator simulando dados vindos do BD
-  public locator: any = {
-      id: 1,
-      name: 'Glória Maria',
-      email: 'gloria@gmail.com',
-      phone: '(21) 999858416'
-  }
+  public locator: any = { }
 
   @Input() public republic: any = { 
       id: null,
@@ -37,22 +34,39 @@ export class CardCatalogComponent implements OnInit {
 
   constructor(public alertController: AlertController, public toastController: ToastController, public router: Router, public searchService: SearchService) { }
 
-  ngOnInit() {}
+  ngOnInit() {
+    if(localStorage.getItem('token') == 'null'){
+      this.auth = false;
+    }
+    else this.auth = true;
+  }
 
   //Função que vai enviar id da república e receber dados do proprietário do BD
   async contact(republic: any) {
-    const alert = await this.alertController.create({
-      header: 'Contato do proprietário',
-      subHeader: this.locator.name,
-      message: '☎ Telefone: ' + this.locator.phone + ' <br/> ✉ E-mail: ' + this.locator.email,
-      cssClass: 'alert',
-      animated: true,
-      backdropDismiss: true,
-      keyboardClose: true,
-    });
-  
-    await alert.present();
-    }
+    this.searchService.getUserByIdRepublic(republic.id).subscribe( async (res) => {
+      this.locator.id = res.user[0].id;
+      this.locator.name = res.user[0].name;
+      this.locator.email = res.user[0].email;
+      this.locator.phone = res.user[0].telephone;
+
+      const alert = await this.alertController.create({
+        header: 'Contato do proprietário',
+        subHeader: this.locator.name,
+        message: '☎ Telefone: ' + this.locator.phone + ' <br/> ✉ E-mail: ' + this.locator.email,
+        cssClass: 'alert',
+        animated: true,
+        backdropDismiss: true,
+        keyboardClose: true,
+      });
+
+      if(this.auth == true){
+        await alert.present(); 
+      }
+      else{
+        this.router.navigate(['/login']);
+      }
+    })
+  }
 
   //Função de adicionar aos favoritos
   async favorite(republic: any) {
@@ -100,14 +114,11 @@ export class CardCatalogComponent implements OnInit {
 
   //Redirecionamento para a página da república
   public route_republic(idRepublic: number){
-    //console.log(idRepublic);
     this.searchService.getRepublic(idRepublic).subscribe( (res) => {
-      //console.log(res);
       let republic = JSON.stringify(res);
       localStorage.setItem('republic', republic);
       this.router.navigate(['/republic', {'id_republic': idRepublic}]);
     })
-  	//this.router.navigate(['/republic']);
   }
 
 }
