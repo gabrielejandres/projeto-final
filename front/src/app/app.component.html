@@ -10,7 +10,7 @@
       <ion-content>
         <ion-list lines="none">
           <ion-menu-toggle auto-hide="false" *ngFor="let p of appPages">
-            <ion-item [routerDirection]="'root'" [routerLink]="[p.url]" *ngIf=" !(!is_locator && p.title == 'Cadastrar república' || is_locator && p.title == 'Favoritas')">
+            <ion-item [routerDirection]="'root'" [routerLink]="[p.url]" *ngIf=" !(!is_locator && p.title == 'Cadastrar república')">
               <ion-icon slot="start" [name]="p.icon"></ion-icon>
               <ion-label>
                 <p *ngIf="p.title == 'Sair'" (click)='logoutUser()'> {{p.title}} </p>

@@ -34,6 +34,7 @@ export class LoginPage implements OnInit {
           if(res.status == 200){
             //console.log(res.success.token);
             localStorage.setItem('token', res.success.token);
+            localStorage.setItem('id_user', res.user.id);
             //console.log("pós setItem", localStorage.getItem('token'))
             //console.log(res.user);
             this.router.navigate(['/home', {'id_user': res.user.id}]); 

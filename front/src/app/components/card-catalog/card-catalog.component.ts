@@ -3,6 +3,9 @@ import { AlertController } from '@ionic/angular'; //contato do proprietário
 import { ToastController } from '@ionic/angular'; //aviso de adição aos favoritos
 import { Router } from '@angular/router';
 
+/* INTEGRAÇÃO */
+import { SearchService } from '../../services/search.service';
+
 @Component({
   selector: 'app-card-catalog',
   templateUrl: './card-catalog.component.html',
@@ -32,7 +35,7 @@ export class CardCatalogComponent implements OnInit {
       evaluation: null
     };
 
-  constructor(public alertController: AlertController, public toastController: ToastController, public router: Router) { }
+  constructor(public alertController: AlertController, public toastController: ToastController, public router: Router, public searchService: SearchService) { }
 
   ngOnInit() {}
 
@@ -97,8 +100,14 @@ export class CardCatalogComponent implements OnInit {
 
   //Redirecionamento para a página da república
   public route_republic(idRepublic: number){
-    console.log(idRepublic);
-  	this.router.navigate(['/republic']);
+    //console.log(idRepublic);
+    this.searchService.getRepublic(idRepublic).subscribe( (res) => {
+      //console.log(res);
+      let republic = JSON.stringify(res);
+      localStorage.setItem('republic', republic);
+      this.router.navigate(['/republic', {'id_republic': idRepublic}]);
+    })
+  	//this.router.navigate(['/republic']);
   }
 
 }

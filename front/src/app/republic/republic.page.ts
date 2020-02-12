@@ -18,24 +18,24 @@ export class RepublicPage implements OnInit {
 
   //Array da república selecionada do BD
   public republic = { 
-      id: 1,
-      name: 'República das Flores',
-      neighborhood: 'Copacabana',
-      street: 'Rua Marcos Mioto',
-      number: 16,
-      photo: './assets/copa.jpg',
+      id: null,
+      name: 'Default',
+      neighborhood: 'Default',
+      street: 'Default',
+      number: null,
+      photo: '../../../assets/default.jpg',
       complement: null,
       hasIndividual: true,
       hasDouble: true,
-      hasTriple: false,
-      qt_individual: 2,
-      qt_double: 3,
-      qt_triple: null,
-      price_individual: 800,
-      price_double: 700,
-      price_triple: null,
+      hasTriple: true,
+      single_rooms: 2,
+      double_rooms: 3,
+      triple_rooms: null,
+      single_price: 800,
+      double_price: 700,
+      triple_price: null,
       evaluation: 5.0,
-      add_info: 'A República das Flores fica perto de ponto de ônibus, mercados e academia. Cerca de 15 minutos até a UFRJ, Unirio, IME',
+      info: 'A República das Flores fica perto de ponto de ônibus, mercados e academia. Cerca de 15 minutos até a UFRJ, Unirio, IME',
       favorite_state: false
     };
 
@@ -100,6 +100,50 @@ export class RepublicPage implements OnInit {
   }
 
   ngOnInit() {
+    let republic = JSON.parse(localStorage.getItem('republic'));
+    this.republic.id = republic[0].id;
+    this.republic.name = republic[0].name;
+    this.republic.info = republic[0].info;
+    this.republic.neighborhood = republic[0].neighborhood;
+    this.republic.street = republic[0].street;
+    this.republic.number = republic[0].number;
+    this.republic.complement = republic[0].complement;
+    if(republic[0].photo != null){
+      this.republic.photo = republic[0].photo;
+    }
+
+    if(republic[0].single_rooms == 0){
+      this.republic.hasIndividual = false;
+    }
+    else{
+      this.republic.single_rooms = republic[0].single_rooms;
+      this.republic.single_price = republic[0].single_price;
+    }
+
+    if(republic[0].double_rooms == 0){
+      this.republic.hasDouble = false;
+    }
+    else{
+      this.republic.double_rooms = republic[0].double_rooms;
+      this.republic.double_price = republic[0].double_price;
+    }
+
+    if(republic[0].triple_rooms == 0 || republic[0].triple_rooms == null ){
+      this.republic.hasTriple = false;
+    }
+    else{
+      this.republic.triple_rooms = republic[0].triple_rooms;
+      this.republic.triple_price = republic[0].triple_price;
+    }
+    
+    this.republic.evaluation = republic[0].evaluation;
+    this.republic.favorite_state = false; //SELECIONAR DO BD E SABER SE ESTÁ FAVORITADA
+
+    /* AUTENTICAÇÃO */
+    if(localStorage.getItem('token') == 'null'){
+      this.auth = false;
+    }
+    else this.auth = true;
   }
 
 }

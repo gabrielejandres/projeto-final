@@ -32,7 +32,6 @@ export class HeaderComponent implements OnInit {
 
   //Pesquisar as repúblicas de acordo com o bairro pesquisado
   async searchRepublics(){
-    console.log(localStorage.getItem('republics'));
     //Toast de aviso de erro
     const toastError = await this.toastController.create({
       message: 'Não existem repúblicas cadastradas nesse bairro :(',
@@ -43,21 +42,32 @@ export class HeaderComponent implements OnInit {
       keyboardClose: true
     });
     let search = this.searchValue;
-    console.log(search);
-    this.searchService.getRepublicsByNeighborhood(search).subscribe( (res) => {
-      //console.log(res);
-      if(res.republics.length == 0){
-        toastError.present();
-      }
-      else if(res.status == 200){
-        //console.log(res.republics);
-        // console.log(res.republics.length);
-        let republics = JSON.stringify(res.republics);
-        // console.log(republics);
-        localStorage.setItem('republics', republics);
-        this.router.navigate(['/catalog', {'check': 1}]);
-      }
-    })
+    if(search == "repúblicas" || search == undefined || search == "rj"){
+      this.searchService.getRepublics().subscribe( (res) => {
+        console.log(res);
+        if(res.republics.length == 0){
+          toastError.present();
+        }
+        else if(res.status == 200){
+          let republics = JSON.stringify(res.republics);
+          // console.log(republics);
+          localStorage.setItem('republics', republics);
+          this.router.navigate(['/catalog', {'check': 1}]);
+        }
+      })
+    }
+    else{
+      this.searchService.getRepublicsByNeighborhood(search).subscribe( (res) => {
+        if(res.republics.length == 0){
+          toastError.present();
+        }
+        else if(res.status == 200){
+          let republics = JSON.stringify(res.republics);
+          localStorage.setItem('republics', republics);
+          this.router.navigate(['/catalog', {'check': 1}]);
+        }
+      })
+    }
   }
 
 }

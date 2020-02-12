@@ -25,9 +25,9 @@ export class AppComponent {
       icon: 'home'
     },
     {
-      title: 'Editar perfil',
-      url: '/edit-profile',
-      icon: 'create'
+      title: 'Perfil',
+      url: '/profile',
+      icon: 'person'
     },
     {
       title: 'Cadastrar república',
@@ -35,9 +35,9 @@ export class AppComponent {
       icon: 'add-circle'
     },
     {
-      title: 'Favoritas',
-      url: '/favorites',
-      icon: 'star'
+      title: 'Editar perfil',
+      url: '/edit-profile',
+      icon: 'create'
     },
     {
       title: 'Sair',
@@ -66,7 +66,8 @@ export class AppComponent {
   logoutUser(){
     this.authService.logout();
     localStorage.setItem( 'token', null);
+    localStorage.setItem( 'id_user', null);
     //let tok = localStorage.getItem('token');
-    this.router.navigate(['/home']);
+    this.router.navigate(['/home', {'id_user': localStorage.getItem('id_user')}]);
   }
 }

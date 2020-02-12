@@ -17,9 +17,9 @@ export class SearchService {
   }
 
   //Listar todas as repúblicas do BD - FAZER A FUNÇÃO NO BACK
-  // getRepublics():Observable<any>{
-	// 	return this.http.get(this.apiURL + 'listRepublics/');
-	// }
+  getRepublics():Observable<any>{
+		return this.http.get(this.apiURL + 'listallRepublic');
+	}
 
   //Lista os dados da república por id
 	getRepublic(id:number):Observable<any>{
@@ -28,7 +28,7 @@ export class SearchService {
 
   //Lista as repúblicas com os menores preços
 	getRepublicsByPrice():Observable<any>{
-		return this.http.get(this.apiURL + 'searchPrice/');
+		return this.http.get(this.apiURL + 'searchPrice');
   }
   
 

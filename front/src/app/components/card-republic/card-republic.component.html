@@ -24,23 +24,23 @@
           </ion-row>
           <ion-row>
             <ion-col size="5" class="column-intern">
-              <img class="img-republic" src="../../assets/copa.jpg">
+              <img class="img-republic" src="{{republic.photo}}">
             </ion-col>
             <ion-col class="column-intern">
-              <p> {{ republic.add_info }} </p>
+              <p> {{ republic.info }} </p>
             </ion-col>
           </ion-row>
           <ion-row>
             <ion-col>
               <h5> Vagas disponíveis: </h5>
               <div *ngIf="republic.hasIndividual">
-                <p> {{ republic.qt_individual }} vaga(s) em quarto individual - R${{ republic.price_individual }} </p>
+                <p> {{ republic.single_rooms }} vaga(s) em quarto individual - R${{ republic.single_price }} </p>
               </div>
               <div *ngIf="republic.hasDouble">
-                <p> {{ republic.qt_double }} vaga(s) em quarto duplo - R${{ republic.price_double }} </p>
+                <p> {{ republic.double_rooms }} vaga(s) em quarto duplo - R${{ republic.double_price }} </p>
               </div>
               <div *ngIf="republic.hasTriple">
-                <p> {{ republic.qt_triple }} vaga(s) em quarto triplo - R${{ republic.price_triple }} </p>
+                <p> {{ republic.triple_rooms }} vaga(s) em quarto triplo - R${{ republic.triple_price }} </p>
               </div>
             </ion-col>
           </ion-row>

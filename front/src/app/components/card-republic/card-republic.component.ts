@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { AlertController } from '@ionic/angular'; //contato do proprietário
 import { ToastController } from '@ionic/angular'; //aviso de adição aos favoritos
+import { Router} from '@angular/router'; 
 
 @Component({
   selector: 'app-card-republic',
@@ -8,6 +9,8 @@ import { ToastController } from '@ionic/angular'; //aviso de adição aos favori
   styleUrls: ['./card-republic.component.scss'],
 })
 export class CardRepublicComponent implements OnInit {
+
+  public auth: boolean;
 
   //Objeto locator simulando dados vindos do BD
   public locator: any = {
@@ -29,63 +32,74 @@ export class CardRepublicComponent implements OnInit {
       hasIndividual: null,
       hasDouble: null,
       hasTriple: null,
-      qt_individual: null,
-      qt_double: null,
-      qt_triple: null,
-      price_individual: null,
-      price_double: null,
-      price_triple: null,
+      single_rooms: null,
+      double_rooms: null,
+      triple_rooms: null,
+      single_price: null,
+      double_price: null,
+      triple_price: null,
       evaluation: null,
-      add_info: 'Carregando',
+      info: 'Carregando',
       favorite_state: null
     };
   
-  constructor(public alertController: AlertController, public toastController: ToastController) { }
+  constructor(public alertController: AlertController, public toastController: ToastController, private router: Router) { }
 
   //Função que vai enviar id da república e receber dados do proprietário do BD
   async contact(republic: any) {
-    const alert = await this.alertController.create({
-      header: 'Contato do proprietário',
-      subHeader: this.locator.name,
-      message: '☎ Telefone: ' + this.locator.phone + ' <br/> ✉ E-mail: ' + this.locator.email,
-      cssClass: 'alert',
-      animated: true,
-      backdropDismiss: true,
-      keyboardClose: true,
-    });
-  
-    await alert.present();
+    if(this.auth == true){
+      const alert = await this.alertController.create({
+        header: 'Contato do proprietário',
+        subHeader: this.locator.name,
+        message: '☎ Telefone: ' + this.locator.phone + ' <br/> ✉ E-mail: ' + this.locator.email,
+        cssClass: 'alert',
+        animated: true,
+        backdropDismiss: true,
+        keyboardClose: true,
+      });
+    
+      await alert.present();
+    }
+    else{
+      this.router.navigate(['/login']);
+    }
     }
 
   //Função de adicionar aos favoritos
   async favorite(republic: any) {
-    republic.favorite_state = !republic.favorite_state;
-    if(republic.favorite_state){
-      const toast = await this.toastController.create({
-        message: 'República adicionada na sua lista! :)',
-        duration: 2000,
-        position: 'bottom',
-        animated: true,
-        color: 'primary',
-        keyboardClose: true,
-        showCloseButton: true,
-        closeButtonText: ' X '
-      });
-      toast.present();
+    if(this.auth == true){
+      republic.favorite_state = !republic.favorite_state;
+      if(republic.favorite_state){
+        const toast = await this.toastController.create({
+          message: 'República adicionada na sua lista! :)',
+          duration: 2000,
+          position: 'bottom',
+          animated: true,
+          color: 'primary',
+          keyboardClose: true,
+          showCloseButton: true,
+          closeButtonText: ' X '
+        });
+        toast.present();
+      }
+      else{
+        const toast = await this.toastController.create({
+          message: 'República removida da sua lista! :(',
+          duration: 2000,
+          position: 'bottom',
+          animated: true,
+          color: 'primary',
+          keyboardClose: true,
+          showCloseButton: true,
+          closeButtonText: ' X '
+        });
+        toast.present();
+      }
     }
     else{
-      const toast = await this.toastController.create({
-        message: 'República removida da sua lista! :(',
-        duration: 2000,
-        position: 'bottom',
-        animated: true,
-        color: 'primary',
-        keyboardClose: true,
-        showCloseButton: true,
-        closeButtonText: ' X '
-      });
-      toast.present();
+      this.router.navigate(['/login']);
     }
+    
   }
 
   //Compartilhar
@@ -101,6 +115,11 @@ export class CardRepublicComponent implements OnInit {
         toast.present();
     }
 
-  ngOnInit() {}
+  ngOnInit() {
+    if(localStorage.getItem('token') == 'null'){
+      this.auth = false;
+    }
+    else this.auth = true;
+  }
 
 }

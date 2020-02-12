@@ -21,10 +21,10 @@ export class CatalogPage implements OnInit {
   public republicsArray: object[] = []
 
   ngOnInit() {
-    if(localStorage.getItem('auth') == 'true'){
-      this.auth = true;
+    if(localStorage.getItem('token') == null){
+      this.auth = false;
     }
-    else this.auth = false;
+    else this.auth = true;
     let republics = JSON.parse(localStorage.getItem('republics'));
     republics.forEach(element => {
       this.republicsArray.push(element);
@@ -43,19 +43,30 @@ export class CatalogPage implements OnInit {
       keyboardClose: true
     });
     let search = this.searchValue;
-    this.searchService.getRepublicsByNeighborhood(search).subscribe( (res) => {
-      //console.log(res);
-      if(res.republics.length == 0){
-        toastError.present();
-      }
-      else if(res.status == 200){
-        // console.log(res.republics);
-        // console.log(res.republics.length);
-        let republics = JSON.stringify(res.republics);
-        localStorage.setItem('republics', republics);
-        this.router.navigate(['/catalog', {'check': 0}]);
-      }
-    })
+    if(search == "repúblicas" || search == undefined || search == "rj"){
+      this.searchService.getRepublics().subscribe( (res) => {
+        if(res.republics.length == 0){
+          toastError.present();
+        }
+        else if(res.status == 200){
+          let republics = JSON.stringify(res.republics);
+          localStorage.setItem('republics', republics);
+          this.router.navigate(['/catalog', {'check': 1}]);
+        }
+      })
+    }
+    else{
+      this.searchService.getRepublicsByNeighborhood(search).subscribe( (res) => {
+        if(res.republics.length == 0){
+          toastError.present();
+        }
+        else if(res.status == 200){
+          let republics = JSON.stringify(res.republics);
+          localStorage.setItem('republics', republics);
+          this.router.navigate(['/catalog', {'check': 0}]);
+        }
+      })
+    }
   }
 
 }

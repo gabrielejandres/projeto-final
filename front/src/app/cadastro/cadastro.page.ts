@@ -63,6 +63,8 @@ export class CadastroPage implements OnInit {
         //console.log(res.data.success);
         let token = res.success.token;
         localStorage.setItem('token', token);
+        localStorage.setItem('id_user', res.user.id);
+        localStorage.setItem('auth', 'true');
         toastSuccess.present();
         this.router.navigate(['/home', {'id_user': res.user.id}]); //redirecionamento para a home
       }
