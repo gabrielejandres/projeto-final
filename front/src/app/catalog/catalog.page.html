@@ -10,7 +10,7 @@
         </ion-buttons> 
       </div>
       <div id="searchbar">
-        <ion-searchbar animated></ion-searchbar>
+        <ion-searchbar animated [(ngModel)]="searchValue"  (keyup.enter)="searchRepublics()"></ion-searchbar>
       </div>
       <div id="login" *ngIf="!auth">
         <img [routerLink]="['../login']" src="../../assets/Login.png">

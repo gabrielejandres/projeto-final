@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { ToastController } from '@ionic/angular'; //aviso de adição aos favoritos
+import { ToastController } from '@ionic/angular';
 
 /* INTEGRAÇÃO */
 import { RegisterRepublicService } from '../services/register-republic.service';
@@ -30,8 +30,6 @@ export class RegisterAddressPage implements OnInit {
 
   //Função disparada quando o form é enviado
   async submitForm(form){
-    //console.log(form);
-    //console.log(form.value); 
     //Toast de aviso de erro
     const toastError = await this.toastController.create({
       message: 'Dados inválidos. Tente novamente',
@@ -56,12 +54,9 @@ export class RegisterAddressPage implements OnInit {
       console.log(res); 
       console.log(res.status);
       if(res.status == 401){
-        //alert('Dados inválidos');
         toastError.present();
-        //console.log(res.error);
       }
       else if(res.status == 200){
-        //console.log(res.success);
         toastSuccess.present();
         this.router.navigate(['/home']);
       }

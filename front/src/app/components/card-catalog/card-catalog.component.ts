@@ -27,7 +27,7 @@ export class CardCatalogComponent implements OnInit {
       photo: 'Carregando',
       triple_rooms: null,
       double_rooms: null,
-      individual_rooms: null,
+      single_rooms: null,
       favorite_state: null,
       evaluation: null
     };
@@ -97,7 +97,8 @@ export class CardCatalogComponent implements OnInit {
 
   //Redirecionamento para a página da república
   public route_republic(idRepublic: number){
-  	this.router.navigate(['/republic/idRepublic']);
+    console.log(idRepublic);
+  	this.router.navigate(['/republic']);
   }
 
 }

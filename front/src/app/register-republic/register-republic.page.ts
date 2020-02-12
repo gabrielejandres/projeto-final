@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { Camera, CameraOptions } from '@ionic-native/camera/ngx'; //UPLOAD FILES
+// import { Camera, CameraOptions } from '@ionic-native/camera/ngx'; 
+import { ToastController } from '@ionic/angular';
 
 /* INTEGRAÇÃO */
 import { RegisterRepublicService } from '../services/register-republic.service';
@@ -13,13 +14,12 @@ import { RegisterRepublicService } from '../services/register-republic.service';
 })
 export class RegisterRepublicPage implements OnInit {
 
-  public photo;
   republicForm: FormGroup;
   individual: boolean = false;
   double: boolean = false;
   triple: boolean = false;
 
-    constructor(public formbuilder: FormBuilder, private router: Router, public registerRepublicService: RegisterRepublicService, private camera: Camera) { 
+    constructor(public formbuilder: FormBuilder, private router: Router, public registerRepublicService: RegisterRepublicService, public toastController: ToastController) { 
       this.republicForm = this.formbuilder.group({
         name: [null, [Validators.required, Validators.minLength(3)]],
         hasIndividual: [null],
@@ -40,7 +40,7 @@ export class RegisterRepublicPage implements OnInit {
   }
 
   //Função que envia dados da república para o BD
-  submitForm(form){
+  async submitForm(form){
     //Definição de dados default
     if(form.value.single_rooms == null){
       form.value.single_rooms = 0;
@@ -72,17 +72,19 @@ export class RegisterRepublicPage implements OnInit {
     if(form.value.info == null){
       form.value.info = 'República localizada no estado do RJ';
     }
-    console.log(form.value);
+    const toastError = await this.toastController.create({
+      message: 'Dados inválidos. Tente novamente',
+      duration: 2000,
+      position: 'bottom',
+      animated: true,
+      color: 'primary',
+      keyboardClose: true
+    });
     this.registerRepublicService.createRepublic(form.value).subscribe( (res) => {
-      //console.log(res); 
-      //console.log(res.status);
       if(res.status == 401){
-        alert('Dados inválidos');
-        //console.log(res.error);
+        toastError.present();
       }
       else if(res.status == 200){
-        //console.log(res.republic);
-        //console.log('id da republica', res.republic.id);
         localStorage.setItem('id_republic', res.republic.id);
         this.router.navigate(['/register-address']);
         //console.log(res.success);
