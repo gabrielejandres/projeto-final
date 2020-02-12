@@ -20,10 +20,10 @@ class RepublicController extends Controller
     $republic = Republic::find($id);
     if ($republic){
       $republic->updateRepublic($request);
-      return response()->json([$republic]);
+      return response()->json(['status' => 200, 'republic' => $republic]);
     }
     else{
-      return response()->json(['Esta Republica não existe']);
+      return response()->json(['status' => 401, 'error' => 'Esta Republica não existe']);
     }
   }
 

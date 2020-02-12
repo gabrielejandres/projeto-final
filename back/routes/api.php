@@ -19,7 +19,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 //Rotas para usuario
 Route::post('createUser', 'UserController@createUser');
-// Route::put('atualizarUsuario/{id}', 'UserController@updateUser');
+Route::put('updateUser/{id}', 'UserController@updateUser');
 Route::delete('deleteUser/{id}', 'UserController@deleteUser');
 
 //Rotas para comentario

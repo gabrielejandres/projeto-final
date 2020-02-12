@@ -52,7 +52,7 @@ export class HomePage {
   constructor() {}
 
   ngOnInit(){
-
+    let tok = localStorage.getItem('token');
   }
 
 }

@@ -66,6 +66,7 @@ export class AppComponent {
   logoutUser(){
     this.authService.logout();
     localStorage.setItem( 'token', null);
+    //let tok = localStorage.getItem('token');
     this.router.navigate(['/home']);
   }
 }

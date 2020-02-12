@@ -11,12 +11,13 @@ export class RegisterRepublicService {
 
   constructor(public http: HttpClient) { }
 
-  //INSERIR UM USUÁRIO NO BD
+  //INSERIR UMA REPÚBLICA NO BD
 	public createRepublic(republic: any): Observable<any>{
 		return this.http.post(this.apiURL + 'registerRepublic', republic);
   }
   
+  //ATUALIZAR DADOS DA REPUBLICA NO BD
   public updateRepublic(republic: any, id: number): Observable<any>{
-		return this.http.put(this.apiURL + 'updateRepublic', republic);
+		return this.http.put(this.apiURL + 'updateRepublic/' + id, republic);
 	}
 }

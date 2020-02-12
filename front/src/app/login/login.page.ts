@@ -35,7 +35,8 @@ export class LoginPage implements OnInit {
             //console.log(res.success.token);
             localStorage.setItem('token', res.success.token);
             //console.log("pós setItem", localStorage.getItem('token'))
-            this.router.navigate(['/home', {'token': res.success.token}]);
+            //console.log(res.user);
+            this.router.navigate(['/home', {'id_user': res.user.id}]); 
           }
           else if(res.status == 401){
             alert('Dados inválidos');

@@ -52,7 +52,7 @@ export class RegisterRepublicPage implements OnInit {
       form.value.triple_rooms = 0;
     }
     if(form.value.single_price == null){
-      form.value.single_price = 0;
+      form.value.single_price = '0';
     }
     else{
       form.value.single_price = form.value.single_price.replace(',', '.');
@@ -74,17 +74,20 @@ export class RegisterRepublicPage implements OnInit {
     }
     console.log(form.value);
     this.registerRepublicService.createRepublic(form.value).subscribe( (res) => {
-      console.log(res); 
-      // console.log(res.status);
+      //console.log(res); 
+      //console.log(res.status);
       if(res.status == 401){
         alert('Dados inválidos');
         //console.log(res.error);
       }
       else if(res.status == 200){
+        //console.log(res.republic);
+        //console.log('id da republica', res.republic.id);
+        localStorage.setItem('id_republic', res.republic.id);
+        this.router.navigate(['/register-address']);
         //console.log(res.success);
       }
     })
-    this.router.navigate(['/register-address']);
   }
 
   //Função que seta os inputs de quarto individual
