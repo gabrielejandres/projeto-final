@@ -31,7 +31,7 @@ class RepublicController extends Controller
   //Retorna uma lista com todas as Republicas
   public function listallRepublic(){
     $republic = Republic::all();
-    return response()->json($republic);
+    return response()->json(['republics' => $republic, 'status' => 200]);
   }
   
   //Retorna uma Republica
