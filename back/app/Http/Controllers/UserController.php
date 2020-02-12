@@ -27,14 +27,19 @@ class UserController extends Controller
     }
   }
 
+  public function listUser($id){
+    $user = User::findOrFail($id);
+    return response()->json([$user]);  
+  }
+
     //deleta um Usuario
   public function deleteUser($id){
     User::destroy($id);
     return response()->json(['Usuario deletado']);
   }
 
-  //estabelece uma relação entre Usuario e locatario
-  public function addUser(UserRequest $request, $id){
+  //estabelece uma relação entre Usuario e Republica
+  public function addRepublicintoUser(UserRequest $request, $id){
     $user = User::find($id);
     if($request->republic_id){
       $user->republic_id = $request->republic_id;
@@ -44,7 +49,7 @@ class UserController extends Controller
   }
 
   //remove uma relação entre Usuario e republica
-  public function removeUser(Request $request, $id){
+  public function removeRepublicfromUser(Request $request, $id){
     $user = User::find($id);
     if($request->republic_id){
       $user->republic_id = null;

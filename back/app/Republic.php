@@ -40,7 +40,7 @@ class Republic extends Model
       if($request->name && $request->name!=NULL){
         $this->name = $request->name;
       }
-      if($request->info ){
+      if($request->info){
         $this->info = $request->info;
       }
       if($request->single_rooms){
@@ -78,13 +78,6 @@ class Republic extends Model
       }
       $this->save();
   }
-
-  // public function search(Request $request){
-  //   Republic::where(function($query){
-  //     $query->where('neighborhood', '=' , $request )
-  //     return response()->json($request)->get();
-  //   })
-  // }
 
 
   //Relationships
