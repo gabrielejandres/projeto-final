@@ -53,9 +53,9 @@ export class HeaderComponent implements OnInit {
         //console.log(res.republics);
         // console.log(res.republics.length);
         let republics = JSON.stringify(res.republics);
-        console.log(republics);
+        // console.log(republics);
         localStorage.setItem('republics', republics);
-        this.router.navigate(['/catalog']);
+        this.router.navigate(['/catalog', {'check': 1}]);
       }
     })
   }

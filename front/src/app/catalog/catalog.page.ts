@@ -49,11 +49,11 @@ export class CatalogPage implements OnInit {
         toastError.present();
       }
       else if(res.status == 200){
-        console.log(res.republics);
-        console.log(res.republics.length);
+        // console.log(res.republics);
+        // console.log(res.republics.length);
         let republics = JSON.stringify(res.republics);
         localStorage.setItem('republics', republics);
-        location.reload();
+        this.router.navigate(['/catalog', {'check': 0}]);
       }
     })
   }
