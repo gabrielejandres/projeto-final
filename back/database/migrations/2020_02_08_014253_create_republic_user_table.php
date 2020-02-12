@@ -3,6 +3,8 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use App\User;
+use App\Republic;
 
 class CreateRepublicUserTable extends Migration
 {
@@ -25,6 +27,11 @@ class CreateRepublicUserTable extends Migration
           $table->foreign('republic_id')->references('id')->on('republics')->onDelete('set null');
           $table->foreign('user_id')->references('id')->on('users')->onDelete('set null');
       });
+
+      public function favorites($id){
+        $user=User::findOrFail($id);
+        return $republic=DB::table('republic_user')->where('user_id', $user);
+      }
     }
 
     /**

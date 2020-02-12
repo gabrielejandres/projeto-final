@@ -30,7 +30,7 @@ class RepublicController extends Controller
 
   //Retorna uma lista com todas as Republicas
   public function listallRepublic(){
-    $republic = Republic::all();
+    $republic = Republic::all()->paginate(10);
     return response()->json($republic);
   }
 
@@ -51,9 +51,9 @@ class RepublicController extends Controller
 
   }
 
-  // //Busca por mais comentadas
+  // // //Busca por mais comentadas
   // public function searchComments(){
-  //   Comment::all();
+  //   $comment= Comment::find();
   //   $comment= Comment::('content', $request)->count();
   //   return Republic::orderBy('triple_price','desc')->get();
   // }

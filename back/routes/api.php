@@ -26,6 +26,7 @@ Route::get('listUser/{id}' , 'UserController@listUser');
 //Rotas para comentario
 Route::post('createComment', 'CommentController@createComment');
 
+Route::get('favorites', 'RepublicU@searchPrice');
 
 //Rotas para republica
 Route::post('createRepublic', 'RepublicController@createRepublic');
