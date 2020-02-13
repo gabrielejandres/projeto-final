@@ -23,6 +23,7 @@ Route::put('updateUser/{id}', 'UserController@updateUser');
 Route::delete('deleteUser/{id}', 'UserController@deleteUser');
 Route::get('listUser/{id}' , 'UserController@listUser');
 Route::post('createFavorite/{id}/{id2}' , 'RepublicController@createFavorite');
+Route::get('listUserByIdRepublic/{republic_id}' , 'UserController@listUserByIdRepublic');
 
 //Rotas para comentario
 Route::post('createComment', 'CommentController@createComment');
@@ -34,8 +35,11 @@ Route::put('updateRepublic/{id}','RepublicController@updateRepublic');
 Route::get('listRepublic/{id}' , 'RepublicController@listRepublic');
 Route::get('listallRepublic' , 'RepublicController@listallRepublic');
 Route::get('searchNeighborhood/{neighborhood}', 'RepublicController@searchNeighborhood');
-Route::get('searchPrice', 'RepublicController@searchPrice');
-Route::get('searchComment', 'RepublicController@searchComment');
+Route::get('searchPriceTriple', 'RepublicController@searchPriceTriple');
+Route::get('searchPriceDouble', 'RepublicController@searchPriceDouble');
+Route::get('searchPriceSingle', 'RepublicController@searchPriceSingle');
+Route::get('searchBestEvaluation', 'RepublicController@searchBestEvaluation');
+
 
 //Rotas para inserir relações
 Route::put('addRepublicintoUser/{id}' , 'UserController@addRepublicintoUser'); // adiciona Republica em Usuario

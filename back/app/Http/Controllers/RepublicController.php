@@ -66,10 +66,24 @@ class RepublicController extends Controller
     return response()->json(['republics' => $response, 'status' => 200]);
   }
 
-  //Busca por menores preços
-  public function searchPrice(){
+  //Busca por menores preços de quartos triplos
+  public function searchPriceTriple(){
     return Republic::orderBy('triple_price','asc')->take(12)->get();
+  }
 
+  //Busca por menores preços de quartos duplos
+  public function searchPriceDouble(){
+    return Republic::orderBy('double_price','asc')->take(12)->get();
+  }
+
+  //Busca por menores preços de quartos individuais
+  public function searchPriceSingle(){
+    return Republic::orderBy('single_price','asc')->take(12)->get();
+  }
+
+  //Busca por melhores avaliações
+  public function searchBestEvaluation(){
+    return Republic::orderBy('evaluation','asc')->take(12)->get();
   }
 
 
