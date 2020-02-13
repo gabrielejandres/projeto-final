@@ -4,6 +4,8 @@ namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Notifications\confirmacaoCadastro;
+use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Storage;
 use App\User;
@@ -26,6 +28,7 @@ class PassportController extends Controller
       }
       $newuser=new User;
       $newuser->createUser($request);
+      $newuser->notify(new confirmacaoCadastro($newuser));
 
         //return response()->json([$newuser]);
         $success['token']=$newuser->createToken('MyApp')->accessToken;

@@ -12,6 +12,6 @@ class Republic_TableSeeder extends Seeder
     public function run()
     {
       //gera dados aleatorios
-      factory (App\Republic::class,50)->create();
+      factory (App\Republic::class,12)->create();
     }
 }

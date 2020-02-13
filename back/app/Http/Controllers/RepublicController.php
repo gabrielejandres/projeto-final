@@ -15,11 +15,11 @@ class RepublicController extends Controller
   }
 
   //chama a funcao para criar uma nova republica
-  public function createRepublic(Request $request){
-    $republic = new Republic;
-    $republic->createRepublic($request);
-    return response()->json([$republic]);
-  }
+  // public function createRepublic(Request $request){
+  //   $republic = new Republic;
+  //   $republic->createRepublic($request);
+  //   return response()->json([$republic]);
+  // }
 
   //chama a funcao para Atualizar uma republica
   public function updateRepublic(Request $request, $id){
@@ -45,9 +45,11 @@ class RepublicController extends Controller
     return response()->json([$user]);
   }
 
-  public function deleteFavorite(Request $request, $id){
+  public function deleteFavorite($idR, $id){
       $user = User::findOrFail($id);
-      $user->Favorites()->detach($request->republic_id);
+      $republic=Republic::findOrFail($idR);
+      $user->Favorites()->detach($republic);
+      return response()->json([$user]);
   }
 
   //Retorna uma lista com todas as Republicas

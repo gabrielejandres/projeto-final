@@ -20,7 +20,7 @@ class CreateUsersTable extends Migration
           $table->string('password');
           $table->string('telephone')->nullable();
           $table->unsignedBigInteger('republic_id')->nullable();
-          $table->boolean('is_locator');
+          $table->boolean('is_locator')->default(1);
           $table->boolean('is_admin')->default(0);
           $table->rememberToken();
           $table->timestamps();

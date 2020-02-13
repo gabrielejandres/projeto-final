@@ -60,8 +60,6 @@ class CommentController extends Controller
     }
 
 
-
-
     //remove uma relação entre comentario e republica
     public function removeCommentfromRepublic(Request $request, $id){
       $comment = Comment::find($id);

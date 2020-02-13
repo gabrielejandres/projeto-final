@@ -11,12 +11,12 @@ use App\User;
 class UserController extends Controller
 {
   //chama a funcao para criar um Usuario
-  public function createUser(Request $request){
-    $user= new User;
-    $user->createUser($request);
-    $user->notify(new confirmacaoCadastro($user));
-    return response()->json([$user]);
-  }
+  // public function createUser(Request $request){
+  //   $user= new User;
+  //   $user->createUser($request);
+  //   $user->notify(new confirmacaoCadastro($user));
+  //   return response()->json([$user]);
+  // }
 
   //chama a funcao para atualizar um Usuario
   public function updateUser(Request $request, $id){
@@ -40,8 +40,6 @@ class UserController extends Controller
   public function ListRepublicFavorite($id){
         $republic = User::find($id)->Favorites;
         return response()->json($republic);
-
-    return response()->json([$user]);
   }
 
   public function listUser($id){

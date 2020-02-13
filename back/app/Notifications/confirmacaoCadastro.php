@@ -46,7 +46,7 @@ class confirmacaoCadastro extends Notification
         return (new MailMessage)
         ->greeting('Cadastro de usuario efetuado com Sucesso!')
         ->line('Parabéns,' . $user->name)
-        ->line('Agora você pode divulgar a sua república')
+        ->line('Agora você pode divulgar ou procurar a sua república')
         //->action('Volte para o aplicativo', url('/')) //botão
         ->line('Obrigada por usar o nosso aplicativo!');
 
