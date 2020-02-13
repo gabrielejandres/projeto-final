@@ -45,7 +45,7 @@ export class CadastroPage implements OnInit {
       color: 'primary'
     });
 
-    //Toast de erro
+    //Toast de sucesso
     const toastSuccess = await this.toastController.create({
       message: 'Cadastro efetuado com sucesso',
       duration: 2000,

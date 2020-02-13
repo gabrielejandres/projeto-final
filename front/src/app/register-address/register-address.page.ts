@@ -5,6 +5,7 @@ import { ToastController } from '@ionic/angular';
 
 /* INTEGRAÇÃO */
 import { RegisterRepublicService } from '../services/register-republic.service';
+import { RegisterService } from '../services/register.service'; //para inserir relação entre usuário e república
 
 @Component({
   selector: 'app-register-address',
@@ -16,7 +17,7 @@ export class RegisterAddressPage implements OnInit {
   addressForm: FormGroup;
 
     //Construtor do formulário
-    constructor(public formbuilder: FormBuilder, private router: Router, public registerRepublicService: RegisterRepublicService, public toastController: ToastController ) { 
+    constructor(public formbuilder: FormBuilder, private router: Router, public registerService: RegisterService, public registerRepublicService: RegisterRepublicService, public toastController: ToastController ) { 
       this.addressForm = this.formbuilder.group({
         street: [null, [Validators.required]],
         neighborhood: [null, [Validators.required]],
@@ -57,6 +58,13 @@ export class RegisterAddressPage implements OnInit {
         toastError.present();
       }
       else if(res.status == 200){
+        let id_user = parseInt(localStorage.getItem('id_user'));
+        let republic = {republic_id: parseInt(localStorage.getItem('id_republic')) }
+        console.log(id_user);
+        //console.log(republic_id);
+        this.registerService.addRepublicintoUser(republic, id_user).subscribe( (res) => {
+          console.log(res);
+        });
         toastSuccess.present();
         this.router.navigate(['/home']);
       }

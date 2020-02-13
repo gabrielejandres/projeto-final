@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 
 /* INTEGRAÇÃO */
 import { SearchService } from '../../services/search.service';
+import { FavoriteService } from '../../services/favorite.service';
 
 @Component({
   selector: 'app-card-catalog',
@@ -15,7 +16,6 @@ export class CardCatalogComponent implements OnInit {
 
   public auth: boolean;
 
-  //Objeto locator simulando dados vindos do BD
   public locator: any = { }
 
   @Input() public republic: any = { 
@@ -32,7 +32,7 @@ export class CardCatalogComponent implements OnInit {
       evaluation: null
     };
 
-  constructor(public alertController: AlertController, public toastController: ToastController, public router: Router, public searchService: SearchService) { }
+  constructor(public alertController: AlertController, public toastController: ToastController, public router: Router, public searchService: SearchService, public favoriteService: FavoriteService) { }
 
   ngOnInit() {
     if(localStorage.getItem('token') == 'null'){

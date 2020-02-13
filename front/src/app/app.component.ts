@@ -74,15 +74,14 @@ export class AppComponent {
 
   getStatus(){
     let id_user = parseInt(localStorage.getItem('id_user'));
+    console.log(id_user);
     this.searchService.getUser(id_user).subscribe( (res) => {
-      if(res.status == 200){
-        if(res.user.is_locator){
+        if(res[0].is_locator){
           this.is_locator = true;
         }
         else{
           this.is_locator = false;
         }
-      }
     });
   }
 
