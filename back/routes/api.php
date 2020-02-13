@@ -43,6 +43,7 @@ Route::get('searchPriceTriple', 'RepublicController@searchPriceTriple');
 Route::get('searchPriceDouble', 'RepublicController@searchPriceDouble');
 Route::get('searchPriceSingle', 'RepublicController@searchPriceSingle');
 Route::get('searchBestEvaluation', 'RepublicController@searchBestEvaluation');
+Route::delete('deleteFavorite/{id}', 'RepublicController@deleteFavorite');
 
 
 //Rotas para inserir relações

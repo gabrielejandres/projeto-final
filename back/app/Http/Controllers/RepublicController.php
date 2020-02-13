@@ -42,40 +42,13 @@ class RepublicController extends Controller
     $user=User::findOrFail($id);
     $republic=Republic::findOrFail($idR);
     $user->Favorites()->attach($republic);
-    $user->save();
     return response()->json([$user]);
-  //  $user->Favorites()->attach($request->republic_id);
   }
 
-  // remove Favorites
-  // $user->roles()->detach($roleId)
-
-  // public function listFavorite($id){
-  //   $staff = Staff::find(1);
-  //
-  //   foreach ($staff->photos as $photo)
-  //
-  //   $user = User::findOrFail($id);
-  //   $republic = Republic::where('user_id', $id)->get();
-  //   return response()->json(['user' => $republic, 'status' => 200]);
-  //   // $user = User::findOrFail($id);
-  //   // $republic->Favorites()->where('user_id', $id)->get();
-  // }
-
-  // public function showAllAuthors ($id) {
-  //   //Nessa linha a gente fala pro Laravel quando pegar todos os livros já pegar também
-  //   // todos os dados de seus respectivos autores
-  //   $books = Book::with('author')->get();
-  //   $authors = []
-  //   foreach ($books as $book) {
-  //     array_push($authors,$book->author->name);
-  //   }
-  //   $authors = collect($authors);
-  //   return response()->success($authors);
-  // }
-  //
-  // $user = User::where('user_id', $this->id)->get();
-
+  public function deleteFavorite(Request $request, $id){
+      $user = User::findOrFail($id);
+      $user->Favorites()->detach($request->republic_id);
+  }
 
   //Retorna uma lista com todas as Republicas
   public function listallRepublic(){
