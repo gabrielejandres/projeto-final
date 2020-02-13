@@ -16,4 +16,14 @@ export class FavoriteService {
     return this.http.post(this.apiURL + 'createFavorite/' + id_republic + '/' + id_user, {republic_id: id_republic, user_id: id_user});
   }
 
+  //REMOVER UMA RELAÇÃO DE FAVORITOS
+	public deleteFavorite(id_user: any): Observable<any>{
+    return this.http.delete(this.apiURL + 'deleteFavorite/' + id_user);
+  }
+
+  //LISTAR OS FAVORITOS
+	public getFavorites(id_user: any): Observable<any>{
+    return this.http.get(this.apiURL + 'ListRepublicFavorite/' + id_user);
+  }
+
 }

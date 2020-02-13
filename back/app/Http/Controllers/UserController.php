@@ -38,10 +38,10 @@ class UserController extends Controller
   }
 
   public function ListRepublicFavorite($id){
-        $republic = User::find($id)->Favorites;
-        return response()->json($republic);
+      $republic = User::find($id)->Favorites;
+      return response()->json($republic);
 
-    return response()->json([$user]);
+    //return response()->json([$user]);
   }
 
   public function listUser($id){

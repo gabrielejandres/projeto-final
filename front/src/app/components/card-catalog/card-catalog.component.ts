@@ -103,7 +103,7 @@ export class CardCatalogComponent implements OnInit {
         });
         
         let user_id = localStorage.getItem('id_user');
-        this.favoriteService.createFavorite(republic.id, user_id).subscribe( async (res) => {
+        this.favoriteService.deleteFavorite(user_id).subscribe( async (res) => {
           toast.present();
         });
       }
