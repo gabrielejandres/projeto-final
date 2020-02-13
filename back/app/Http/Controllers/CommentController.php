@@ -47,6 +47,19 @@ class CommentController extends Controller
     return response()->json(['Efetuado com sucesso!']);
     }
 
+    public function listComment(Request $request, $id){
+    //  $current= Carbon::now();
+      $republic = Republic::findOrFail($id);
+      $comments = Comment::where('republic_id', $republic->id);
+      // foreach ($comments as $comment) {
+      //   $comment->created_at = $current->diffForHumans($comment->created_at);
+      // }
+      return response()->json($comments);
+    }
+
+
+
+
     //remove uma relação entre comentario e republica
     public function removeCommentfromRepublic(Request $request, $id){
       $comment = Comment::find($id);

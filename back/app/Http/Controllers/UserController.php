@@ -21,16 +21,16 @@ class UserController extends Controller
     if ($user){
       $user->updateUser($request);
       $user->save();
-      return response()->json(['user' => $user, 'status' => 200]);
+      return response()->json(['user'=>$user, 'status' => 200]);
     }
     else{
-      return response()->json(['message' => 'Usuario nao encontrado', 'status' => 401]);
+      return response()->json(['message'=>'Usuario nao encontrado', 'status'=>401]);
     }
   }
 
-  //Retorna um usuário que seja proprietário da república
+  //Retorna um usuário que esteja relacionado com uma república
   public function listUserByIdRepublic($republic_id){
-    $user = User::where('republic_id', $republic_id )->where('is_locator', 1)->get();
+    $user = User::where('republic_id', $republic_id)->where('is_locator', 1)->get();
     return response()->json(['user' => $user, 'status' => 200]);
   }
 
@@ -44,6 +44,8 @@ class UserController extends Controller
     User::destroy($id);
     return response()->json(['Usuario deletado']);
   }
+
+
 
   //estabelece uma relação entre Usuario e Republica
   public function addRepublicintoUser(Request $request, $id){

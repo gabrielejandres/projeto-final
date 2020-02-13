@@ -8,7 +8,7 @@ use Illuminate\Support\Str;
 
 $factory->define(Republic::class, function (Faker $faker) {
     return [
-      'name'=>$faker->name,
+      'name'=>$faker->company,
       'info'=>$faker->text($maxNbChars = 100),
       'single_rooms'=>$faker->randomDigit(),
       'double_rooms'=>$faker->randomDigit(),

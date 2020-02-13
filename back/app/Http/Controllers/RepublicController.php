@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Notifications\confirmacaoCadastroRepublica;
 use App\Republic;
 use App\User;
 use App\Comment;
@@ -18,6 +19,7 @@ class RepublicController extends Controller
   public function createRepublic(Request $request){
     $republic = new Republic;
     $republic->createRepublic($request);
+    $republic->notify(new confirmacaoCadastroRepublica($republic));
     return response()->json([$republic]);
   }
 
