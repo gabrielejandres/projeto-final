@@ -19,6 +19,7 @@ class CreateCommentsTable extends Migration
           $table->float('evaluation')->nullable();
           $table->unsignedBigInteger('republic_id')->nullable();
           $table->unsignedBigInteger('user_id')->nullable();
+          $table->date('date')->nullable();
           $table->timestamps();
       });
 

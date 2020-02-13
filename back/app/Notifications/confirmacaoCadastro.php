@@ -6,8 +6,9 @@ use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
+use App\User;
 
-class confirmacaoCadastroRepublica extends Notification
+class confirmacaoCadastro extends Notification
 {
     use Queueable;
 
@@ -40,14 +41,14 @@ class confirmacaoCadastroRepublica extends Notification
      */
     public function toMail($notifiable)
     {
-        $republic=$notifiable;
+        $user=$notifiable;
 
         return (new MailMessage)
-        ->greeting('Cadastro de República efetuada com Sucesso!')
-        ->line('Parabéns,' . $republic->name '!!')
+        ->greeting('Cadastro de usuario efetuado com Sucesso!')
+        ->line('Parabéns,' . $user->name)
         ->line('Agora você pode divulgar a sua república')
-        ->action('Volte para o aplicativo', url('/')) //botão
-        ->line('Thank you for using our application!');
+        //->action('Volte para o aplicativo', url('/')) //botão
+        ->line('Obrigada por usar o nosso aplicativo!');
 
     }
 

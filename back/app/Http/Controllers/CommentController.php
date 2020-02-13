@@ -38,22 +38,24 @@ class CommentController extends Controller
       $user=User::find($idU);
       $comment->createComment($request);
       $current = Carbon::now();
+      $comment->date=$current;
       $comment->republic_id=$republic->id;
       $comment->user_id=$user->id;
       $comment->save();
       $republic->evaluation=DB::table('comments')->where('republic_id',$republic->id)->avg('evaluation');
       $republic->save();
-      return $republic;
     return response()->json(['Efetuado com sucesso!']);
     }
 
     public function listComment(Request $request, $id){
-    //  $current= Carbon::now();
+      $current = Carbon::now();
       $republic = Republic::findOrFail($id);
-      $comments = Comment::where('republic_id', $republic->id);
-      // foreach ($comments as $comment) {
-      //   $comment->created_at = $current->diffForHumans($comment->created_at);
-      // }
+      $comments = Comment::where('republic_id', $republic->id)->get();
+      // return $comments;
+      foreach ($comments as $comment) {
+
+        $comment->date = $current->diffForHumans($comment->created_at);
+      }
       return response()->json($comments);
     }
 
