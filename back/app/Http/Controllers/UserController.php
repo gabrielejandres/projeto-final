@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Notifications\confirmacaoCadastro;
+use Illuminate\Notifications\Notifiable;
 use App\Republic;
 use App\User;
 
@@ -12,6 +14,7 @@ class UserController extends Controller
   public function createUser(Request $request){
     $user= new User;
     $user->createUser($request);
+    $user->notify(new confirmacaoCadastro($user));
     return response()->json([$user]);
   }
 

@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Notifications\confirmacaoCadastroRepublica;
 use App\Republic;
 use App\User;
 use App\Comment;
@@ -19,7 +18,6 @@ class RepublicController extends Controller
   public function createRepublic(Request $request){
     $republic = new Republic;
     $republic->createRepublic($request);
-    $republic->notify(new confirmacaoCadastroRepublica($republic));
     return response()->json([$republic]);
   }
 
@@ -48,6 +46,36 @@ class RepublicController extends Controller
     $user->save();
     return response()->json([$user]);
   }
+
+  // remove Favorites
+  // $user->roles()->detach($roleId)
+
+  // public function listFavorite($id){
+  //   $staff = Staff::find(1);
+  //
+  //   foreach ($staff->photos as $photo)
+  //
+  //   $user = User::findOrFail($id);
+  //   $republic = Republic::where('user_id', $id)->get();
+  //   return response()->json(['user' => $republic, 'status' => 200]);
+  //   // $user = User::findOrFail($id);
+  //   // $republic->Favorites()->where('user_id', $id)->get();
+  // }
+
+  // public function showAllAuthors ($id) {
+  //   //Nessa linha a gente fala pro Laravel quando pegar todos os livros já pegar também
+  //   // todos os dados de seus respectivos autores
+  //   $books = Book::with('author')->get();
+  //   $authors = []
+  //   foreach ($books as $book) {
+  //     array_push($authors,$book->author->name);
+  //   }
+  //   $authors = collect($authors);
+  //   return response()->success($authors);
+  // }
+  //
+  // $user = User::where('user_id', $this->id)->get();
+
 
   //Retorna uma lista com todas as Republicas
   public function listallRepublic(){
