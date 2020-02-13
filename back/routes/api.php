@@ -24,16 +24,19 @@ Route::delete('deleteUser/{id}', 'UserController@deleteUser');
 Route::get('listUser/{id}' , 'UserController@listUser');
 Route::post('createFavorite/{id}/{id2}' , 'RepublicController@createFavorite');
 Route::get('listUserByIdRepublic/{republic_id}' , 'UserController@listUserByIdRepublic');
+Route::get('Favorites' , 'User@Favorites');
 
 //Rotas para comentario
 Route::post('createComment', 'CommentController@createComment');
-Route::put('addCommentintoRepublic/{id}/{idU}' , 'CommentController@addCommentintoRepublic');
+Route::put('addRepublicUserintoComment/{id}/{idU}' , 'CommentController@addRepublicUserintoComment');
+Route::get('listComment/{id}' , 'CommentController@listComment');
 
 //Rotas para republica
 Route::post('createRepublic', 'RepublicController@createRepublic');
 Route::put('updateRepublic/{id}','RepublicController@updateRepublic');
 Route::get('listRepublic/{id}' , 'RepublicController@listRepublic');
 Route::get('listallRepublic' , 'RepublicController@listallRepublic');
+Route::get('listFavorite/{id}' , 'RepublicController@listFavorite');
 Route::get('searchNeighborhood/{neighborhood}', 'RepublicController@searchNeighborhood');
 Route::get('searchPriceTriple', 'RepublicController@searchPriceTriple');
 Route::get('searchPriceDouble', 'RepublicController@searchPriceDouble');
