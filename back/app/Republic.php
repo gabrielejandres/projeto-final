@@ -32,7 +32,7 @@ class Republic extends Model
     //     $filename=$this->id.'.'.$file->getClientOriginalExtension();
     //     $path=$file->storeAs('localPhotos',$filename);
     //     $this->photo=$path;
-    $this->save();
+    // $this->save();
   }
 
   //Atualiza uma republica

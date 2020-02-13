@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Republic;
 use App\User;
 
 class UserController extends Controller
@@ -27,15 +28,15 @@ class UserController extends Controller
     }
   }
 
-  public function listUser($id){
-    $user = User::findOrFail($id);
-    return response()->json(['user' => $user, 'status' => 200]);  
-  }
-
   //Retorna um usuário que esteja relacionado com uma república
   public function listUserByIdRepublic($republic_id){
     $user = User::where('republic_id', $republic_id)->get();
     return response()->json(['user' => $user, 'status' => 200]);
+  }
+
+  public function listUser($id){
+    $user = User::findOrFail($id);
+    return response()->json([$user]);
   }
 
     //deleta um Usuario
@@ -43,6 +44,8 @@ class UserController extends Controller
     User::destroy($id);
     return response()->json(['Usuario deletado']);
   }
+
+
 
   //estabelece uma relação entre Usuario e Republica
   public function addRepublicintoUser(UserRequest $request, $id){

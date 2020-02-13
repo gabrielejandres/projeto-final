@@ -13,7 +13,7 @@ use DB;
 
 class PassportController extends Controller
 {
-      public $successStatus = 200;
+  public $successStatus = 200;
 
       public function registerUser(Request $request){
       $validator=Validator::make($request->all(),[

@@ -22,10 +22,12 @@ Route::post('createUser', 'UserController@createUser');
 Route::put('updateUser/{id}', 'UserController@updateUser');
 Route::delete('deleteUser/{id}', 'UserController@deleteUser');
 Route::get('listUser/{id}' , 'UserController@listUser');
+Route::post('createFavorite/{id}/{id2}' , 'RepublicController@createFavorite');
 Route::get('listUserByIdRepublic/{republic_id}' , 'UserController@listUserByIdRepublic');
 
 //Rotas para comentario
 Route::post('createComment', 'CommentController@createComment');
+Route::put('addCommentintoRepublic/{id}/{idU}' , 'CommentController@addCommentintoRepublic');
 
 //Rotas para republica
 Route::post('createRepublic', 'RepublicController@createRepublic');
@@ -37,6 +39,7 @@ Route::get('searchPriceTriple', 'RepublicController@searchPriceTriple');
 Route::get('searchPriceDouble', 'RepublicController@searchPriceDouble');
 Route::get('searchPriceSingle', 'RepublicController@searchPriceSingle');
 Route::get('searchBestEvaluation', 'RepublicController@searchBestEvaluation');
+
 
 //Rotas para inserir relações
 Route::put('addRepublicintoUser/{id}' , 'UserController@addRepublicintoUser'); // adiciona Republica em Usuario
@@ -57,4 +60,5 @@ Route::post('loginUser', 'API\PassportController@login');
 Route::group(['middleware'=>'auth:api'], function(){
   Route::post('logout', 'API\PassportController@logout');
   Route::post('getDetails', 'API\PassportController@getDetails');
+  Route::delete('deleteRepublic/{id}', 'RepublicController@deleteRepublic')->middleware('ROLES');
 });
