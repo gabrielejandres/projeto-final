@@ -38,15 +38,14 @@ class RepublicController extends Controller
     return response()->json(['Republica deletada']);
   }
 
+  //Cria favorito
   public function createFavorite($idR, $id){
     $user=User::findOrFail($id);
     $republic=Republic::findOrFail($idR);
-    $user->Favorites()->attach($republic);
+    $user->Favorites()->attach($republic->id);
     $user->save();
     return response()->json([$user]);
-  //  $user->Favorites()->attach($request->republic_id);
   }
-
 
   //Retorna uma lista com todas as Republicas
   public function listallRepublic(){

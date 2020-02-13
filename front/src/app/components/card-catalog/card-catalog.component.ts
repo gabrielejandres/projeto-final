@@ -72,6 +72,7 @@ export class CardCatalogComponent implements OnInit {
   async favorite(republic: any) {
     republic.favorite_state = !republic.favorite_state;
     if(republic.favorite_state){
+      //Toast de adição aos favoritos
       const toast = await this.toastController.create({
         message: 'República adicionada na sua lista! :)',
         duration: 2000,
@@ -82,7 +83,11 @@ export class CardCatalogComponent implements OnInit {
         showCloseButton: true,
         closeButtonText: ' X '
       });
-      toast.present();
+      let user_id = localStorage.getItem('id_user');
+      this.favoriteService.createFavorite(republic.id, user_id).subscribe( async (res) => {
+        toast.present();
+      });
+      
     }
     else{
       const toast = await this.toastController.create({
@@ -95,7 +100,11 @@ export class CardCatalogComponent implements OnInit {
         showCloseButton: true,
         closeButtonText: ' X '
       });
-      toast.present();
+      
+      let user_id = localStorage.getItem('id_user');
+      this.favoriteService.createFavorite(republic.id, user_id).subscribe( async (res) => {
+        toast.present();
+      });
     }
   }
 

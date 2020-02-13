@@ -30,7 +30,7 @@ class UserController extends Controller
 
   //Retorna um usuário que seja proprietário da república
   public function listUserByIdRepublic($republic_id){
-    $user = User::where('republic_id', '=', $republic_id )->where('is_locator', '=', 1)->get();
+    $user = User::where('republic_id', $republic_id )->where('is_locator', 1)->get();
     return response()->json(['user' => $user, 'status' => 200]);
   }
 

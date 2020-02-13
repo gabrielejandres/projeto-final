@@ -52,20 +52,16 @@ export class RegisterAddressPage implements OnInit {
     let idString = localStorage.getItem('id_republic');
     let id = parseInt(idString, 10);
     this.registerRepublicService.updateRepublic(form.value, id).subscribe( (res) => {
-      console.log(res); 
-      console.log(res.status);
       if(res.status == 401){
         toastError.present();
       }
       else if(res.status == 200){
         let id_user = parseInt(localStorage.getItem('id_user'));
         let republic = {republic_id: parseInt(localStorage.getItem('id_republic')) }
-        console.log(id_user);
-        //console.log(republic_id);
         this.registerService.addRepublicintoUser(republic, id_user).subscribe( (res) => {
+          toastSuccess.present();
           console.log(res);
         });
-        toastSuccess.present();
         this.router.navigate(['/home']);
       }
     })
