@@ -26,10 +26,7 @@ export class AuthService {
 
   //Logout de usuário
   logout(){
-   // console.log(localStorage.token);
     this.httpHeaders.headers['Authorization'] = 'Bearer ' + localStorage.getItem('token');
-    //console.log(this.httpHeaders.headers['Authorization']);
-    //console.log(this.apiUrl + 'logout', this.httpHeaders);
     return this.http.post( this.apiUrl + 'logout', this.httpHeaders );
   }
 }

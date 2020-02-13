@@ -70,6 +70,7 @@ export class AppComponent {
     localStorage.setItem( 'token', null);
     localStorage.setItem( 'id_user', null);
     this.router.navigate(['/home', {'id_user': 'none'}]);
+    location.reload();
   }
 
   getStatus(){
