@@ -18,7 +18,7 @@
     </div>
   </ion-toolbar>
 </ion-header>
-<div id="back" *ngIf="currentUrl != '/home'">
+<div id="back" *ngIf="auth">
   <ion-fab vertical="top" horizontal="end" slot="fixed">
     <ion-fab-button [routerLink]="['/home']">
       <ion-icon name="arrow-round-back" color="primary"></ion-icon>

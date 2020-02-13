@@ -23,11 +23,31 @@
 }
 
 .comment_name{
-    margin-top: -2%;
-    margin-left: 25px;
+    margin-left: 20px;
+    font-weight: bold;
+}
+
+.date{
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+p{
+    font-size: 0.7em;
+    align-self: flex-end;
+}
+
+ion-label{
+    padding-bottom: 0 !important;
+}
+
+.comment_date{
+    margin-top: 12%;
 }
 
 .comment_text{
+    display: flex;
     padding: 20px;
 }
 

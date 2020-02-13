@@ -92,8 +92,10 @@ export class ProfilePage implements OnInit {
     if(localStorage.getItem('token') == 'null'){
       this.auth = false;
     }
-    else this.auth = true;
-    this.getUser();
+    else {
+      this.auth = true;
+      this.getUser();
+    }
   }
 
   //Função que obtém qual o tipo de usuário logado e seus dados

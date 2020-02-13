@@ -74,7 +74,7 @@ export class AppComponent {
 
   getStatus(){
     let id_user = parseInt(localStorage.getItem('id_user'));
-    console.log(id_user);
+    //console.log(id_user);
     this.searchService.getUser(id_user).subscribe( (res) => {
         if(res[0].is_locator){
           this.is_locator = true;
@@ -86,6 +86,8 @@ export class AppComponent {
   }
 
   ngOnInit() {
-    this.getStatus();
+    if(localStorage.getItem('token') != 'null'){
+      this.getStatus();
+    }
   }
 }

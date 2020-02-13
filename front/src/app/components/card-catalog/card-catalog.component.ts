@@ -71,40 +71,46 @@ export class CardCatalogComponent implements OnInit {
   //Função de adicionar aos favoritos
   async favorite(republic: any) {
     republic.favorite_state = !republic.favorite_state;
-    if(republic.favorite_state){
-      //Toast de adição aos favoritos
-      const toast = await this.toastController.create({
-        message: 'República adicionada na sua lista! :)',
-        duration: 2000,
-        position: 'bottom',
-        animated: true,
-        color: 'primary',
-        keyboardClose: true,
-        showCloseButton: true,
-        closeButtonText: ' X '
-      });
-      let user_id = localStorage.getItem('id_user');
-      this.favoriteService.createFavorite(republic.id, user_id).subscribe( async (res) => {
-        toast.present();
-      });
-      
+
+    if(this.auth == true){
+      if(republic.favorite_state){
+        //Toast de adição aos favoritos
+        const toast = await this.toastController.create({
+          message: 'República adicionada na sua lista! :)',
+          duration: 2000,
+          position: 'bottom',
+          animated: true,
+          color: 'primary',
+          keyboardClose: true,
+          showCloseButton: true,
+          closeButtonText: ' X '
+        });
+        let user_id = localStorage.getItem('id_user');
+        this.favoriteService.createFavorite(republic.id, user_id).subscribe( async (res) => {
+          toast.present();
+        });
+        
+      }
+      else{
+        const toast = await this.toastController.create({
+          message: 'República removida da sua lista! :(',
+          duration: 2000,
+          position: 'bottom',
+          animated: true,
+          color: 'primary',
+          keyboardClose: true,
+          showCloseButton: true,
+          closeButtonText: ' X '
+        });
+        
+        let user_id = localStorage.getItem('id_user');
+        this.favoriteService.createFavorite(republic.id, user_id).subscribe( async (res) => {
+          toast.present();
+        });
+      }
     }
     else{
-      const toast = await this.toastController.create({
-        message: 'República removida da sua lista! :(',
-        duration: 2000,
-        position: 'bottom',
-        animated: true,
-        color: 'primary',
-        keyboardClose: true,
-        showCloseButton: true,
-        closeButtonText: ' X '
-      });
-      
-      let user_id = localStorage.getItem('id_user');
-      this.favoriteService.createFavorite(republic.id, user_id).subscribe( async (res) => {
-        toast.present();
-      });
+      this.router.navigate(['/login']);
     }
   }
 

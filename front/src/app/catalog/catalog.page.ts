@@ -21,7 +21,7 @@ export class CatalogPage implements OnInit {
   public republicsArray: object[] = []
 
   ngOnInit() {
-    if(localStorage.getItem('token') == null){
+    if(localStorage.getItem('token') == 'null'){
       this.auth = false;
     }
     else this.auth = true;

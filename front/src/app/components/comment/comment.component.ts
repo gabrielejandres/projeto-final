@@ -10,7 +10,8 @@ export class CommentComponent implements OnInit {
   @Input() public comment = {
     user : 'Carregando',
     comment : 'Carregando',
-    evaluation: null
+    evaluation: null,
+    date: 'Carregando'
   };
 
   constructor() { }

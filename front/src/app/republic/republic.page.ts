@@ -2,9 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { AlertController } from '@ionic/angular'; //contato do proprietário
 import { ToastController } from '@ionic/angular'; //aviso de adição aos favoritos
+import { Location } from '@angular/common';
 
 /* INTEGRAÇÃO */
 import { SearchService } from '../services/search.service';
+import { CommentService } from '../services/comment.service';
 
 @Component({
   selector: 'app-republic',
@@ -41,37 +43,18 @@ export class RepublicPage implements OnInit {
       favorite_state: false
     };
 
-  // Lista de comentários que vai ser gerada com sql: select * from comments where id_republic == idRepublic
+  
   comments: any = [  
-    {user : 'Joao Silva',
-    comment : 'Muito boa, meus cachorros adoraram a casa',
-    evaluation: 5
-    },
-    {user : 'Maria Silva',
-    comment : 'Só tinha problema com os cachorros do Joao',
-    evaluation: 4
-    },
-    {user : 'Adalberto Silva',
-    comment : 'Show de bola!',
-    evaluation: 4.5
-    },
-    {user : 'Lurdes Silva',
-    comment : 'Deu pra dormir',
-    evaluation: 2.5
-    },
-    {user : 'Bia Silva',
-    comment : 'Não achei nada demais',
-    evaluation: 3
-    },
-    {user : 'Alvaro Silva',
-    comment : 'Gostei da decoração',
-    evaluation: 4
+    { user: 'Carregando',
+      evaluation: 5,
+      content: 'Adorei a casa muito legal',
+      date: '4 minutos atrás'
     }
   ]
 
-  constructor(public formbuilder: FormBuilder, public searchService: SearchService, public alertController: AlertController, public toastController: ToastController) { 
+  constructor(public formbuilder: FormBuilder, public commentService: CommentService, public location: Location, public searchService: SearchService, public alertController: AlertController, public toastController: ToastController) { 
     this.commentForm = this.formbuilder.group({
-      comment: [null, [Validators.required]],
+      content: [null, [Validators.required]],
       evaluation: [null]
     });
   }
@@ -82,30 +65,48 @@ export class RepublicPage implements OnInit {
 
   //Submeter o comentário
   async submitForm(form){
-    //console.log(form.value);
-    let comment = {
-      user: this.userName,
-      comment: form.value.comment,
-      evaluation: form.value.evaluation
-    }
-    this.comments.unshift(comment); //adiciona o comentário no array
-    this.formComment = !this.formComment;
     const toast = await this.toastController.create({
-      message: '<center> Comentário enviado com sucesso </center>',
-      duration: 2000,
-      position: 'bottom',
-      animated: true,
-      color: 'success',
-      keyboardClose: true,
+        message: '<center> Comentário enviado com sucesso </center>',
+        duration: 2000,
+        position: 'bottom',
+        animated: true,
+        color: 'success',
+        keyboardClose: true,
     });
-    toast.present();
+    let id_republic = localStorage.getItem('id_republic');
+    let id_user = localStorage.getItem('id_user');
+    this.commentService.addRepublicUserintoComment(form.value, id_republic, id_user).subscribe( (res) => {
+      if(res[0] == 'Efetuado com sucesso!'){
+        this.formComment = !this.formComment;
+        toast.present();
+      }
+    })
   }
 
+  //Obter o usuário logado no sistema
   public getUser(){
     let user_id = parseInt(localStorage.getItem('id_user'));
     this.searchService.getUser(user_id).subscribe( (res) => {
       this.userName = res[0].name;
     })
+  }
+
+  //Gerar o array de comentários - ESPERAR A FUNÇÃO DO BACK
+  /*public getComments(comments: any){
+    //obter usuário logado no sistema
+    this.getUser();
+
+    //COLOCAR A PARADA DA SERVICE AQUI
+    comments.forEach(element => {
+      this.comments.user = this.userName;
+      this.comments.content = element.content;
+      this.comments.evaluation = element.evaluation;
+      this.comments.date = element.date;
+    });
+  }*/
+
+  public goBack(){
+    this.location.back();
   }
 
   ngOnInit() {
@@ -152,10 +153,10 @@ export class RepublicPage implements OnInit {
     if(localStorage.getItem('token') == 'null'){
       this.auth = false;
     }
-    else this.auth = true;
-    
-    /* OBTER DADOS DO USUÁRIO */
-    this.getUser();
+    else{
+      this.auth = true;
+      //this.getComments();
+    }
   }
 
 }
