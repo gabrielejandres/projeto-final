@@ -15,4 +15,9 @@ export class CommentService {
 	public addRepublicUserintoComment(comment: any, id_republic: any, id_user: any){
     return this.http.put(this.apiURL + 'addRepublicUserintoComment/' + id_republic + '/' + id_user, comment);
   }
+
+  //LISTA DE COMENTÁRIOS
+  public listComment(id_republic: any){
+    return this.http.get(this.apiURL + 'listComment/' + id_republic);
+  }
 }

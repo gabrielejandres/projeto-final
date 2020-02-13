@@ -60,12 +60,7 @@ export class CardRepublicComponent implements OnInit {
             keyboardClose: true,
           });
 
-          if(this.auth == true){
             await alert.present(); 
-          }
-          else{
-            this.router.navigate(['/login']);
-          }
         })
       }
       else{

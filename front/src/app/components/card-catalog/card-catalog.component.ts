@@ -43,29 +43,28 @@ export class CardCatalogComponent implements OnInit {
 
   //Função que vai enviar id da república e receber dados do proprietário do BD
   async contact(republic: any) {
-    this.searchService.getUserByIdRepublic(republic.id).subscribe( async (res) => {
-      this.locator.id = res.user[0].id;
-      this.locator.name = res.user[0].name;
-      this.locator.email = res.user[0].email;
-      this.locator.phone = res.user[0].telephone;
+    if(this.auth == true){
+      this.searchService.getUserByIdRepublic(republic.id).subscribe( async (res) => {
+        this.locator.id = res.user[0].id;
+        this.locator.name = res.user[0].name;
+        this.locator.email = res.user[0].email;
+        this.locator.phone = res.user[0].telephone;
 
-      const alert = await this.alertController.create({
-        header: 'Contato do proprietário',
-        subHeader: this.locator.name,
-        message: '☎ Telefone: ' + this.locator.phone + ' <br/> ✉ E-mail: ' + this.locator.email,
-        cssClass: 'alert',
-        animated: true,
-        backdropDismiss: true,
-        keyboardClose: true,
-      });
-
-      if(this.auth == true){
+        const alert = await this.alertController.create({
+          header: 'Contato do proprietário',
+          subHeader: this.locator.name,
+          message: '☎ Telefone: ' + this.locator.phone + ' <br/> ✉ E-mail: ' + this.locator.email,
+          cssClass: 'alert',
+          animated: true,
+          backdropDismiss: true,
+          keyboardClose: true,
+        });
         await alert.present(); 
+        })
       }
       else{
         this.router.navigate(['/login']);
       }
-    })
   }
 
   //Função de adicionar aos favoritos

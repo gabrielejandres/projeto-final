@@ -107,24 +107,3 @@ export class RegisterRepublicPage implements OnInit {
   }
 
 }
-
-  //Função que abre a galeria do celular
-  // openGallery(){
-  //   const options: CameraOptions = {
-  //     quality: 100,
-  //     destinationType: this.camera.DestinationType.DATA_URL,
-  //     sourceType: this.camera.PictureSourceType.PHOTOLIBRARY,
-  //     saveToPhotoAlbum: false
-  //   };
-
-  //   this.camera.getPicture(options).then(
-  //     (imageData) => {
-  //       this.photo = 'data:image/jpeg;base64' + imageData;
-  //       console.log('data:image/jpeg;base64' + imageData);
-  //     },
-  //     (error) =>{
-  //       console.log(error);
-  //     }
-  //   );
-  // }
-

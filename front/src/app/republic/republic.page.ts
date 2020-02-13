@@ -44,13 +44,7 @@ export class RepublicPage implements OnInit {
     };
 
   
-  comments: any = [  
-    { user: 'Carregando',
-      evaluation: 5,
-      content: 'Adorei a casa muito legal',
-      date: '4 minutos atrás'
-    }
-  ]
+  comments: any = [ ]
 
   constructor(public formbuilder: FormBuilder, public commentService: CommentService, public location: Location, public searchService: SearchService, public alertController: AlertController, public toastController: ToastController) { 
     this.commentForm = this.formbuilder.group({
@@ -73,9 +67,10 @@ export class RepublicPage implements OnInit {
         color: 'success',
         keyboardClose: true,
     });
-    let id_republic = localStorage.getItem('id_republic');
+    let republic = JSON.parse(localStorage.getItem('republic'));
+    //console.log(republic);
     let id_user = localStorage.getItem('id_user');
-    this.commentService.addRepublicUserintoComment(form.value, id_republic, id_user).subscribe( (res) => {
+    this.commentService.addRepublicUserintoComment(form.value, republic[0].id, id_user).subscribe( (res) => {
       if(res[0] == 'Efetuado com sucesso!'){
         this.formComment = !this.formComment;
         toast.present();
@@ -85,25 +80,39 @@ export class RepublicPage implements OnInit {
 
   //Obter o usuário logado no sistema
   public getUser(){
-    let user_id = parseInt(localStorage.getItem('id_user'));
-    this.searchService.getUser(user_id).subscribe( (res) => {
+    if(localStorage.getItem('token') != 'null'){
+      let user_id = parseInt(localStorage.getItem('id_user'));
+      this.searchService.getUser(user_id).subscribe( (res) => {
       this.userName = res[0].name;
-    })
+    });
+    }
   }
 
-  //Gerar o array de comentários - ESPERAR A FUNÇÃO DO BACK
-  /*public getComments(comments: any){
+  //Gerar o array de comentários
+  public getComments(comments: any){
     //obter usuário logado no sistema
     this.getUser();
 
-    //COLOCAR A PARADA DA SERVICE AQUI
-    comments.forEach(element => {
-      this.comments.user = this.userName;
-      this.comments.content = element.content;
-      this.comments.evaluation = element.evaluation;
-      this.comments.date = element.date;
+    this.commentService.listComment(this.republic.id).subscribe( (res) => {
+
+      for(let i = 0; i < Object.keys(res).length; i++){
+        let comment = {
+          user: 'default',
+          content: 'default',
+          evaluation: 'default',
+          date: 'default'
+        };
+        this.searchService.getUser(res[i].user_id).subscribe( (resp) => {
+          let userName = resp[0].name;
+          comment.user = userName;
+        });
+        comment.content = res[i].content;
+        comment.evaluation = res[i].evaluation;
+        comment.date = res[i].date;
+        this.comments.push(comment);
+      }
     });
-  }*/
+  }
 
   public goBack(){
     this.location.back();
@@ -155,7 +164,7 @@ export class RepublicPage implements OnInit {
     }
     else{
       this.auth = true;
-      //this.getComments();
+      this.getComments(this.comments);
     }
   }
 
