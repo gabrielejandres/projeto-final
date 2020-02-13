@@ -74,6 +74,7 @@ export class RepublicPage implements OnInit {
       if(res[0] == 'Efetuado com sucesso!'){
         this.formComment = !this.formComment;
         toast.present();
+        this.getComments(this.comments);
       }
     })
   }
