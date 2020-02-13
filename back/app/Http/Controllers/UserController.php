@@ -37,6 +37,13 @@ class UserController extends Controller
     return response()->json(['user' => $user, 'status' => 200]);
   }
 
+  public function ListRepublicFavorite($id){
+        $republic = User::find($id)->Favorites;
+        return response()->json($republic);
+
+    return response()->json([$user]);
+  }
+
   public function listUser($id){
     $user = User::findOrFail($id);
     return response()->json([$user]);

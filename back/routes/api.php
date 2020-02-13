@@ -24,7 +24,8 @@ Route::delete('deleteUser/{id}', 'UserController@deleteUser');
 Route::get('listUser/{id}' , 'UserController@listUser');
 Route::post('createFavorite/{id}/{id2}' , 'RepublicController@createFavorite');
 Route::get('listUserByIdRepublic/{republic_id}' , 'UserController@listUserByIdRepublic');
-Route::get('Favorites' , 'User@Favorites');
+Route::post('Favorites' , 'User@Favorites');
+Route::get('ListRepublicFavorite/{id}' , 'UserController@ListRepublicFavorite');
 
 //Rotas para comentario
 Route::post('createComment', 'CommentController@createComment');

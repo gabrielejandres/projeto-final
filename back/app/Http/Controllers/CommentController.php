@@ -54,7 +54,7 @@ class CommentController extends Controller
       // return $comments;
       foreach ($comments as $comment) {
 
-        $comment->date = $current->diffForHumans($comment->created_at);
+        $comment->date = $comment->created_at->diffForHumans($current);
       }
       return response()->json($comments);
     }
