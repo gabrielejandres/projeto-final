@@ -12,6 +12,6 @@ class Comment_TableSeeder extends Seeder
     public function run()
     {
       //gera dados aleatorios
-      factory (App\Comment::class,50)->create();
+      factory (App\Comment::class,12)->create();
     }
 }
