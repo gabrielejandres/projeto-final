@@ -40,7 +40,6 @@ Route::get('searchPriceSingle', 'RepublicController@searchPriceSingle');
 Route::get('searchBestEvaluation', 'RepublicController@searchBestEvaluation');
 Route::delete('deleteFavorite/{id}/{idR}', 'RepublicController@deleteFavorite');
 
-
 //Rotas para inserir relações
 Route::put('addRepublicintoUser/{id}' , 'UserController@addRepublicintoUser'); // adiciona Republica em Usuario
 Route::put('removeRepublicfromUser/{id}' , 'UserController@removeRepublicfromUser'); // remove Republica de Usuario
