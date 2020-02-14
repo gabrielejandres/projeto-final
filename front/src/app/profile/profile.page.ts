@@ -273,11 +273,11 @@ export class ProfilePage implements OnInit {
       showCloseButton: true,
       closeButtonText: ' X '
     });
-    console.log(republic);
-    console.log(this.auth);
+    //console.log(republic);
+    //console.log(this.auth);
     this.registerRepublicService.deleteRepublic(republic).subscribe( (res) => {
       if(res){
-        console.log(res);
+        location.reload();
       }
       else{
         toast.present();

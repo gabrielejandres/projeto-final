@@ -16,6 +16,7 @@ export class HomePage {
   neighborhood: string;
   city: string;
   photo: string;
+  public cont: number = 0;
 
   //Array fixo com os títulos dos cards
   public highlightsArray: object[] = [
@@ -42,6 +43,7 @@ export class HomePage {
     this.lowerPricesSingle();
     this.lowerPricesDouble();
     this.lowerPricesTriple();
+
   }
 
   /*LISTAS DA PÁGINA PRINCIPAL*/

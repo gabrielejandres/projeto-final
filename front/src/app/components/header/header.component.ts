@@ -70,4 +70,12 @@ export class HeaderComponent implements OnInit {
     }
   }
 
+  //Dar reload na página
+  reload(){
+    if(localStorage.getItem('cont') == '0'){
+      localStorage.setItem('cont', '1');
+      location.reload();
+    }
+  }
+
 }

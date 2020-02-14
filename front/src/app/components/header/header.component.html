@@ -6,7 +6,7 @@
       </div>
       <div id="logo" *ngIf="auth">
         <ion-buttons slot="start">
-          <ion-menu-button></ion-menu-button>
+          <ion-menu-button (click)="reload()"></ion-menu-button>
         </ion-buttons> 
       </div>
       <div id="searchbar">

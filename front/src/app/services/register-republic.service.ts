@@ -9,6 +9,13 @@ export class RegisterRepublicService {
 
   apiURL: string = 'http://localhost:8000/api/';
 
+  httpHeaders: any = {
+    headers: {
+      'Content-Type': 'application/json',
+      'Accept': 'application/json'
+    }
+  }
+
   constructor(public http: HttpClient) { }
 
   //INSERIR UMA REPÚBLICA NO BD
@@ -23,6 +30,7 @@ export class RegisterRepublicService {
   
   //DELETAR UMA REPÚBLICA DO BD
   public deleteRepublic(id_republic: any): Observable<any>{
-    return this.http.delete(this.apiURL + 'deleteRepublic/' + id_republic);
+    this.httpHeaders.headers['Authorization'] = 'Bearer ' + localStorage.getItem('token');
+    return this.http.delete(this.apiURL + 'deleteRepublic/' + id_republic, this.httpHeaders);
   }
 }
