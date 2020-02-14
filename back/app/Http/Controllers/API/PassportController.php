@@ -28,7 +28,7 @@ class PassportController extends Controller
       }
       $newuser=new User;
       $newuser->createUser($request);
-      $newuser->notify(new confirmacaoCadastro($newuser));
+      //$newuser->notify(new confirmacaoCadastro($newuser));
 
         //return response()->json([$newuser]);
         $success['token']=$newuser->createToken('MyApp')->accessToken;

@@ -18,10 +18,11 @@ class ROLES
     public function handle($request, Closure $next)
     {
       $user=Auth::user();
-      if($user->is_admin==1)
+
+      if($user->is_locator==1 && $user->republic_id==$request->id)
         return $next($request);
       else{
-        return response()->json(['você nao é admin']);
+        return response()->json(['voce nao e locator, nao tem permissao para deletar essa Republica']);
       }
     }
 }
