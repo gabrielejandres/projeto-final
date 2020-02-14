@@ -15,7 +15,7 @@ import { FavoriteService } from '../../services/favorite.service';
 export class CardCatalogComponent implements OnInit {
 
   public auth: boolean;
-
+  public is_locator: string = localStorage.getItem('is_locator');
   public locator: any = { }
 
   @Input() public republic: any = { 
@@ -101,9 +101,9 @@ export class CardCatalogComponent implements OnInit {
           showCloseButton: true,
           closeButtonText: ' X '
         });
-        
+        let republic_id = republic.id;
         let user_id = localStorage.getItem('id_user');
-        this.favoriteService.deleteFavorite(user_id).subscribe( async (res) => {
+        this.favoriteService.deleteFavorite(user_id, republic_id).subscribe( async (res) => {
           toast.present();
         });
       }

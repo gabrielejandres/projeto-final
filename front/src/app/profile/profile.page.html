@@ -44,7 +44,7 @@
         <ion-col>
             <ion-row class="head">
               <h6 (click)="route_republic(republic.id)"> {{ republic.name }} </h6>
-              <ion-chip>
+              <ion-chip *ngIf="republic.evaluation != null">
                 <ion-icon name="star" color="warning"></ion-icon>
                 <ion-label> {{ republic.evaluation }}</ion-label>
               </ion-chip>
@@ -63,7 +63,7 @@
 </div>
   
 <!-- SE O USUÁRIO FOR LOCADOR -->
-<div *ngIf="is_locator">
+<div *ngIf="is_locator && check != null">
   <h2 class="title"> República cadastrada </h2>
   <ion-card>
     <ion-col>
@@ -71,13 +71,12 @@
           <ion-row class="head">
             <ion-row class="republic_name_note">
               <h3> {{ republic.name }}</h3>
-              <div class="republic_stars">
-                <ion-chip>
-                  <ion-icon name="star" color="warning"></ion-icon>
-                  <ion-label> {{ republic.evaluation }} </ion-label>
-                </ion-chip>
-              </div>
             </ion-row>
+            <div class="republic_stars">
+              <ion-button size="small" shape="round" (click)="deleteRepublic(republic.id)">
+                Deletar
+              </ion-button>
+            </div>
             </ion-row>
           <ion-row>
               <div class="full_address">
@@ -110,7 +109,8 @@
       </ion-col>
     </ion-card>
 </div>
-  
-
+<div *ngIf="is_locator && check == null" class="msg">
+    <h4> Ainda não existe uma república cadastrada. Vá até a opção Cadastrar República e anuncie sua propriedade! </h4>
+</div>
 
 </ion-content>

@@ -5,13 +5,13 @@
           <ion-row class="republic_name_note">
             <h3> {{ republic.name }}</h3>
             <div class="republic_stars">
-              <ion-chip>
+              <ion-chip *ngIf="republic.evaluation != null">
                 <ion-icon name="star" color="warning"></ion-icon>
                 <ion-label> {{ republic.evaluation }} </ion-label>
               </ion-chip>
             </div>
           </ion-row>
-          <div class="republic_buttons">
+          <div class="republic_buttons" *ngIf="is_locator != 'true'">
             <ion-icon name="heart" (click)="favorite(republic)" color="{{republic.favorite_state ? 'danger':'#717171' }}"></ion-icon> 
             <ion-icon name="send" (click)="share(republic)"></ion-icon>
             <ion-icon name="text" (click)="contact(republic)"></ion-icon>

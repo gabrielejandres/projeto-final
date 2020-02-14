@@ -15,7 +15,7 @@ import { FavoriteService } from '../../services/favorite.service';
 export class CardRepublicComponent implements OnInit {
 
   public auth: boolean;
-
+  public is_locator: string = localStorage.getItem('is_locator');
   //Objeto locator simulando dados vindos do BD
   public locator: any = {}
 
@@ -105,9 +105,9 @@ async favorite(republic: any) {
         showCloseButton: true,
         closeButtonText: ' X '
       });
-      
+      let republic_id = republic.id;
       let user_id = localStorage.getItem('id_user');
-      this.favoriteService.deleteFavorite(user_id).subscribe( async (res) => {
+      this.favoriteService.deleteFavorite(user_id, republic_id).subscribe( async (res) => {
         toast.present();
       });
     }

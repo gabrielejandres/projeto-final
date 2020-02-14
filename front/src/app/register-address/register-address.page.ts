@@ -60,7 +60,7 @@ export class RegisterAddressPage implements OnInit {
         let republic = {republic_id: parseInt(localStorage.getItem('id_republic')) }
         this.registerService.addRepublicintoUser(republic, id_user).subscribe( (res) => {
           toastSuccess.present();
-          console.log(res);
+          //console.log(res);
         });
         this.router.navigate(['/home']);
       }

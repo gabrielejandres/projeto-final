@@ -44,7 +44,7 @@ export class HeaderComponent implements OnInit {
     let search = this.searchValue;
     if(search == "repúblicas" || search == undefined || search == "rj"){
       this.searchService.getRepublics().subscribe( (res) => {
-        console.log(res);
+        //console.log(res);
         if(res.republics.length == 0){
           toastError.present();
         }

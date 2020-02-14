@@ -103,8 +103,11 @@ ion-row{
 }
 
 .republic_stars{
-  margin-top: 10px;
-  margin-left: 10px;
+  margin-top: 2%;
+  margin-right: 5%;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
 }
 
 .republic_buttons{
@@ -151,4 +154,12 @@ ion-chip{
 
 ion-card{
   --background: #f2f2f2;
+}
+
+/* MENSAGEM */
+.msg{
+  color:#717171;
+  padding: 5%;
+  text-align: center;
+  font-weight: bold;
 }

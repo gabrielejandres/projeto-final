@@ -17,8 +17,8 @@ export class FavoriteService {
   }
 
   //REMOVER UMA RELAÇÃO DE FAVORITOS
-	public deleteFavorite(id_user: any): Observable<any>{
-    return this.http.delete(this.apiURL + 'deleteFavorite/' + id_user);
+	public deleteFavorite(id_user: any, id_republic: any): Observable<any>{
+    return this.http.delete(this.apiURL + 'deleteFavorite/' + id_user + '/' + id_republic);
   }
 
   //LISTAR OS FAVORITOS

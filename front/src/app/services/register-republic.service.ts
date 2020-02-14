@@ -19,5 +19,10 @@ export class RegisterRepublicService {
   //ATUALIZAR DADOS DA REPUBLICA NO BD
   public updateRepublic(republic: any, id: number): Observable<any>{
 		return this.http.put(this.apiURL + 'updateRepublic/' + id, republic);
-	}
+  }
+  
+  //DELETAR UMA REPÚBLICA DO BD
+  public deleteRepublic(id_republic: any): Observable<any>{
+    return this.http.delete(this.apiURL + 'deleteFavorite/' + id_user + '/' + id_republic);
+  }
 }

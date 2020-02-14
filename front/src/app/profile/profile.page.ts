@@ -6,6 +6,7 @@ import { Router } from '@angular/router';
 /* INTEGRAÇÃO */
 import { SearchService } from '../services/search.service';
 import { FavoriteService } from '../services/favorite.service';
+import { RegisterRepublicService } from '../services/register-republic.service';
 
 @Component({
   selector: 'app-profile',
@@ -20,6 +21,7 @@ export class ProfilePage implements OnInit {
   public is_locator: boolean;
   public locator: any = { }
   public id_republic: any; //variável que armazenará o valor do id da república se o usuário for locador
+  public check: any;
 
   //SELECIONAR AS FAVORITAS DO BD SE O USUÁRIO FOR INQUILINO
   public favoritesArray: any = [ ];
@@ -43,11 +45,11 @@ export class ProfilePage implements OnInit {
     double_price: 700,
     triple_price: null,
     evaluation: 5.0,
-    info: 'A República das Flores fica perto de ponto de ônibus, mercados e academia. Cerca de 15 minutos até a UFRJ, Unirio, IME',
+    info: 'Default',
     favorite_state: true
   };
 
-  constructor(public alertController: AlertController, public favoriteService: FavoriteService, public toastController: ToastController, public router: Router, public searchService: SearchService) { }
+  constructor(public alertController: AlertController, public registerRepublicService: RegisterRepublicService, public favoriteService: FavoriteService, public toastController: ToastController, public router: Router, public searchService: SearchService) { }
 
   ngOnInit() {
     if(localStorage.getItem('token') == 'null'){
@@ -63,6 +65,7 @@ export class ProfilePage implements OnInit {
   getUser(){
     let id_user = parseInt(localStorage.getItem('id_user'));
     this.searchService.getUser(id_user).subscribe( (res) => {
+      this.check = res[0].republic_id;
       this.user_name = res[0].name;
       this.id_republic = res[0].republic_id;
       if(res[0].is_locator){
@@ -224,9 +227,9 @@ export class ProfilePage implements OnInit {
           showCloseButton: true,
           closeButtonText: ' X '
         });
-        
+        let republic_id = republic.id;
         let user_id = localStorage.getItem('id_user');
-        this.favoriteService.deleteFavorite(user_id).subscribe( async (res) => {
+        this.favoriteService.deleteFavorite(user_id, republic_id).subscribe( async (res) => {
           toast.present();
         });
       }
@@ -256,6 +259,29 @@ export class ProfilePage implements OnInit {
       localStorage.setItem('republic', republic);
       this.router.navigate(['/republic', {'id_republic': idRepublic}]);
     })
+  }
+
+  //Excluir república
+  async deleteRepublic(republic: any){
+    let id_republic = republic.id;
+    const toast = await this.toastController.create({
+      message: 'Não foi possível deletar a república',
+      duration: 2000,
+      position: 'bottom',
+      animated: true,
+      color: 'primary',
+      keyboardClose: true,
+      showCloseButton: true,
+      closeButtonText: ' X '
+    });
+    this.registerRepublicService.deleteRepublic(id_republic).subscribe( (res) => {
+      if(res){
+        console.log(res);
+      }
+      else{
+        toast.present();
+      }
+    });
   }
 
 }
