@@ -46,7 +46,7 @@ class RepublicController extends Controller
     return response()->json([$user]);
   }
 
-  public function deleteFavorite($idR, $id){
+  public function deleteFavorite($id, $idR){
       $user = User::findOrFail($id);
       $republic=Republic::findOrFail($idR);
       $user->Favorites()->detach($republic);
