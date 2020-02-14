@@ -13,7 +13,7 @@ export class CommentService {
 
   //INSERIR UM COMENTÁRIO NO BD
 	public addRepublicUserintoComment(comment: any, id_republic: any, id_user: any){
-    return this.http.put(this.apiURL + 'addRepublicUserintoComment/' + id_republic + '/' + id_user, comment);
+    return this.http.post(this.apiURL + 'addRepublicUserintoComment/' + id_republic + '/' + id_user, comment);
   }
 
   //LISTA DE COMENTÁRIOS

@@ -38,7 +38,9 @@ export class CardCatalogComponent implements OnInit {
     if(localStorage.getItem('token') == 'null'){
       this.auth = false;
     }
-    else this.auth = true;
+    else{
+      this.auth = true;
+    } 
   }
 
   //Função que vai enviar id da república e receber dados do proprietário do BD

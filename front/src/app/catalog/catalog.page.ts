@@ -4,6 +4,7 @@ import { ToastController } from '@ionic/angular';
 
 /* INTEGRAÇÃO */
 import { SearchService } from '../services/search.service';
+import { FavoriteService } from '../services/favorite.service';
 
 @Component({
   selector: 'app-catalog',
@@ -12,9 +13,9 @@ import { SearchService } from '../services/search.service';
 })
 export class CatalogPage implements OnInit {
 
-  constructor(private router:Router, public searchService: SearchService, public toastController: ToastController ) { }
+  constructor(private router:Router, public favoriteService: FavoriteService, public searchService: SearchService, public toastController: ToastController ) { }
   public searchValue: string;
-  currentUrl = this.router.url;
+  //currentUrl = this.router.url;
   public auth: boolean = true; //variável que indica se o usuário está ou não logado
 
   //Array alimentado com dados do BD
@@ -25,8 +26,18 @@ export class CatalogPage implements OnInit {
       this.auth = false;
     }
     else this.auth = true;
+    let id_user = localStorage.getItem('id_user');
     let republics = JSON.parse(localStorage.getItem('republics'));
     republics.forEach(element => {
+      if(this.auth){
+        this.favoriteService.getFavorites(id_user).subscribe( (res) => {
+          for(let i = 0; i < Object.keys(res).length; i++){
+            if(element.id == res[i].id){
+              element.favorite_state = true;
+            }
+          }
+        });
+      }
       this.republicsArray.push(element);
     });
   }

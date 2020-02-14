@@ -88,7 +88,7 @@ class RepublicController extends Controller
 
   //Busca por melhores avaliações
   public function searchBestEvaluation(){
-    return Republic::orderBy('evaluation','asc')->take(12)->get();
+    return Republic::orderBy('evaluation','desc')->take(12)->get();
   }
 
 

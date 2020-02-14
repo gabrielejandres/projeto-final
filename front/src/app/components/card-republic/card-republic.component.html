@@ -11,7 +11,7 @@
               </ion-chip>
             </div>
           </ion-row>
-          <div class="republic_buttons" *ngIf="is_locator != 'true'">
+          <div class="republic_buttons" *ngIf="(is_locator != 'true' && auth) || !auth">
             <ion-icon name="heart" (click)="favorite(republic)" color="{{republic.favorite_state ? 'danger':'#717171' }}"></ion-icon> 
             <ion-icon name="send" (click)="share(republic)"></ion-icon>
             <ion-icon name="text" (click)="contact(republic)"></ion-icon>

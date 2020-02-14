@@ -160,7 +160,7 @@ export class ProfilePage implements OnInit {
               republic.favorite_state = true;
               this.favoritesArray.push(republic);
           }
-          console.log(resp);
+          //console.log(resp);
         })
       }
     });
@@ -263,7 +263,6 @@ export class ProfilePage implements OnInit {
 
   //Excluir república
   async deleteRepublic(republic: any){
-    let id_republic = republic.id;
     const toast = await this.toastController.create({
       message: 'Não foi possível deletar a república',
       duration: 2000,
@@ -274,7 +273,9 @@ export class ProfilePage implements OnInit {
       showCloseButton: true,
       closeButtonText: ' X '
     });
-    this.registerRepublicService.deleteRepublic(id_republic).subscribe( (res) => {
+    console.log(republic);
+    console.log(this.auth);
+    this.registerRepublicService.deleteRepublic(republic).subscribe( (res) => {
       if(res){
         console.log(res);
       }

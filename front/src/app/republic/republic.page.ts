@@ -7,6 +7,7 @@ import { Location } from '@angular/common';
 /* INTEGRAÇÃO */
 import { SearchService } from '../services/search.service';
 import { CommentService } from '../services/comment.service';
+import { FavoriteService } from '../services/favorite.service';
 
 @Component({
   selector: 'app-republic',
@@ -46,7 +47,7 @@ export class RepublicPage implements OnInit {
   
   comments: any = [ ]
 
-  constructor(public formbuilder: FormBuilder, public commentService: CommentService, public location: Location, public searchService: SearchService, public alertController: AlertController, public toastController: ToastController) { 
+  constructor(public formbuilder: FormBuilder, public favoriteService: FavoriteService, public commentService: CommentService, public location: Location, public searchService: SearchService, public alertController: AlertController, public toastController: ToastController) { 
     this.commentForm = this.formbuilder.group({
       content: [null, [Validators.required]],
       evaluation: [null]
@@ -156,9 +157,19 @@ export class RepublicPage implements OnInit {
       this.republic.triple_rooms = republic[0].triple_rooms;
       this.republic.triple_price = republic[0].triple_price;
     }
-    
-    this.republic.evaluation = republic[0].evaluation;
-    this.republic.favorite_state = false; //SELECIONAR DO BD E SABER SE ESTÁ FAVORITADA
+    this.republic.favorite_state = false;
+    if(localStorage.getItem('token') != 'null'){
+        let id_user = localStorage.getItem('id_user')
+        this.republic.evaluation = republic[0].evaluation;
+        //console.log('rep', this.republic.id);
+        this.favoriteService.getFavorites(id_user).subscribe( (res) => {
+          for(let i = 0; i < Object.keys(res).length; i++){
+            if(this.republic.id == res[i].id){
+              this.republic.favorite_state = true;
+            }
+          }
+        })
+    }
 
     /* AUTENTICAÇÃO */
     if(localStorage.getItem('token') == 'null'){

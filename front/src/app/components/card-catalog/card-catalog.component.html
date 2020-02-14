@@ -15,7 +15,7 @@
           </ion-row>
         <p> {{ republic.street }}, n° {{ republic.number }} - {{ republic.neighborhood }}</p>
         <p> A república conta com {{ republic.triple_rooms + republic.double_rooms + republic.single_rooms }} vagas nos quartos</p>
-        <div class="buttons" *ngIf="is_locator != 'true'">
+        <div class="buttons" *ngIf="(is_locator != 'true' && auth) || !auth">
           <ion-icon name="heart" (click)="favorite(republic)" color="{{republic.favorite_state ? 'danger':'#717171' }}"></ion-icon> 
           <ion-icon name="send" (click)="share(republic)"></ion-icon>
           <ion-icon name="text" (click)="contact(republic)"></ion-icon>
