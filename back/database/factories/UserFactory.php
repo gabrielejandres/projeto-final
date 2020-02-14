@@ -25,6 +25,6 @@ $factory->define(User::class, function (Faker $faker) {
         'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
         'telephone'=>$faker->cellphoneNumber,
         'republic_id'=>$faker->unique()->numberBetween($min = 1, $max = 12),
-        'is_locator'=>$faker->boolean,
+        'is_locator'=>1,
     ];
 });
