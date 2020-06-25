@@ -72,3 +72,6 @@ php artisan serve
 npm install
 ionic serve
 ```
+<h4 align="center">
+        <p> Projeto por Gabriele Jandres, Marcele Lami & Milton Quillinan </p>
+</h4>
