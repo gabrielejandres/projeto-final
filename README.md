@@ -1,16 +1,17 @@
-# Hommy
-<h1> Projeto Final do treinamento técnico - EJCM </h1>
-<h2> Front-end: ionic & Back-end: laravel </h2>
+<h1 align="center"> Hommy </h1>
+
+<p align="center"> Projeto Final do treinamento técnico - EJCM. </p>
 
 <h3> Após clonar, para o aplicativo funcionar corretamente: </h3>
 
 <h4> * No arquivo .env, colar: </h4>
+
         APP_NAME=Hommy
         APP_ENV=local
         APP_KEY=base64:cYxFgkNBqEl23TGipRBaN1JbVvQDoGSNqgH7R+IHrAk=
         APP_DEBUG=true
         APP_URL=http://localhost
-
+        
         LOG_CHANNEL=stack
 
         DB_CONNECTION=mysql
@@ -53,15 +54,21 @@
         MIX_PUSHER_APP_CLUSTER="${PUSHER_APP_CLUSTER}"
 
 <h4> * Na pasta back: </h4>
-  - composer install
-  - cp .env.example .env
-  - Criar o BD no phpMyAdmin
-  - Mudar o nome do BD  no .env de acordo com o criado anteriormente
-  - php artisan key:generate
-  - php artisan migrate:fresh --seed
-  - php artisan passport:install
-  - php artisan serve
+
+```bash
+composer install
+cp .env.example .env
+Criar o BD no phpMyAdmin
+Mudar o nome do BD  no .env de acordo com o criado anteriormente
+php artisan key:generate
+php artisan migrate:fresh --seed
+php artisan passport:install
+php artisan serve
+```
 
 <h4> * Na pasta front: </h4>
-  - npm install
-  - ionic serve
+
+```bash
+npm install
+ionic serve
+```
