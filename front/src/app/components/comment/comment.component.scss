@@ -1,0 +1,64 @@
+/* COMENTÁRIOS */
+.comment_evaluation{
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+}
+.comment{
+    padding: 20px;
+}
+
+.comment_head{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.comment_icon{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.comment_name{
+    margin-left: 20px;
+    font-weight: bold;
+}
+
+.date{
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+p{
+    font-size: 0.7em;
+    align-self: flex-end;
+}
+
+ion-label{
+    padding-bottom: 0 !important;
+}
+
+.comment_date{
+    margin-top: 12%;
+}
+
+.comment_text{
+    display: flex;
+    padding: 20px;
+}
+
+.comment{
+    --background: #f2f2f2;
+}
+
+ion-item{
+    --background: #E3D9CF;
+}
+
+ion-list{
+    --background: #E3D9CF;
+}

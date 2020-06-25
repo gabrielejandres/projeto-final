@@ -1,0 +1,98 @@
+<ion-content fullscreen>
+	<ion-fab vertical="top" horizontal="end" slot="fixed">
+		<ion-fab-button [routerLink]="['../home']">
+		  <ion-icon name="arrow-round-back" color="primary"></ion-icon>
+		</ion-fab-button>  
+	</ion-fab>
+
+	<div class="container">
+
+		<div id="title">
+			<h3> Dados da república </h3>
+		</div>
+
+		<div>
+			<form [formGroup]="republicForm" (ngSubmit)="submitForm(republicForm)">
+				<ion-list lines="none">
+					<ion-item [class.invalid]="republicForm.controls.name.invalid && republicForm.controls.name.touched">
+						<ion-label position="floating"> Nome </ion-label>
+						<ion-input type="text" name="name" formControlName="name"></ion-input>
+						<p *ngIf="republicForm.controls.name.invalid && republicForm.controls.name.touched"> Mínimo de 3 caracteres </p>
+          </ion-item>
+
+          <ion-item>
+            <ion-list>
+              <ion-list-header> A república conta com quartos: </ion-list-header>
+                <ion-item>
+                  <ion-label> Individuais </ion-label>
+                  <ion-checkbox formControlName="hasIndividual" color="primary" slot="start" (click)="setIndividual()"></ion-checkbox>
+                </ion-item>
+                <ion-item *ngIf="individual">
+                  <div class="input_extra">
+                    <div class="input_qtd">
+                      <ion-label position="floating"> Quantidade </ion-label>
+                      <ion-input type="number" name="single_rooms" formControlName="single_rooms"></ion-input>
+                    </div>
+                    <div class="input_price">
+                      <ion-label position="floating"> Preço </ion-label>
+                      <ion-input type="text" name="single_price" formControlName="single_price" [brmasker]="{money: true}"></ion-input>
+                    </div>
+                  </div>
+                </ion-item>
+
+                <ion-item>
+                  <ion-label> Duplos </ion-label>
+                  <ion-checkbox formControlName="hasDouble" color="dark" slot="start" (click)="setDouble()"></ion-checkbox>
+                </ion-item>
+                <ion-item *ngIf="double">
+                  <div class="input_extra">
+                    <div class="input_qtd">
+                      <ion-label position="floating"> Quantidade </ion-label>
+                      <ion-input type="number" name="double_rooms" formControlName="double_rooms"></ion-input>
+                    </div>
+                    <div class="input_price">
+                      <ion-label position="floating"> Preço </ion-label>
+                      <ion-input type="text" name="double_price" formControlName="double_price" [brmasker]="{money: true}"></ion-input>
+                    </div>
+                  </div>  
+                </ion-item>
+
+                <ion-item>
+                  <ion-label> Triplos </ion-label>
+                  <ion-checkbox formControlName="hasTriple" color="primary" slot="start" (click)="setTriple()"></ion-checkbox>
+                </ion-item>
+                <ion-item *ngIf="triple">
+                  <div class="input_extra">
+                    <div class="input_qtd">
+                      <ion-label position="floating"> Quantidade </ion-label>
+                      <ion-input type="number" name="triple_rooms" formControlName="triple_rooms"></ion-input>
+                    </div>
+                    <div class="input_price">
+                      <ion-label position="floating"> Preço </ion-label>
+                      <ion-input type="text" name="triple_price" formControlName="triple_price" [brmasker]="{money: true}"></ion-input>
+                    </div>
+                  </div> 
+                </ion-item>
+
+                <!-- <ion-item>
+                  <ion-label position="floating"> Escolha uma foto </ion-label>
+                  <ion-input type="file" formControlName="photo" accept="image/*" name="photo"></ion-input>
+                </ion-item> -->
+                <!-- <ion-button (click)="openGallery()">Escolher foto</ion-button> -->
+              </ion-list>
+          </ion-item>
+
+          <ion-item class="add">
+            <ion-label position="floating"> Informações adicionais </ion-label>
+            <ion-textarea formControlName="info"></ion-textarea>
+          </ion-item>
+
+				</ion-list>
+
+				<div class="button">
+					<ion-button type="submit" shape="round" [disabled]="republicForm.invalid"> Próxima </ion-button>
+				</div>
+			</form>
+		</div>
+	</div>
+</ion-content>

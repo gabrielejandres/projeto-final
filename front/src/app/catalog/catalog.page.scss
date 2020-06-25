@@ -1,0 +1,37 @@
+/* BOTÃO VOLTAR */
+ion-fab-button{
+    --border-color: #7D0D23;
+    --border-width: 2px;
+    --border-style: solid;
+    --background: #00000000;
+    width: 7vw;
+    height: 4vh;
+}
+
+/* HEADER */
+ion-toolbar{
+    --background: #E3D9CF;
+    padding-bottom: 2%;
+}
+
+.toolbar{
+    --background: #E3D9CF;
+    display: grid;
+    grid-template-columns: 10% 80% 10%;
+    align-items: center;
+    justify-items: center;
+}
+
+/* ITENS DO HEADER */
+#searchbar{
+    width: 100%;
+    align-self: center;
+    justify-self: center;
+}
+
+ion-searchbar{
+    padding: 0 2%;
+}
+  
+  
+    

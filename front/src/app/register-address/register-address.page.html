@@ -1,0 +1,52 @@
+<ion-content fullscreen>
+	<ion-fab vertical="top" horizontal="end" slot="fixed">
+		<ion-fab-button [routerLink]="['../register-republic']">
+		  <ion-icon name="arrow-round-back" color="primary"></ion-icon>
+		</ion-fab-button>  
+	</ion-fab>
+
+	<div class="container">
+
+		<div id="title">
+			<h3> Dados da república </h3>
+    </div>
+    
+    <div id="subtitle">
+			<h3> Endereço </h3>
+		</div>
+
+		<div>
+			<form [formGroup]="addressForm" (ngSubmit)="submitForm(addressForm)">
+				<ion-list lines="none">
+					<ion-item [class.invalid]="addressForm.controls.street.invalid && addressForm.controls.street.touched">
+						<ion-label position="floating"> Rua/Avenida </ion-label>
+						<ion-input type="text" name="street" formControlName="street"></ion-input>
+						<p *ngIf="addressForm.controls.street.invalid && addressForm.controls.street.touched"> Mínimo de 3 caracteres </p>
+          </ion-item>
+
+          <ion-item>
+            <div class="input_extra">
+              <div class="input_number">
+                <ion-label position="floating"> Número </ion-label>
+                <ion-input type="number" name="number" formControlName="number"></ion-input>
+              </div>
+              <div class="input_price">
+                <ion-label position="floating"> Bairro </ion-label>
+                <ion-input type="text" name="neighborhood" formControlName="neighborhood"></ion-input>
+              </div>
+            </div>
+          </ion-item>
+
+          <ion-item id="complement">
+						<ion-label position="floating"> Complemento </ion-label>
+						<ion-input type="text" name="complement" formControlName="complement"></ion-input>
+          </ion-item>
+				</ion-list>
+
+				<div class="button">
+					<ion-button type="submit" shape="round" [disabled]="addressForm.invalid"> Cadastrar </ion-button>
+				</div>
+			</form>
+		</div>
+	</div>
+</ion-content>

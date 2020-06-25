@@ -1,3 +1,4 @@
+<!-- SIDEMENU -->
 <ion-app>
   <ion-split-pane contentId="main-content">
     <ion-menu contentId="main-content" type="overlay">
@@ -7,12 +8,13 @@
         </ion-toolbar>
       </ion-header>
       <ion-content>
-        <ion-list>
+        <ion-list lines="none">
           <ion-menu-toggle auto-hide="false" *ngFor="let p of appPages">
-            <ion-item [routerDirection]="'root'" [routerLink]="[p.url]">
+            <ion-item [routerDirection]="'root'" [routerLink]="[p.url]" *ngIf=" !(!is_locator && p.title == 'Cadastrar república')">
               <ion-icon slot="start" [name]="p.icon"></ion-icon>
               <ion-label>
-                {{p.title}}
+                <p *ngIf="p.title == 'Sair'" (click)='logoutUser()'> {{p.title}} </p>
+                <p *ngIf="p.title != 'Sair'"> {{p.title}} </p>
               </ion-label>
             </ion-item>
           </ion-menu-toggle>

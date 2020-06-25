@@ -12,9 +12,37 @@ const routes: Routes = [
     loadChildren: () => import('./home/home.module').then(m => m.HomePageModule)
   },
   {
-    path: 'list',
-    loadChildren: () => import('./list/list.module').then(m => m.ListPageModule)
+    path: 'cadastro',
+    loadChildren: () => import('./cadastro/cadastro.module').then( m => m.CadastroPageModule)
+  },
+  {
+    path: 'login',
+    loadChildren: () => import('./login/login.module').then( m => m.LoginPageModule)
+  },  {
+    path: 'edit-profile',
+    loadChildren: () => import('./edit-profile/edit-profile.module').then( m => m.EditProfilePageModule)
+  },
+  {
+    path: 'register-republic',
+    loadChildren: () => import('./register-republic/register-republic.module').then( m => m.RegisterRepublicPageModule)
+  },
+  {
+    path: 'register-address',
+    loadChildren: () => import('./register-address/register-address.module').then( m => m.RegisterAddressPageModule)
+  },
+  {
+    path: 'catalog',
+    loadChildren: () => import('./catalog/catalog.module').then( m => m.CatalogPageModule)
+  },
+  {
+    path: 'republic',
+    loadChildren: () => import('./republic/republic.module').then( m => m.RepublicPageModule)
+  },
+  {
+    path: 'profile',
+    loadChildren: () => import('./profile/profile.module').then( m => m.ProfilePageModule)
   }
+
 ];
 
 @NgModule({

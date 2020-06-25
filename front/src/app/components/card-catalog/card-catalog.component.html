@@ -1,0 +1,26 @@
+<ion-card class="card"> 
+  <ion-grid>
+    <ion-row>
+      <ion-col size='3.5' class='col_img'> 
+        <img *ngIf="republic.photo != null" src="{{republic.photo}}" class="img" alt="Foto da república" (click)="route_republic(republic.id)">
+        <img *ngIf="republic.photo == null" src="../assets/default.jpg" class="img" alt="Foto da república" (click)="route_republic(republic.id)">
+      </ion-col>
+      <ion-col>
+          <ion-row class="head">
+            <h6 (click)="route_republic(republic.id)"> {{ republic.name }} </h6>
+            <ion-chip *ngIf="republic.evaluation != null">
+              <ion-icon name="star" color="warning"></ion-icon>
+              <ion-label> {{ republic.evaluation }}</ion-label>
+            </ion-chip>
+          </ion-row>
+        <p> {{ republic.street }}, n° {{ republic.number }} - {{ republic.neighborhood }}</p>
+        <p> A república conta com {{ republic.triple_rooms + republic.double_rooms + republic.single_rooms }} vagas nos quartos</p>
+        <div class="buttons" *ngIf="(is_locator != 'true' && auth) || !auth">
+          <ion-icon name="heart" (click)="favorite(republic)" color="{{republic.favorite_state ? 'danger':'#717171' }}"></ion-icon> 
+          <ion-icon name="send" (click)="share(republic)"></ion-icon>
+          <ion-icon name="text" (click)="contact(republic)"></ion-icon>
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-card>

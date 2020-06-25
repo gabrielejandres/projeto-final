@@ -1,0 +1,5 @@
+<div class="info-card">
+    <img *ngIf="republic.photo" class="img-card" src="../../.{{republic.photo}}" (click)="route_republic(republic.id)" alt="Foto da república"/>
+    <img *ngIf="!republic.photo"class="img-card" src="../../../assets/default.jpg" (click)="route_republic(republic.id)" alt="Foto da república"/>
+    <p> {{ republic.neighborhood }} </p>
+</div>

@@ -1,0 +1,116 @@
+<ion-header>
+  <ion-toolbar>
+    <div class="toolbar">
+      <div id="logo" *ngIf="!auth">
+        <img [routerLink]="['/home']" src="../../assets/icon/icon.png">
+      </div>
+      <div id="logo" *ngIf="auth">
+        <ion-buttons slot="start">
+          <ion-menu-button></ion-menu-button>
+        </ion-buttons> 
+      </div>
+    </div>
+  </ion-toolbar>
+</ion-header>
+<div id="back">
+  <ion-fab vertical="top" horizontal="end" slot="fixed">
+    <ion-fab-button [routerLink]="['/home']">
+      <ion-icon name="arrow-round-back" color="primary"></ion-icon>
+    </ion-fab-button>  
+  </ion-fab>
+</div>
+
+<ion-content>
+  <ion-row>
+    <ion-col size='5' class="img-profile">
+      <img src="../../assets/default_profile.png"/>
+    </ion-col>
+    <ion-col class="info">
+      <h3> {{ user_name }}</h3>
+      <p> {{ type_user }} </p>
+    </ion-col>
+  </ion-row>
+
+<!-- SE O USUÁRIO FOR INQUILINO -->
+<div *ngIf="!is_locator">
+  <h2 class="title"> <ion-icon name="star" color="warning"></ion-icon> Minhas Favoritas </h2>
+  <ion-card *ngFor="let republic of favoritesArray" class="card"> 
+    <ion-grid>
+      <ion-row>
+        <ion-col size='3.5' class='col_img'> 
+          <img *ngIf="republic.photo != null" src="{{republic.photo}}" class="img" alt="Foto da república" (click)="route_republic(republic.id)">
+          <img *ngIf="republic.photo == null" src="../assets/default.jpg" class="img" alt="Foto da república" (click)="route_republic(republic.id)">
+        </ion-col>
+        <ion-col>
+            <ion-row class="head">
+              <h6 (click)="route_republic(republic.id)"> {{ republic.name }} </h6>
+              <ion-chip *ngIf="republic.evaluation != null">
+                <ion-icon name="star" color="warning"></ion-icon>
+                <ion-label> {{ republic.evaluation }}</ion-label>
+              </ion-chip>
+            </ion-row>
+          <p> {{ republic.street }}, n° {{ republic.number }} - {{ republic.neighborhood }}</p>
+          <p> A república conta com {{ republic.triple_rooms + republic.double_rooms + republic.single_rooms }} vagas nos quartos</p>
+          <div class="buttons">
+            <ion-icon name="heart" (click)="favorite(republic)" color="{{republic.favorite_state ? 'danger':'#717171' }}"></ion-icon> 
+            <ion-icon name="send" (click)="share(republic)"></ion-icon>
+            <ion-icon name="text" (click)="contact(republic)"></ion-icon>
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-card>
+</div>
+  
+<!-- SE O USUÁRIO FOR LOCADOR -->
+<div *ngIf="is_locator && check != null">
+  <h2 class="title"> República cadastrada </h2>
+  <ion-card>
+    <ion-col>
+        <div class="column">
+          <ion-row class="head">
+            <ion-row class="republic_name_note">
+              <h3> {{ republic.name }}</h3>
+            </ion-row>
+            <div class="republic_stars">
+              <ion-button size="small" shape="round" (click)="deleteRepublic(republic.id)">
+                <ion-icon name="trash" color="#fff"></ion-icon> Deletar
+              </ion-button>
+            </div>
+            </ion-row>
+          <ion-row>
+              <div class="full_address">
+                <h6> {{ republic.street }}, n° {{ republic.number }}, {{ republic.neighborhood }} - Rio de Janeiro </h6>
+              </div>
+            </ion-row>
+            <ion-row>
+              <ion-col size="5" class="column-intern">
+                <img class="img-republic" src="{{republic.photo}}">
+              </ion-col>
+              <ion-col class="column-intern">
+                <p> {{ republic.info }} </p>
+              </ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col>
+                <h5> Vagas disponíveis: </h5>
+                <div *ngIf="republic.hasIndividual">
+                  <p> {{ republic.single_rooms }} vaga(s) em quarto individual - R${{ republic.single_price }} </p>
+                </div>
+                <div *ngIf="republic.hasDouble">
+                  <p> {{ republic.double_rooms }} vaga(s) em quarto duplo - R${{ republic.double_price }} </p>
+                </div>
+                <div *ngIf="republic.hasTriple">
+                  <p> {{ republic.triple_rooms }} vaga(s) em quarto triplo - R${{ republic.triple_price }} </p>
+                </div>
+              </ion-col>
+            </ion-row>
+        </div>
+      </ion-col>
+    </ion-card>
+</div>
+<div *ngIf="is_locator && check == null" class="msg">
+    <h4> Ainda não existe uma república cadastrada. Vá até a opção Cadastrar República e anuncie sua propriedade! </h4>
+</div>
+
+</ion-content>

@@ -1,0 +1,112 @@
+/* CONFIGURAÇÕES GERAIS */
+ion-content{
+    --background: url('../../assets/background.png') 0 0/100% 100% no-repeat;
+}
+
+/* CONTAINER GERAL */
+.container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+/* TITULO */
+#title{
+    color: #7D0D23;
+    margin-top: 20%;
+    margin-bottom: 5%;
+}
+
+#title h3{
+    font-size: 2.5em;
+    font-family: 'Amatic SC', cursive;
+    font-weight: bold;
+}
+
+/* FORMULÁRIO */
+form{
+    --background: rgba(0, 0, 0, 0);
+    color: #717171;
+    width: 80vw;
+}
+
+ion-item{
+    --background: rgba(0, 0, 0, 0);
+}
+
+ion-item p{
+    color: #717171;
+    font-size: 0.9em;
+    margin-left: 2%;
+    margin-top: 1%;
+}
+
+ion-list{
+    background-color: rgba(0, 0, 0, 0);
+}
+
+ion-input{
+    background-color: #71717140;
+    border-radius: 15px;
+    --padding-start: 5% !important;
+}
+
+ion-label{
+    margin-left: 5%;
+}
+
+.button{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+/* BOTÃO VOLTAR */
+ion-fab{
+    margin-top: 5%;
+    margin-right: 5%;
+}
+
+ion-fab-button{
+    --border-color: #7D0D23;
+    --border-width: 2px;
+    --border-style: solid;
+    --background: #00000000;
+    width: 7.5vw;
+    height: 4vh;
+}
+
+/* CLASSE INVÁLIDO */
+.invalid{
+    --color:  #7D0D23;
+}
+
+.invalid ion-input{
+    border-bottom: 1px solid #7D0D23;
+}
+
+/* INPUTS DE QTD E PREÇO */
+.input_extra{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.input_qtd{
+    margin-right: 5%;
+}
+
+/* TEXTAREA */
+ion-textarea{
+    background-color: #71717140;
+    border-radius: 15px;
+    --padding-start: 5% !important;
+    width: 100%;
+}
+
+.add{
+    margin-top: -10%;
+}

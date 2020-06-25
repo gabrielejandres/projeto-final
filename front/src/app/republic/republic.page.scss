@@ -1,0 +1,90 @@
+/* BOTÃO VOLTAR */
+ion-fab-button{
+    --border-color: #7D0D23;
+    --border-width: 2px;
+    --border-style: solid;
+    --background: #00000000;
+    width: 7vw;
+    height: 4vh;
+}
+
+/*  HEADER */
+ion-toolbar{
+    --background: #E3D9CF;
+}
+
+/* FORMULÁRIO */
+.form{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+form{
+    --background: rgba(0, 0, 0, 0);
+    color: #717171;
+    width: 80vw;
+}
+
+ion-item{
+    --background: rgba(0, 0, 0, 0);
+}
+
+ion-item p{
+    color: #717171;
+    font-size: 0.9em;
+    margin-left: 2%;
+    margin-top: 1%;
+}
+
+ion-list{
+    background-color: rgba(0, 0, 0, 0);
+}
+
+ion-input{
+    background-color: #71717140;
+    border-radius: 15px;
+    --padding-start: 5% !important;
+}
+
+ion-label{
+    margin-left: 5%;
+}
+
+.button{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+/* TEXTAREA */
+ion-textarea{
+    background-color: #71717140;
+    border-radius: 15px;
+    --padding-start: 5% !important;
+    width: 100%;
+    color: #717171;
+}
+
+ion-card{
+    --background: #f2f2f2;
+}
+
+/* SEÇÃO DE COMENTÁRIOS */
+.logo_comment{
+    margin-left: 16px;
+    color: #717171;
+}
+
+.comment_button{
+    color: #717171;
+    margin-top: 3%;
+    margin-right: 5%;
+}
+
+.comment_bar{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}

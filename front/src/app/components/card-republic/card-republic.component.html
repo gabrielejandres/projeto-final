@@ -1,0 +1,49 @@
+<ion-card>
+  <ion-col>
+      <div class="column">
+        <ion-row class="head">
+          <ion-row class="republic_name_note">
+            <h3> {{ republic.name }}</h3>
+            <div class="republic_stars">
+              <ion-chip *ngIf="republic.evaluation != null">
+                <ion-icon name="star" color="warning"></ion-icon>
+                <ion-label> {{ republic.evaluation }} </ion-label>
+              </ion-chip>
+            </div>
+          </ion-row>
+          <div class="republic_buttons" *ngIf="(is_locator != 'true' && auth) || !auth">
+            <ion-icon name="heart" (click)="favorite(republic)" color="{{republic.favorite_state ? 'danger':'#717171' }}"></ion-icon> 
+            <ion-icon name="send" (click)="share(republic)"></ion-icon>
+            <ion-icon name="text" (click)="contact(republic)"></ion-icon>
+          </div>
+          </ion-row>
+        <ion-row>
+            <div class="full_address">
+              <h6> {{ republic.street }}, n° {{ republic.number }}, {{ republic.neighborhood }} - Rio de Janeiro </h6>
+            </div>
+          </ion-row>
+          <ion-row>
+            <ion-col size="5" class="column-intern">
+              <img class="img-republic" src="{{republic.photo}}">
+            </ion-col>
+            <ion-col class="column-intern">
+              <p> {{ republic.info }} </p>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>
+              <h5> Vagas disponíveis: </h5>
+              <div *ngIf="republic.hasIndividual">
+                <p> {{ republic.single_rooms }} vaga(s) em quarto individual - R${{ republic.single_price }} </p>
+              </div>
+              <div *ngIf="republic.hasDouble">
+                <p> {{ republic.double_rooms }} vaga(s) em quarto duplo - R${{ republic.double_price }} </p>
+              </div>
+              <div *ngIf="republic.hasTriple">
+                <p> {{ republic.triple_rooms }} vaga(s) em quarto triplo - R${{ republic.triple_price }} </p>
+              </div>
+            </ion-col>
+          </ion-row>
+      </div>
+    </ion-col>
+  </ion-card>

@@ -1,0 +1,22 @@
+<ion-card class="comment">
+  <div class="comment_head">
+    <div class="comment_icon">
+      <ion-icon name="person" color="primary" size="big"></ion-icon>
+      <div class="comment_name">
+        <h5>{{comment.user}}</h5>
+      </div>
+   </div>
+    <div class="comment_evaluation">
+      <ion-chip *ngIf="comment.evaluation">
+        <ion-icon name="star" color="warning"></ion-icon>
+        <ion-label> {{ comment.evaluation }} </ion-label>
+      </ion-chip>
+    </div> 
+  </div>
+  <ion-label class="comment_text">
+    <h6>{{comment.content}}</h6>
+  </ion-label>
+  <div class="date">
+    <p> {{ comment.date }} </p>
+  </div>
+</ion-card>

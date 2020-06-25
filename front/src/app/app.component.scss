@@ -1,0 +1,22 @@
+ion-content{
+    --background: #7D0D23;
+    --background: linear-gradient(197deg, rgba(125, 13, 35, 1) 0%, rgba(125, 13, 35, 1) 13.5%,rgba(125, 13, 35, 1) 33.33%, rgba(0,0,0,1) 100%) 
+}
+
+ion-header ion-toolbar{
+    --background: #7D0D23;
+    color: #E3D9CF;
+}
+
+ion-item{
+    --background: #7D0D23;
+    color: #E3D9CF;
+}
+
+ion-list{
+    --background: #7D0D23;
+}
+
+ion-label p{
+    color: #fff;
+}

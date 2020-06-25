@@ -1,0 +1,26 @@
+<ion-header>
+  <ion-toolbar>
+    <div class="toolbar">
+      <div id="logo" *ngIf="!auth">
+        <img [routerLink]="['../home']" src="../../assets/icon/icon.png">
+      </div>
+      <div id="logo" *ngIf="auth">
+        <ion-buttons slot="start">
+          <ion-menu-button (click)="reload()"></ion-menu-button>
+        </ion-buttons> 
+      </div>
+      <div id="searchbar">
+        <ion-searchbar animated [(ngModel)]="searchValue"  (keyup.enter)="searchRepublics()"></ion-searchbar>
+      </div>
+      <div id="login" *ngIf="!auth">
+        <img [routerLink]="['../login']" src="../../assets/Login.png">
+      </div>
+      <div id="logo" *ngIf="auth">
+        <img [routerLink]="['../home']" src="../../assets/icon/icon.png">
+      </div>
+    </div>
+    <div class="slogan" *ngIf="!auth">
+      <h6> Encontre sua república dos sonhos com o <span> Hommy! </span></h6>
+    </div>
+  </ion-toolbar>
+</ion-header>
