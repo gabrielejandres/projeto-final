@@ -5,7 +5,6 @@
 <h3> Após clonar, para o aplicativo funcionar corretamente: </h3>
 
 <h4> * No arquivo .env, colar as configurações de email: </h4>
-
         MAIL_DRIVER=smtp
         MAIL_HOST=smtp.gmail.com
         MAIL_PORT=587
