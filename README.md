@@ -19,6 +19,7 @@ O projeto foi desenvolvido utilizando Laravel e Ionic.
 ### 2. Instalação
 
 <h4> No arquivo .env, colar as configurações de email: </h4>
+
 ```bash
         MAIL_DRIVER=smtp
         MAIL_HOST=smtp.gmail.com
