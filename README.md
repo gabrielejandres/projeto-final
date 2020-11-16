@@ -21,14 +21,14 @@ O projeto foi desenvolvido utilizando Laravel e Ionic.
 <h4> No arquivo .env, colar as configurações de email: </h4>
 
 ```bash
-        MAIL_DRIVER=smtp
-        MAIL_HOST=smtp.gmail.com
-        MAIL_PORT=587
-        MAIL_USERNAME=aluguelrepublicaoficial@gmail.com
-        MAIL_PASSWORD=viwqvvnivqigxgpu
-        MAIL_ENCRYPTION=tls
-        MAIL_FROM_ADDRESS=aluguelrepublicaoficial@gmail.com
-        MAIL_FROM_NAME="${APP_NAME}"
+MAIL_DRIVER=smtp
+MAIL_HOST=smtp.gmail.com
+MAIL_PORT=587
+MAIL_USERNAME=aluguelrepublicaoficial@gmail.com
+MAIL_PASSWORD=viwqvvnivqigxgpu
+MAIL_ENCRYPTION=tls
+MAIL_FROM_ADDRESS=aluguelrepublicaoficial@gmail.com
+MAIL_FROM_NAME="${APP_NAME}"
 ```
 
 <h4> Na pasta back: </h4>
